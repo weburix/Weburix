@@ -160,3 +160,7 @@ Run `python3 scripts/qa.py` after every future content or price change.
 ## Mobile layout V17
 
 A final mobile repair layer is included at the end of `assets/css/style.css`. It keeps the desktop design, while making the header, language dropdown, cards, forms, configurator, chatbot, cookie controls and footer fit correctly on phones and tablets. `assets/js/app.js` also avoids closing the navigation when a mobile browser merely expands or collapses its address bar.
+
+## Mobile V18 update
+
+The final mobile override reduces phone typography, centers the opened navigation panel, compresses the language selector to flag + code, and uses cache-busted CSS/JS asset URLs (`?v=18.1`) so GitHub Pages visitors receive the latest mobile layout instead of a cached stylesheet.

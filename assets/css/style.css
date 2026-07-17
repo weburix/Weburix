@@ -2547,3 +2547,245 @@ pre { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .hero { padding-top: 24px; }
   .chat-widget { bottom: 6px; max-height: calc(100dvh - 12px); height: calc(100dvh - 12px); }
 }
+
+/* ======================================================================
+   Weburix V18 — compact phone typography and centered mobile navigation
+   Final override layer for 320–768px screens.
+   ====================================================================== */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  body { font-size: 15px; line-height: 1.58; }
+
+  .site-header { width: 100%; }
+  .nav.container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
+  }
+  .nav {
+    height: 62px;
+    min-height: 62px;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 6px;
+  }
+  .brand { min-width: 0; justify-self: start; }
+  .brand img { width: clamp(102px, 29vw, 122px); max-height: 38px; object-fit: contain; object-position: left center; }
+  .language-menu { justify-self: end; }
+  .nav-toggle { justify-self: end; width: 38px; height: 38px; min-width: 38px; min-height: 38px; border-radius: 11px; }
+  .nav-toggle span { width: 17px; }
+
+  /* Keep the full menu visually centered instead of pinned to the left edge. */
+  .nav-panel {
+    position: fixed;
+    top: calc(62px + env(safe-area-inset-top));
+    left: 50% !important;
+    right: auto !important;
+    width: min(420px, calc(100vw - 18px));
+    max-width: calc(100vw - 18px);
+    max-height: calc(100dvh - 74px - env(safe-area-inset-bottom));
+    padding: 9px;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    border-radius: 18px;
+    transform: translate(-50%, -8px) scale(.985) !important;
+    transform-origin: top center;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .nav-panel.open {
+    transform: translate(-50%, 0) scale(1) !important;
+  }
+  .nav-panel > a,
+  .nav-more > summary {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 11px;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .nav-more { width: 100%; grid-column: auto; }
+  .nav-more > summary { justify-content: center; position: relative; }
+  .nav-more-arrow { position: absolute; right: 13px; }
+  .nav-more-menu {
+    grid-template-columns: 1fr;
+    gap: 3px;
+    padding: 6px;
+  }
+  .nav-more-menu a {
+    min-height: 39px;
+    justify-content: center;
+    padding: 9px 10px;
+    font-size: 12.5px;
+    text-align: center;
+  }
+
+  /* Compact language control: only flag + code in the header. */
+  .language-menu > summary {
+    width: 52px;
+    min-width: 52px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0 6px;
+    gap: 4px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+  .language-current-flag { width: 18px; height: 12px; border-radius: 2px; }
+  .language-current-code { font-size: 9px; letter-spacing: .02em; }
+  .language-menu-arrow { display: none; }
+  .language-menu-list {
+    position: fixed;
+    top: calc(60px + env(safe-area-inset-top));
+    left: auto !important;
+    right: max(9px, env(safe-area-inset-right)) !important;
+    width: 184px !important;
+    max-width: calc(100vw - 18px);
+    padding: 6px;
+    border-radius: 15px;
+    transform-origin: top right;
+  }
+  .language-menu-list button {
+    min-height: 40px;
+    grid-template-columns: 23px minmax(0,1fr) auto;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: 9px;
+  }
+  .language-menu-list img { width: 22px; height: 15px; }
+  .language-menu-list button span { font-size: 12.5px; }
+  .language-menu-list button strong { font-size: 9px; }
+
+  /* Smaller, calmer typography for phones. */
+  .hero { padding-top: 24px; padding-bottom: 34px; }
+  .hero h1,
+  .contact-page-hero h1,
+  .article-header h1,
+  .legal-hero h1 {
+    font-size: clamp(32px, 10.5vw, 43px);
+    line-height: 1.03;
+    letter-spacing: -.045em;
+    margin-bottom: 15px;
+  }
+  h2,
+  .section-heading h2,
+  .site-preview h2,
+  .cookie-settings-head h2 {
+    font-size: clamp(26px, 7.8vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+  }
+  .hero-lead,
+  .article-lead,
+  .section-heading p:not(.eyebrow),
+  .split-copy p:not(.eyebrow),
+  .contact-copy > p:not(.eyebrow) {
+    font-size: 15px;
+    line-height: 1.62;
+  }
+  .eyebrow { margin-bottom: 9px; font-size: 10px; letter-spacing: .13em; }
+  .section { padding-block: 42px; }
+  .section-heading { margin-bottom: 20px; }
+  .section-heading p:not(.eyebrow) { max-width: 100%; }
+
+  .service-card h3,
+  .idea-card h3,
+  .quality-card h3,
+  .price-card h3,
+  .support-plan h3,
+  .course-card h3,
+  .result-card h3,
+  .testimonial-card h3,
+  .example-card h3,
+  .knowledge-card h3,
+  .integration-card h3,
+  .work-card h3,
+  .checkout-option h3,
+  .contact-route-card h3 {
+    font-size: 18px;
+    line-height: 1.18;
+  }
+  .service-card p,
+  .idea-card p,
+  .quality-card p,
+  .price-card p,
+  .support-plan p,
+  .course-card p,
+  .result-card p,
+  .testimonial-card p,
+  .example-card p,
+  .knowledge-card p,
+  .integration-card p,
+  .work-card p,
+  .checkout-option p,
+  .contact-route-card p {
+    font-size: 13.5px;
+    line-height: 1.58;
+  }
+  .service-card, .idea-card, .quality-card, .price-card,
+  .support-plan, .course-card, .integration-card, .work-card,
+  .timeline-item, .form-card, .contact-expect-card,
+  .checkout-option, .checkout-cart, .portal-card,
+  .contact-card-upgraded, .seo-check-panel {
+    padding: 16px;
+  }
+  .faq-question { padding: 15px 16px; font-size: 14.5px; line-height: 1.35; }
+  .faq-answer > div { padding: 0 16px 16px; font-size: 13.5px; line-height: 1.6; }
+  .button { min-height: 44px; padding: 11px 15px; font-size: 14px; }
+  .trust-row span { font-size: 11px; padding: 6px 9px; }
+  .stats-grid strong { font-size: 17px; }
+  .stats-grid span { font-size: 12px; }
+  .tab-button { min-height: 40px; padding: 9px 11px; font-size: 12.5px; }
+  .tab-panel h3 { font-size: 21px; }
+
+  .hero-grid { gap: 24px; }
+  .site-preview { min-height: 230px; padding: 17px; }
+  .site-preview > img { width: 46px; height: 46px; }
+  .site-preview h2 { margin-bottom: 8px; }
+  .preview-kicker { margin: 13px 0 8px; font-size: 10px; letter-spacing: .18em; }
+  .preview-stack span { font-size: 10.5px; }
+
+  .footer-grid-expanded { grid-template-columns: 1fr 1fr; gap: 21px 14px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 420px) {
+  body { font-size: 14.5px; }
+  .nav.container { padding-left: 8px; padding-right: 8px; }
+  .brand img { width: 98px; }
+  .language-menu > summary { width: 49px; min-width: 49px; }
+  .nav-toggle { width: 36px; height: 36px; min-width: 36px; min-height: 36px; }
+  .nav-panel { width: calc(100vw - 14px); max-width: calc(100vw - 14px); }
+  .language-menu-list { width: 174px !important; right: 7px !important; }
+  .hero h1,
+  .contact-page-hero h1,
+  .article-header h1,
+  .legal-hero h1 { font-size: clamp(30px, 10.2vw, 39px); }
+  h2,
+  .section-heading h2,
+  .site-preview h2 { font-size: clamp(24px, 7.5vw, 31px); }
+  .hero-lead,
+  .article-lead,
+  .section-heading p:not(.eyebrow),
+  .split-copy p:not(.eyebrow) { font-size: 14.5px; }
+  .section { padding-block: 38px; }
+  .footer-grid-expanded { grid-template-columns: 1fr; gap: 18px; }
+  .footer-brand { grid-column: auto; }
+}
+
+@media (max-width: 340px) {
+  .brand img { width: 88px; }
+  .language-menu > summary { width: 46px; min-width: 46px; padding-inline: 4px; }
+  .language-current-flag { width: 17px; height: 11px; }
+  .language-current-code { font-size: 8px; }
+  .nav-toggle { width: 34px; height: 34px; min-width: 34px; min-height: 34px; }
+  .hero h1,
+  .contact-page-hero h1,
+  .article-header h1,
+  .legal-hero h1 { font-size: 29px; }
+}
