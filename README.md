@@ -156,3 +156,7 @@ Run `python3 scripts/qa.py` after every future content or price change.
 - Business/legal data can be entered once in `assets/js/site-config.js` under `WEBURIX_LEGAL`.
 - Added mobile safe-area handling, viewport fallbacks, iOS form zoom prevention and touch/non-Chromium fallbacks.
 - See `LEGAL-LAUNCH-CHECKLIST.md` before publication.
+
+## Mobile layout V17
+
+A final mobile repair layer is included at the end of `assets/css/style.css`. It keeps the desktop design, while making the header, language dropdown, cards, forms, configurator, chatbot, cookie controls and footer fit correctly on phones and tablets. `assets/js/app.js` also avoids closing the navigation when a mobile browser merely expands or collapses its address bar.

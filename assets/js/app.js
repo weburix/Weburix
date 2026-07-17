@@ -814,9 +814,13 @@
 
   navToggle?.addEventListener('click', () => {
     const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+    if (!isOpen) languageMenu?.removeAttribute('open');
     navToggle.setAttribute('aria-expanded', String(!isOpen));
     navPanel?.classList.toggle('open', !isOpen);
     document.body.classList.toggle('nav-open', !isOpen);
+  });
+  languageMenu?.addEventListener('toggle', () => {
+    if (languageMenu.open) closeMobileNav();
   });
 
   navPanel?.addEventListener('click', (event) => {
@@ -1347,10 +1351,25 @@
   }, { passive: true });
 
   let resizeTicking = false;
+  let lastViewportWidth = window.innerWidth;
   window.addEventListener('resize', () => {
     if (resizeTicking) return;
     resizeTicking = true;
-    window.requestAnimationFrame(() => { updateAccordionHeights(); closeMobileNav(); resizeTicking = false; });
+    window.requestAnimationFrame(() => {
+      updateAccordionHeights();
+      const nextWidth = window.innerWidth;
+      // Mobile browsers resize the viewport when their address bar moves.
+      // Do not close an open menu for those small height-only changes.
+      if ((lastViewportWidth <= 1280 && nextWidth > 1280) || Math.abs(nextWidth - lastViewportWidth) > 160) {
+        closeMobileNav();
+        languageMenu?.removeAttribute('open');
+      }
+      lastViewportWidth = nextWidth;
+      resizeTicking = false;
+    });
+  }, { passive: true });
+  window.addEventListener('orientationchange', () => {
+    window.setTimeout(() => { closeMobileNav(); languageMenu?.removeAttribute('open'); updateAccordionHeights(); }, 120);
   }, { passive: true });
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
