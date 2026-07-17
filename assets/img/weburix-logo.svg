@@ -1,0 +1,10 @@
+<svg width="462" height="126" viewBox="0 0 462 126" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Weburix logo">
+  <rect x="3" y="3" width="120" height="120" rx="30" fill="#05070D" stroke="#1B2740" stroke-width="6"/>
+  <path d="M28 39L39 87H52L63 55L74 87H87L98 39H85L80 70L71 39H55L46 70L41 39H28Z" fill="#F7FAFF"/>
+  <path d="M99 87H84L100 39H116L99 87Z" fill="#3B82FF"/>
+  <path d="M23 101H103" stroke="#3B82FF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M151 83V40H161L169 70L178 40H188V83H180V55L172 83H166L158 55V83H151Z" fill="#8EA1C4"/>
+  <text x="151" y="74" fill="#F7FAFF" font-family="Aptos Display, Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="48" font-weight="800" letter-spacing="-1.8">Webur</text>
+  <text x="309" y="74" fill="#3B82FF" font-family="Aptos Display, Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="48" font-weight="900" letter-spacing="-1.8">ix</text>
+  <text x="153" y="101" fill="#8EA1C4" font-family="Aptos Display, Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="3.6">WEB DEVELOPMENT</text>
+</svg>

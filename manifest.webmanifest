@@ -1,0 +1,17 @@
+{
+  "name": "Weburix",
+  "short_name": "Weburix",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
+  "description": "Webentwicklung, SEO, Kurse, Beratung und Support aus München.",
+  "icons": [
+    {
+      "src": "/assets/img/weburix-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+WEBURIX V12 QA REPORT
+Date: 2026-07-17
+
+Automated checks completed:
+- JavaScript syntax: PASS (boot.js, app.js, content.js, site-config.js, schema.js)
+- HTML files: 14 checked
+- Duplicate HTML IDs: none found
+- Missing local links/assets: none found
+- Inline event handlers: none found
+- Translation key coverage: DE / EN / SR pass
+- Service catalogue parity: 9 service cards per language
+- Checkout catalogue parity: 17 items per language
+- Forms: required privacy checkbox, honeypot and live status region present
+- Sitemap local coverage: pass
+- Required SEO/deployment files: pass
+- CSS brace sanity: pass
+- Static QA result: 0 errors, 0 warnings
+
+Important manual checks before launch:
+1. Replace all legal and company placeholders.
+2. Add the real Web3Forms key and submit every form once on the live domain.
+3. Test hosted Stripe/PayPal links only after legal checkout text is final.
+4. Test the deployed site on real current Safari, Firefox, Chrome, iPhone and Android devices.
+5. Replace demo testimonials with genuine, verifiable reviews.
+
+Note: automated static QA cannot fully replace testing on real browsers, devices or network conditions.

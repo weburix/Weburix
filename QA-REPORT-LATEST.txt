@@ -1,0 +1,66 @@
+WEBURIX FINAL QA REPORT
+Date: 17 July 2026
+Build: V16 German-first / privacy / browser hardening
+
+AUTOMATED STATIC QA
+Weburix QA
+Errors: 0
+Warnings: 0
+NOTE: German-first language source checks: passed
+NOTE: Consent-gated country lookup source check: passed
+NOTE: Responsive/browser compatibility markers: checked
+NOTE: Legal/VAT/checkout launch guards: checked
+NOTE: HTML files checked: 15
+NOTE: i18n keys checked per language: 215
+NOTE: Knowledge guides: 4
+NOTE: Service cards per language: 9
+NOTE: Checkout items per language: 17
+
+JAVASCRIPT
+- All files in assets/js pass node --check.
+- German is the source-level default language.
+- Stored manual language choice has priority.
+- Optional country lookup is gated by functional consent.
+- Country mapping: DE/AT -> German; RS/HR/BA/ME/MK/SI/XK -> Serbian; other resolved countries -> English; API failure/no consent -> German.
+
+ROUTES / LOCAL HTTP SMOKE TEST
+- / -> 200
+- /kontakt/ -> 200
+- /datenschutz/ -> 200
+- /impressum/ -> 200
+- /wissen/ -> 200
+- /results/ -> 200
+- /agb/ -> 200 (future-only, noindex)
+- /widerruf/ -> 200 (future-only, noindex)
+- /assets/js/app.js -> 200
+- /assets/css/style.css -> 200
+
+PRIVACY / LEGAL GUARDS
+- No analytics, marketing pixel, social plugin or external webfont is loaded by default.
+- Optional country lookup only starts after functional consent.
+- The enquiry cart is non-binding by default.
+- Direct checkout is disabled in WEBURIX_LEGAL.directCheckoutEnabled.
+- AGB/Widerruf footer links stay hidden while direct checkout is disabled.
+- Hosted payment URLs are empty placeholders; no secret payment keys are present.
+- VAT mode remains deliberately unset until the actual tax status is known.
+- Legal/company placeholders remain visibly blocked until real details are entered.
+- Privacy form wording acknowledges the notice and does not claim consent is the legal basis for ordinary enquiries.
+
+RESPONSIVE / COMPATIBILITY SOURCE CHECKS
+- viewport-fit=cover on all non-redirect HTML pages.
+- iOS 16px form-input fallback to avoid unwanted zoom.
+- safe-area inset handling.
+- svh/dvh and classic viewport fallbacks.
+- touch hover/tilt fallback.
+- Safari/WebKit and Firefox-oriented CSS fallbacks.
+- keyboard-accessible language, service tabs, FAQ and skip link.
+
+LIMITATION
+A headless Chromium runtime screenshot test could not be completed in this execution environment because the browser process was blocked/hung by the environment. Static QA and local HTTP route tests passed, but a final real-device test remains required before launch. See BROWSER-COMPATIBILITY.md.
+
+PUBLICATION BLOCKERS
+1. Complete WEBURIX_LEGAL in assets/js/site-config.js with real owner/address details.
+2. Select the correct vatMode only after the actual tax status is known.
+3. Insert and test the Web3Forms key and complete its DPA before using forms live.
+4. Keep direct checkout false until consumer/B2B model, AGB, withdrawal, subscription cancellation and payment details are final.
+5. Replace the WhatsApp placeholder after obtaining a dedicated business number.

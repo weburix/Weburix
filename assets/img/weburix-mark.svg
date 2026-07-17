@@ -1,0 +1,6 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Weburix mark">
+  <rect width="512" height="512" rx="120" fill="#05070D"/>
+  <path d="M126 156L169.5 356H222.5L256 235.5L289.5 356H342.5L386 156H334.5L311.5 292L276.5 156H235.5L200.5 292L177.5 156H126Z" fill="#F7FAFF"/>
+  <path d="M388 356H324L389 156H451L388 356Z" fill="#3B82FF" fill-opacity="0.95"/>
+  <path d="M88 402H424" stroke="#3B82FF" stroke-width="20" stroke-linecap="round"/>
+</svg>

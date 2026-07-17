@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Digital PR und Fachbeiträge</title>
+  <desc id="desc">Abstrakte Illustration aus Artikelkarten, Verbindungslinien und Weburix Akzenten.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08101f"/><stop offset="1" stop-color="#101c35"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2878ff"/><stop offset="1" stop-color="#78b7ff"/></linearGradient>
+  </defs>
+  <rect width="640" height="400" rx="34" fill="url(#bg)"/>
+  <circle cx="522" cy="74" r="112" fill="#2878ff" opacity=".12"/>
+  <path d="M180 205C250 142 333 143 419 194" fill="none" stroke="#6caeff" stroke-width="4" stroke-linecap="round" stroke-dasharray="9 12" opacity=".75"/>
+  <rect x="72" y="102" width="190" height="216" rx="22" fill="#0e1b33" stroke="#6eaaff" stroke-opacity=".42"/>
+  <rect x="96" y="130" width="78" height="12" rx="6" fill="url(#accent)"/>
+  <rect x="96" y="163" width="136" height="16" rx="8" fill="#eef5ff" opacity=".92"/>
+  <rect x="96" y="191" width="118" height="8" rx="4" fill="#9cb1d0" opacity=".7"/>
+  <rect x="96" y="211" width="140" height="8" rx="4" fill="#9cb1d0" opacity=".5"/>
+  <rect x="96" y="244" width="62" height="38" rx="12" fill="#2878ff" opacity=".2"/>
+  <path d="m115 263 10 10 18-22" fill="none" stroke="#91c5ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="380" y="132" width="184" height="152" rx="24" fill="#0c172c" stroke="#fff" stroke-opacity=".12"/>
+  <circle cx="420" cy="177" r="20" fill="url(#accent)"/>
+  <path d="M414 177h12M420 171v12" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <rect x="453" y="160" width="80" height="11" rx="5.5" fill="#e8f1ff" opacity=".9"/>
+  <rect x="453" y="184" width="62" height="8" rx="4" fill="#93a9ca" opacity=".6"/>
+  <rect x="404" y="226" width="128" height="12" rx="6" fill="#5b9cff" opacity=".32"/>
+  <circle cx="320" cy="188" r="18" fill="#050a13" stroke="#66a8ff" stroke-width="4"/>
+  <circle cx="320" cy="188" r="5" fill="#d9eaff"/>
+</svg>

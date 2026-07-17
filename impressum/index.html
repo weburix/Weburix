@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Impressum — Weburix</title>
+  <meta name="robots" content="noindex" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="icon" href="../assets/img/weburix-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body class="legal-page">
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navigation">
+      <a class="brand" href="../index.html"><img src="../assets/img/weburix-logo.svg" alt="Weburix Logo" width="154" height="42" /></a>
+      <div class="nav-panel"><a href="../#services">Leistungen</a><a href="../#results">Ergebnisse</a><a href="../#packages">Pakete</a><a href="../#contact" class="nav-cta">Kontakt</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="legal-hero container"><p class="eyebrow">Rechtliches</p><h1>Impressum</h1></section>
+    <section class="legal-content container">
+      <article>
+        <div class="placeholder-box" data-legal-warning><strong>Vor Veröffentlichung erforderlich:</strong> Trage die echten Angaben einmal in <code>assets/js/site-config.js</code> unter <code>WEBURIX_LEGAL</code> ein. Die Anschrift muss ladungsfähig sein; eine reine Postfachadresse genügt nicht.</div>
+        <h2>Angaben gemäß § 5 DDG</h2>
+        <p><strong data-legal="businessName">Weburix</strong><br /><span data-legal="ownerName">[Vollständigen Namen eintragen]</span><br /><span data-legal-if="legalForm">Rechtsform: <span data-legal="legalForm"></span><br /></span><span data-legal="street">[Straße und Hausnummer eintragen]</span><br /><span data-legal="postalCode">[PLZ]</span> <span data-legal="city">München</span><br /><span data-legal="country">Deutschland</span></p>
+        <h2>Kontakt</h2>
+        <p>E-Mail: <a data-legal="email" href="mailto:info@weburix.com">info@weburix.com</a><span data-legal-if="phone"><br />Telefon: <a data-legal="phone"></a></span></p>
+        <div data-legal-if-any="registerCourt,registerNumber"><h2>Registerangaben</h2>
+        <p><span data-legal-if="registerCourt">Registergericht: <span data-legal="registerCourt"></span><br /></span><span data-legal-if="registerNumber">Registernummer: <span data-legal="registerNumber"></span></span></p></div>
+        <h2>Umsatzsteuer</h2>
+        <p data-legal-if="vatId">Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: <span data-legal="vatId"></span>.</p><p data-vat-notice></p>
+        <h2>Verantwortlich für redaktionelle Inhalte</h2>
+        <p><span data-legal="ownerName">[Vollständigen Namen eintragen]</span>, Anschrift wie oben.</p>
+        <h2>Verbraucherstreitbeilegung</h2>
+        <p data-legal-dispute>Vor Veröffentlichung prüfen.</p>
+        <h2>Hinweis</h2>
+        <p>Die technische Vorlage ersetzt keine individuelle Rechts- oder Steuerberatung. Besonders Rechtsform, Anschrift, Registerdaten, Umsatzsteuerstatus, Verträge, Kurse und Zahlungsabläufe müssen zur tatsächlichen Geschäftstätigkeit passen.</p>
+      </article>
+    </section>
+  </main>
+  <script src="../assets/js/content.js" defer></script>
+  <script src="../assets/js/site-config.js" defer></script>
+  <script src="../assets/js/app.js" defer></script>
+</body>
+</html>
