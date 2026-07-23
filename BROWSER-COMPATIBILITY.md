@@ -1,33 +1,16 @@
-# Browser and device verification
+# Browser and device verification — V32 Production Final
 
-The code includes responsive fallbacks for small phones, tablets, desktop screens, touch devices, Safari/WebKit and Firefox. Static checks can catch broken files and syntax errors, but they cannot replace tests on real browsers.
+Automatski Chromium testovi pokrivaju:
 
-Before launch, verify the deployed HTTPS site on:
+- širine 240, 280, 320, 360, 390, 412, 768, 1024, 1366 i 1600 px
+- svih 17 HTML stranica na telefonu, tabletu i desktopu
+- root i GitHub Pages-style podfolder putanje
+- mobilni meni, cookies, jezik, promo-kod, chat i Reduced Motion
+- kontakt, projektni i newsletter tok
+- uspeh, aktivaciju, nejasan odgovor, grešku, timeout/fallback i duplo slanje forme
+- očuvanje selecta, checkboxa, aktivnog taba i FAQ stanja kroz jezik/valutu
+- no-JavaScript navigaciju i kontakt/project fallback
 
-- iPhone Safari in portrait and landscape
-- Android Chrome in portrait and landscape
-- current Firefox on desktop
-- current Safari on macOS, if available
-- current Chrome or Edge on desktop
-- one tablet-width viewport around 768–1024 px
-- keyboard-only navigation and visible focus states
-- 200% browser zoom without horizontal page scrolling
+Dodatna CSS zaštita postoji za touch, Data Saver, kratke ekrane, safe-area insete, Safari/Firefox fallback i 240 px ultra-uske prikaze.
 
-Test language selection, privacy settings, every form, cart transfer, social links, legal pages and the 404 page. Repeat this after enabling Web3Forms, payment links, analytics or another external integration.
-
-## Mobile repair pass (V17)
-
-The final stylesheet now includes a dedicated phone/tablet layer for:
-
-- compact 66px header with logo, language menu and hamburger controls
-- one-column mobile navigation with scroll-safe dropdowns
-- single-column forms, cards, checkout, contact and article layouts
-- two-column compact statistics and horizontally scrollable teaser strips
-- full-width mobile call-to-action and form buttons
-- safe-area spacing for iPhone notches and home indicators
-- compact chat, cookie banner and back-to-top controls
-- reduced blur, disabled tilt and removed expensive hover effects on touch devices
-- Safari/Firefox fallbacks and 100vh/100svh/100dvh handling
-- prevention of address-bar resize events closing the mobile menu
-
-Recommended final manual checks before launch: 320px, 360px, 390px, 430px, 768px and landscape phone widths.
+Automatski Chromium nije zamena za finalni produkcioni test na fizičkom iPhone Safari, Android Chrome, Firefox i Edge uređaju. Taj korak ostaje obavezan nakon povezivanja pravog domena.

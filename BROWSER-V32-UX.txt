@@ -1,0 +1,6 @@
+Weburix Browser Group V32: ux
+Errors: 0
+NOTE: language/currency changes preserve selects, interests, active tab and FAQ state
+NOTE: stored cart normalization, stale promo cleanup and item-specific quantity labels passed
+NOTE: Serbian dual-currency totals keep markup in UI but plain text in status and form payload
+NOTE: skip link focus and streamlined keyboard tab order passed

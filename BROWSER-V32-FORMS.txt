@@ -1,0 +1,8 @@
+Weburix Browser Group V32: forms
+Errors: 0
+NOTE: contact success flow passed
+NOTE: contact activation-warning flow passed
+NOTE: strict FormSubmit and native-fallback rejection flows passed
+NOTE: rapid double-submit guard passed
+NOTE: newsletter waitlist consent and submit flow passed
+NOTE: project form passed

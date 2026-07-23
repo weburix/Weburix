@@ -1,0 +1,7 @@
+Weburix Currency Audit V32 Production Final
+Errors: 0
+NOTE: Serbian default display: EUR + RSD
+NOTE: Selectable modes: EUR + RSD, EUR only, RSD only
+NOTE: Billing/base currency remains EUR
+NOTE: Configured rate: 1 EUR = 117.3829 RSD (2026-07-21)
+NOTE: RSD display rounded to nearest 10 dinars

@@ -1,0 +1,10 @@
+Weburix Browser Group V32: ui
+Errors: 0
+NOTE: index.html → kontakt.html and direct kontakt.html/contact.html paths passed at root and /weburixsite/ subpath
+NOTE: mobile navigation passed
+NOTE: cookie flow passed
+NOTE: language switching passed
+NOTE: promo flow passed
+NOTE: chat flow passed
+NOTE: reduced-motion mode passed
+NOTE: no-JavaScript navigation and contact/project fallback passed

@@ -1,0 +1,5 @@
+Weburix Structural Audit V32 Launch Final
+Errors: 0
+Warnings: 0
+NOTE: HTML files checked: 17
+NOTE: Asset cache version: 32.0

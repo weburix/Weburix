@@ -1,0 +1,16 @@
+WEBURIX KONTAKT FORME — AKTIVACIJA I PROVERA
+
+Aktivni servis je FormSubmit. Web3Forms nije prisutan niti potreban.
+
+1. Prvo kreiraj i testiraj pravi mailbox info@weburix.com.
+2. Objavi kompletan sajt na finalnom HTTPS domenu.
+3. Pošalji test sa kontakt forme.
+4. FormSubmit će prvi put poslati aktivacionu poruku na info@weburix.com.
+5. Klikni potvrdu samo ako poruka stvarno odgovara tvojoj formi i domenu.
+6. Pošalji drugi test sa drugog e-maila.
+7. Potvrdi da poruka stiže, da Reply-To vodi na posetioca i da podaci nisu isečeni.
+8. Proveri quick, project, SEO check, portal request i newsletter waitlist formu.
+9. Pregledaj privatnost/uslove form providera i odluči da li je prihvatljiv za poslovnu upotrebu.
+10. Ako promeniš servis, prvo izmeni kod, CSP, Datenschutzerklärung i QA testove.
+
+Važno: automatizovani testovi presreću simulirane odgovore i ne šalju stvarne poruke u tvoj inbox.

@@ -28,7 +28,7 @@ const WEBURIX_CONTENT = {
       "primary": "Projekt anfragen",
       "secondary": "Pakete ansehen",
       "trust1": "Schnelle Rückmeldung",
-      "trust2": "Fair kalkulierte Launchpreise",
+      "trust2": "Faire Einstiegspreise",
       "trust3": "Direkter Ansprechpartner",
       "cardTitle": "Build. Launch. Improve.",
       "cardText": "Website, Sichtbarkeit, Kurse und Support aus einer Hand."
@@ -148,7 +148,7 @@ const WEBURIX_CONTENT = {
         "text": "Livekurse und individuelle Beratung helfen dir, Entscheidungen zu treffen, Fehler zu vermeiden und Dinge selbst sauber umzusetzen.",
         "points": [
           "Livekurse in kleinen Gruppen",
-          "1:1 Beratung ab 76 € pro Stunde",
+          "1:1 Beratung ab 59 € pro Stunde",
           "Praxisbeispiele statt Theorie-Blöcke",
           "Keine unnötige langfristige Bindung"
         ]
@@ -194,22 +194,21 @@ const WEBURIX_CONTENT = {
     },
     "packages": {
       "eyebrow": "Pakete",
-      "title": "Faire Launchpreise statt undurchsichtiger Agenturangebote.",
-      "text": "Unsere Launchpreise sind bewusst schlank kalkuliert. Du bekommst einen klar definierten Umfang, einen direkten Ansprechpartner und vor Projektbeginn ein schriftliches, verbindliches Angebot.",
+      "title": "Klare Einstiegspreise für kleine Unternehmen.",
+      "text": "Weburix liegt bewusst unter vielen klassischen Agentur-Einstiegspreisen. Möglich wird das durch schlanke Abläufe, klar begrenzte Pakete und direkten Kontakt — nicht durch versteckte Kürzungen.",
       "popular": "Beliebt",
       "cta": "Anfragen",
       "details": "Details öffnen",
       "close": "Schließen",
-      "note": "Alle Preise sind Startpreise und Richtwerte. Externe Kosten wie Domain, Hosting, Werbebudget oder kostenpflichtige Tools sind nicht enthalten. Der genaue Umfang wird vorab schriftlich bestätigt.",
-      "saving": "Launchpreis",
+      "note": "Alle Beträge sind unverbindliche Startpreise. Umfang, Umsatzsteuerhinweis und Endpreis werden vor Projektbeginn schriftlich bestätigt. Domain, Hosting, Anzeigenbudget, Lizenzen und Drittanbietergebühren sind nur enthalten, wenn es ausdrücklich im Angebot steht.",
+      "saving": "Einstiegspreis",
       "reference": "Orientierung"
     },
     "packageCards": [
       {
         "name": "Starter Site",
         "label": "Für einen professionellen ersten Auftritt",
-        "price": "ab 790 €",
-        "oldPrice": "990 €",
+        "price": "ab 599 €",
         "features": [
           "1–3 Seiten",
           "Kontaktformular",
@@ -221,13 +220,14 @@ const WEBURIX_CONTENT = {
           "Optional mit Mehrsprachigkeit, Google Business und Support."
         ],
         "featured": false,
-        "image": "assets/img/products/starter.svg"
+        "image": "assets/img/products/starter.svg",
+        "id": "starter",
+        "oldPrice": "ab 690 €"
       },
       {
         "name": "Business Web",
         "label": "Für Unternehmen, die klar und seriös auftreten wollen",
-        "price": "ab 1.590 €",
-        "oldPrice": "1.990 €",
+        "price": "ab 1.099 €",
         "features": [
           "Bis 6 Seiten",
           "Projektformular",
@@ -239,13 +239,14 @@ const WEBURIX_CONTENT = {
           "Geeignet für kleine Firmen, Praxen, Handwerk und B2B-Dienstleister."
         ],
         "featured": true,
-        "image": "assets/img/products/business.svg"
+        "image": "assets/img/products/business.svg",
+        "id": "business",
+        "oldPrice": "ab 1.290 €"
       },
       {
         "name": "Growth Setup",
         "label": "Website plus Sichtbarkeit und Content-System",
-        "price": "ab 2.390 €",
-        "oldPrice": "2.990 €",
+        "price": "ab 1.699 €",
         "features": [
           "Website + SEO-Plan",
           "Google Business Setup",
@@ -257,13 +258,14 @@ const WEBURIX_CONTENT = {
           "Mit konkretem Maßnahmenplan für die ersten 90 Tage."
         ],
         "featured": false,
-        "image": "assets/img/products/growth.svg"
+        "image": "assets/img/products/growth.svg",
+        "id": "growth",
+        "oldPrice": "ab 1.990 €"
       },
       {
         "name": "Google Local",
         "label": "Für lokale Sichtbarkeit in Suche und Maps",
-        "price": "ab 199 €",
-        "oldPrice": "249 €",
+        "price": "ab 129 €",
         "features": [
           "Google Business Profil",
           "Leistungen & Kategorien",
@@ -275,13 +277,14 @@ const WEBURIX_CONTENT = {
           "Werbebudget und laufende Content-Pflege sind optional."
         ],
         "featured": false,
-        "image": "assets/img/products/local.svg"
+        "image": "assets/img/products/local.svg",
+        "id": "google",
+        "oldPrice": "ab 149 €"
       },
       {
         "name": "Social & YouTube",
         "label": "Für Creator, Marken und Kanäle",
-        "price": "ab 239 €/Monat",
-        "oldPrice": "299 €/Monat",
+        "price": "ab 179 €/Monat",
         "features": [
           "Kanal- und Profilcheck",
           "Content- und Uploadplan",
@@ -293,13 +296,14 @@ const WEBURIX_CONTENT = {
           "Umfang, Plattformen und Anzahl der Inhalte werden im Angebot festgelegt."
         ],
         "featured": false,
-        "image": "assets/img/products/social.svg"
+        "image": "assets/img/products/social.svg",
+        "id": "social-youtube",
+        "oldPrice": "ab 199 €/Monat"
       },
       {
         "name": "Care Plan",
         "label": "Laufende Unterstützung nach dem Launch",
-        "price": "ab 63 €/Monat",
-        "oldPrice": "79 €/Monat",
+        "price": "ab 39 €/Monat",
         "features": [
           "Kleine Änderungen",
           "Technischer Monatscheck",
@@ -311,7 +315,9 @@ const WEBURIX_CONTENT = {
           "Auch als Business- oder Priority-Tarif verfügbar."
         ],
         "featured": false,
-        "image": "assets/img/products/support.svg"
+        "image": "assets/img/products/support.svg",
+        "id": "care-essential",
+        "oldPrice": "ab 49 €/Monat"
       }
     ],
     "addons": {
@@ -343,7 +349,7 @@ const WEBURIX_CONTENT = {
     "forms": {
       "eyebrow": "Anfrage",
       "title": "Schnell schreiben oder sauber anfragen.",
-      "text": "Die Formulare sind für einen direkten Versand vorbereitet. Für GitHub Pages wird nur noch ein Web3Forms-Key in site-config.js eingetragen.",
+      "text": "Die Formulare senden über FormSubmit direkt an Weburix. Nach einer einmaligen Bestätigung der Empfängeradresse funktioniert der Versand dauerhaft; bei blockiertem AJAX greift automatisch ein normaler HTTPS-Formularversand.",
       "quickTitle": "Kurzkontakt",
       "quickText": "Für eine kurze Frage oder eine erste Idee.",
       "projectTitle": "Projektanfrage",
@@ -380,10 +386,9 @@ const WEBURIX_CONTENT = {
         "Unter 500 €",
         "500–1.000 €",
         "1.000–2.000 €",
-        "2.000–4.000 €",
-        "4.000 €+",
-        "Monatliches Budget",
-        "Noch offen"
+        "2.000–3.500 €",
+        "3.500 €+",
+        "Monatliches Budget"
       ],
       "timelineOptions": [
         "So schnell wie möglich",
@@ -420,10 +425,14 @@ const WEBURIX_CONTENT = {
       "privacy": "Ich habe die Datenschutzerklärung zur Kenntnis genommen.",
       "sending": "Anfrage wird gesendet...",
       "apiSuccess": "Danke! Die Anfrage wurde gesendet.",
-      "error": "Senden fehlgeschlagen. Bitte Web3Forms-Key prüfen oder direkt an info@weburix.com schreiben.",
+      "activationNeeded": "Fast fertig: An info@weburix.com wurde eine einmalige Aktivierungs-E-Mail gesendet. Nach der Bestätigung funktioniert der Direktversand dauerhaft. Bitte sende deine Anfrage danach erneut oder nutze jetzt den E-Mail-Button.",
+      "error": "Senden fehlgeschlagen. Bitte versuche es erneut oder schreibe direkt an info@weburix.com.",
       "required": "Bitte Pflichtfelder ausfüllen und Datenschutz bestätigen.",
       "botBlocked": "Spam-Schutz hat die Anfrage gestoppt.",
-      "configMissing": "Fast fertig: Trage in assets/js/site-config.js deinen Web3Forms-Key ein. Danach kommen Anfragen direkt per E-Mail an."
+      "configMissing": "Der Direktversand ist noch nicht aktiviert. Die Anfrage wird stattdessen in deinem E-Mail-Programm vorbereitet.",
+      "mailFallback": "Dein E-Mail-Programm wird mit der vorbereiteten Anfrage geöffnet. Bitte dort noch auf „Senden“ klicken.",
+      "nativeFallback": "Der Direktversand wird über den sicheren Standardweg fortgesetzt …",
+      "deliveryNote": "Direktversand über einen geschützten Formular-Dienst. Beim allerersten Test ist einmalig eine Bestätigung per E-Mail erforderlich."
     },
     "process": {
       "eyebrow": "Ablauf",
@@ -465,15 +474,15 @@ const WEBURIX_CONTENT = {
       },
       {
         "q": "Warum sind die Weburix Preise fair kalkuliert?",
-        "a": "Wir halten Abläufe schlank, arbeiten mit klaren Paketen und vermeiden unnötige Agenturaufschläge. Verbindlich sind immer der schriftlich bestätigte Umfang und der Endpreis im individuellen Angebot."
+        "a": "Wir arbeiten mit klaren Leistungsgrenzen, wiederverwendbaren Qualitätsbausteinen und direktem Kontakt. Dadurch entfallen viele klassische Agenturkosten. Verbindlich sind immer der schriftlich bestätigte Umfang und Endpreis."
       },
       {
         "q": "Welche monatlichen Support-Pakete gibt es?",
-        "a": "Care Essential startet bei 63 €, Care Business bei 119 € und Care Priority bei 199 € pro Monat. Enthaltene Zeit, Reaktionszeiten und Leistungen stehen im jeweiligen Tarif."
+        "a": "Care Essential startet bei 39 €, Care Business bei 79 € und Care Priority bei 129 € pro Monat. Enthaltene Zeit, Reaktionszeiten und Leistungen stehen im jeweiligen Tarif."
       },
       {
         "q": "Bietet Weburix Kurse und individuelle Beratung an?",
-        "a": "Ja. Geplant sind live durchgeführte Kurse zu Websites, SEO/Google Business und YouTube/Social Media. Individuelle Beratung kostet 76 € pro Stunde oder 349 € als 5-Stunden-Block."
+        "a": "Ja. Geplant sind live durchgeführte Kurse zu Websites, SEO/Google Business und YouTube/Social Media. Individuelle Beratung kostet 59 € pro Stunde oder 259 € als 5-Stunden-Block."
       },
       {
         "q": "Welche Leistungen kann ich kombinieren?",
@@ -561,7 +570,11 @@ const WEBURIX_CONTENT = {
       "facebookText": "Neuigkeiten, Referenzen und direkte Nachrichten.",
       "instagramText": "Einblicke, Tipps, Beispiele und kurze Updates.",
       "whatsappText": "Schneller Business-Kontakt, sobald die Nummer aktiv ist.",
-      "openChannel": "Öffnen"
+      "openChannel": "Öffnen",
+      "quickAction": "Kurzkontakt öffnen",
+      "projectAction": "Projektformular öffnen",
+      "consultingAction": "Beratung anfragen",
+      "supportAction": "Support anfragen"
     },
     "chat": {
       "title": "Weburix Assistant",
@@ -572,6 +585,7 @@ const WEBURIX_CONTENT = {
         "Wie funktioniert Content Refresh?",
         "Welches Paket passt?",
         "Alle Preise?",
+        "EUR oder RSD?",
         "Support pro Monat?",
         "Kurse & Workshops?",
         "Beratung pro Stunde?",
@@ -580,7 +594,8 @@ const WEBURIX_CONTENT = {
         "Checkout & Zahlung?"
       ],
       "answers": {
-        "price": "Die Launchpreise starten bei 790 € für eine kleine Website, 1.590 € für Business Web und 2.390 € für Growth Setup. Support beginnt bei 63 € monatlich, Beratung kostet 76 € pro Stunde. Externe Kosten werden separat ausgewiesen.",
+        "price": "Einstiegspreise: Starter Site ab 599 €, Business Web ab 1.099 € und Growth Setup ab 1.699 €. Support startet bei 39 € monatlich, Beratung bei 59 € pro Stunde. Drittanbieter- und Werbekosten werden separat ausgewiesen.",
+        "currency": "In der serbischen Sprachversion kannst du zwischen EUR, RSD oder einer kombinierten Anzeige wählen. RSD-Werte sind eine unverbindliche Umrechnung; Angebot und Abrechnung bleiben in EUR.",
         "packages": "Zur Auswahl stehen Starter Site, Business Web, Growth Setup, Google Local, Social & YouTube sowie drei Care-Supporttarife. Kurse und individuelle Beratung können ergänzt werden.",
         "website": "Weburix erstellt Websites, Landingpages und Relaunches mit klarer Struktur, moderner Optik, Kontaktwegen, Formularen und sauberer technischer Basis.",
         "seo": "SEO umfasst Seitenstruktur, technische Grundlagen, Meta-Daten, Texte, Local SEO und Google Business. Ziel: bessere Auffindbarkeit ohne leere Versprechen.",
@@ -590,25 +605,25 @@ const WEBURIX_CONTENT = {
         "ads": "Google Ads oder Social Ads sind möglich. Wichtig sind Angebot, Zielseite, Tracking und Budget, sonst wird Werbung schnell teuer.",
         "domain": "Wir helfen bei Domain, DNS, E-Mail-Verknüpfung, SSL und sauberer Übergabe. Hosting wird passend zum Projekt ausgewählt.",
         "security": "Security kann SSL, Updates, Backups, starke Passwörter, Rollen, Account-Struktur und einfache Checks beinhalten.",
-        "support": "Care Essential kostet 63 €, Care Business 119 € und Care Priority 199 € pro Monat. Je nach Tarif sind kleine Änderungen, technische Checks, SEO/Performance-Review und priorisierte Antworten enthalten.",
+        "support": "Care Essential kostet 39 €, Care Business 79 € und Care Priority 129 € pro Monat. Tarife unterscheiden sich nach Änderungszeit, Prüfungen und Antwortpriorität.",
         "multilingual": "Mehrsprachige Seiten sind möglich. Diese Website ist für Deutsch, Englisch und Serbisch Latinica vorbereitet.",
         "timeline": "Kleine Websites können schneller starten. Größere, mehrsprachige Projekte oder Marketing-Systeme brauchen mehr Planung.",
         "legal": "Fake-Follower, Fake-Likes, Fake-Kommentare und Bot-Views bieten wir nicht an. Das wirkt kurzfristig größer, schadet aber Marke, Plattform-Trust und Rechtssicherheit.",
         "audit": "Ein Start-Check ist möglich: Website, Google-Profil oder Social-Kanal kurz prüfen und danach konkrete nächste Schritte geben.",
         "contact": "Am besten eine Projektanfrage senden oder direkt an info@weburix.com schreiben. Außerdem findest du Weburix auf Instagram und Facebook; WhatsApp wird aktiviert, sobald die Geschäftsnummer bereitsteht.",
         "fallback": "Ich kann zu Website, Paketen, Preisen, Formularen, Checkout, GitHub Pages, SEO, Google Business, YouTube, Social Media, Ads, Domain, Sicherheit und Support helfen.",
-        "forms": "Du kannst direkt über das Formular anfragen. Für GitHub Pages muss nur ein Web3Forms Access Key in assets/js/site-config.js eingetragen werden, dann kommt die Anfrage sofort per E-Mail an.",
-        "hosting": "Die Startseite liegt jetzt direkt auf der Domain: weburix.com/. Keine /home-Pflicht. GitHub Pages kann die Root-index.html direkt anzeigen; Unterseiten wie /impressum/ und /datenschutz/ bleiben clean.",
+        "forms": "Du kannst direkt über das Formular anfragen. Der Versand läuft über FormSubmit; nach der einmaligen Bestätigung von info@weburix.com kommen Anfragen direkt per E-Mail an. Bei blockiertem AJAX wird derselbe sichere HTTPS-POST verwendet.",
+        "hosting": "Die Startseite liegt in der Root-Datei index.html. Nach Verbindung der eigenen Domain ist sie direkt unter weburix.com erreichbar; die Unterseiten bleiben über klare relative Pfade erreichbar.",
         "privacy": "Die Seite nutzt im Standard keine Analytics, keine externen Fonts und keine Werbe-Tracker. Für Kontaktformulare und externe Tools muss die Datenschutzerklärung final angepasst werden.",
         "process": "Kurz: Anfrage, Zielklärung, Struktur, Umsetzung, Test, Launch und optionaler Support. Keine endlosen Meetings, aber saubere Abstimmung.",
         "checkout": "Der Konfigurator ist ein Anfragekorb, kein Fake-Shop. Besucher wählen Leistungen aus, übernehmen sie ins Formular und bekommen danach ein echtes Angebot. Stripe/PayPal Links können später ergänzt werden.",
-        "integrations": "Vorbereitet sind Netlify Forms, Formspree, Web3Forms, Stripe/PayPal Payment Links und später ein eigenes Backend. Standardmäßig bleibt die Seite aber schnell und ohne unnötige externe Skripte.",
+        "integrations": "FormSubmit ist der einzige aktive Formulardienst. Stripe/PayPal-Zahlungslinks und ein eigenes Backend bleiben deaktivierte Zukunftsoptionen; standardmäßig lädt die Seite keine unnötigen externen Skripte.",
         "packageRecommend": "Für einen kompakten Start: Starter Site. Für eine seriöse Firmenwebsite: Business Web. Für Website plus Sichtbarkeit: Growth Setup. Für laufende Hilfe: Care Business. Für Wissen oder eine konkrete Entscheidung: Kurs oder 1:1 Beratung.",
         "legalBusiness": "Für echte Verkäufe brauchst du sauberes Impressum, Datenschutz, Widerruf/AGB je nach Angebot, klare Preise und bei Verbrauchern einen eindeutig zahlungspflichtigen Button. Weburix sollte am Anfang eher Angebote/Anfragen statt Sofortkauf nutzen.",
         "portal": "Der Portal-Bereich ist als Zugangsanfrage vorbereitet. Echte Logins sollten später über Supabase/Firebase laufen, nicht mit Passwörtern im statischen Frontend.",
         "newsletter": "Das Formular ist aktuell nur eine Vormerkung. Ein echter Newsletter wird erst mit Double-Opt-in, dokumentierter Einwilligung und Abmeldelink aktiviert.",
-        "courses": "Geplant sind Livekurse: Website-Start für 79 €, SEO & Google Business für 119 €, YouTube & Social Workflow für 95 € sowie ein 1:1 Praxis-Workshop für 159 €.",
-        "consulting": "Individuelle Beratung kostet 76 € pro Stunde. Ein 5-Stunden-Block kostet 349 €. Themen können Website, SEO, Google Business, YouTube, Social Media, Domain, Sicherheit oder digitale Abläufe sein.",
+        "courses": "Geplante Livekurse: Website-Start 49 €, SEO & Google Business 79 €, YouTube & Social Workflow 69 € und 1:1 Praxis-Workshop 119 €.",
+        "consulting": "Individuelle Beratung kostet 59 € pro Stunde. Ein 5-Stunden-Block kostet 259 €. Themen können Website, SEO, Google Business, YouTube, Social Media, Domain, Sicherheit oder digitale Abläufe sein.",
         "contentStrategy": "Wir setzen auf thematisch zusammenhängende Inhalte, klare interne Links und regelmäßige Updates wichtiger Seiten. Das hilft Besuchern bei der Navigation und erleichtert Suchmaschinen das Verstehen der Website. Keine Linkpakete und kein Keyword-Spam.",
         "digitalPr": "Digital PR bedeutet bei Weburix: ein relevantes Thema, ein sauberer Fachbeitrag und gezielte Ansprache passender Portale. Keine Massenlinks, keine gekauften Rankings und keine Garantie auf Veröffentlichung. Fremdkosten werden vorher offengelegt."
       }
@@ -636,7 +651,7 @@ const WEBURIX_CONTENT = {
         },
         {
           "title": "Formulare vorbereitet",
-          "text": "Kontakt, Projektanfrage, Newsletter und Portalzugang sind für Web3Forms oder ähnliche Dienste vorbereitet."
+          "text": "Kontakt, Projektanfrage, Newsletter und Portalzugang nutzen denselben abgesicherten FormSubmit-Versand mit Standard-POST als Reserve."
         },
         {
           "title": "Datenschutzfreundlich",
@@ -657,18 +672,18 @@ const WEBURIX_CONTENT = {
       ]
     },
     "cookie": {
-      "title": "Deine Privatsphäre, klar geregelt",
-      "text": "Deutsch ist die Standardsprache. Optional kannst du eine einmalige Länderabfrage für die automatische Sprachauswahl erlauben. Analytics und Werbe-Tracking sind nicht aktiv.",
+      "title": "Datenschutzfreundliche Einstellungen",
+      "text": "Notwendige Einstellungen speichern Sprache und Anfragekorb. Mit Zustimmung fragen wir einmalig nur den Ländercode für die passende Startsprache ab. Kein Analytics, kein Werbe-Tracking.",
       "link": "Datenschutz lesen",
-      "necessary": "Nur notwendige",
-      "settings": "Einstellungen",
-      "accept": "Automatische Sprache erlauben",
+      "necessary": "Nur nötig",
+      "settings": "Details",
+      "accept": "Sprache erlauben",
       "modalTitle": "Datenschutz-Einstellungen",
-      "modalText": "Du entscheidest, welche optionalen Funktionen genutzt werden dürfen. Deine Auswahl kann jederzeit im Footer geändert werden.",
+      "modalText": "Wähle, ob die einmalige Ländercode-Abfrage für die Startsprache erlaubt ist. Deine Auswahl kannst du jederzeit im Footer ändern.",
       "necessaryTitle": "Notwendig",
-      "necessaryText": "Speichert deine Auswahl, die manuell gewählte Sprache und den Anfragekorb. Immer aktiv.",
+      "necessaryText": "Speichert Datenschutz-Auswahl, manuell gewählte Sprache, Preisdarstellung und Anfragekorb. Immer aktiv.",
       "functionalTitle": "Komfortfunktionen",
-      "functionalText": "Erlaubt eine einmalige Abfrage des zweistelligen Ländercodes: Deutschland/Österreich bleiben Deutsch, Länder des ehemaligen Jugoslawiens wechseln zu Srpski, alle übrigen zu Englisch. Keine genaue Standortbestimmung.",
+      "functionalText": "Erlaubt einmalig die Abfrage eines zweistelligen Ländercodes für die Startsprache. Keine präzise Standortbestimmung, kein Tracking.",
       "analyticsTitle": "Analytics",
       "analyticsText": "Derzeit nicht eingebunden.",
       "marketingTitle": "Marketing",
@@ -700,175 +715,268 @@ const WEBURIX_CONTENT = {
           "type": "Website",
           "name": "Starter Site",
           "text": "1–3 Seiten, Formular, SEO-Basis und Launch.",
-          "price": 790,
-          "priceLabel": "ab 790 €",
+          "price": 599,
+          "priceLabel": "ab 599 €",
           "image": "assets/img/products/starter.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 690,
+          "oldPriceLabel": "ab 690 €"
         },
         {
           "id": "business",
           "type": "Website",
           "name": "Business Web",
           "text": "Bis 6 Seiten, Projektformular, Local SEO und klare Unternehmensstruktur.",
-          "price": 1590,
-          "priceLabel": "ab 1.590 €",
+          "price": 1099,
+          "priceLabel": "ab 1.099 €",
           "image": "assets/img/products/business.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 1290,
+          "oldPriceLabel": "ab 1.290 €"
         },
         {
           "id": "growth",
           "type": "Growth",
           "name": "Growth Setup",
           "text": "Website, SEO-Plan, Google Business und Content-System.",
-          "price": 2390,
-          "priceLabel": "ab 2.390 €",
+          "price": 1699,
+          "priceLabel": "ab 1.699 €",
           "image": "assets/img/products/growth.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 1990,
+          "oldPriceLabel": "ab 1.990 €"
         },
         {
           "id": "google",
           "type": "Local",
           "name": "Google Local",
           "text": "Google Business Setup und Local-SEO Grundlage.",
-          "price": 199,
-          "priceLabel": "ab 199 €",
+          "price": 129,
+          "priceLabel": "ab 129 €",
           "image": "assets/img/products/local.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 149,
+          "oldPriceLabel": "ab 149 €"
         },
         {
           "id": "care-essential",
           "type": "Support",
           "name": "Care Essential",
           "text": "Monatlicher Basis-Support und kleine Änderungen.",
-          "price": 63,
-          "priceLabel": "63 €/Monat",
+          "price": 39,
+          "priceLabel": "39 €/Monat",
           "image": "assets/img/products/support-essential.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 49,
+          "oldPriceLabel": "49 €/Monat"
         },
         {
           "id": "care-business",
           "type": "Support",
           "name": "Care Business",
           "text": "Mehr Änderungszeit, Security- und Performance-Checks.",
-          "price": 119,
-          "priceLabel": "119 €/Monat",
+          "price": 79,
+          "priceLabel": "79 €/Monat",
           "image": "assets/img/products/support-business.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 89,
+          "oldPriceLabel": "89 €/Monat"
         },
         {
           "id": "care-priority",
           "type": "Support",
           "name": "Care Priority",
           "text": "Priority Support, mehr Änderungszeit und Monatsreview.",
-          "price": 199,
-          "priceLabel": "199 €/Monat",
+          "price": 129,
+          "priceLabel": "129 €/Monat",
           "image": "assets/img/products/support-priority.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 149,
+          "oldPriceLabel": "149 €/Monat"
         },
         {
           "id": "course-web",
           "type": "Kurs",
           "name": "Website-Start Livekurs",
           "text": "Livekurs mit Struktur, Technik, SEO und Launch-Checkliste.",
-          "price": 79,
-          "priceLabel": "79 €",
+          "price": 49,
+          "priceLabel": "49 €",
           "image": "assets/img/products/course-web.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 59,
+          "oldPriceLabel": "59 €"
         },
         {
           "id": "course-seo",
           "type": "Kurs",
           "name": "SEO & Google Business",
           "text": "Livekurs für lokale Sichtbarkeit und saubere SEO-Grundlagen.",
-          "price": 119,
-          "priceLabel": "119 €",
+          "price": 79,
+          "priceLabel": "79 €",
           "image": "assets/img/products/course-seo.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 89,
+          "oldPriceLabel": "89 €"
         },
         {
           "id": "course-social",
           "type": "Kurs",
           "name": "YouTube & Social Workflow",
           "text": "Livekurs für Content-Plan, Uploads und Analytics.",
-          "price": 95,
-          "priceLabel": "95 €",
+          "price": 69,
+          "priceLabel": "69 €",
           "image": "assets/img/products/course-social.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 79,
+          "oldPriceLabel": "79 €"
         },
         {
           "id": "social-youtube",
           "type": "Content",
           "name": "Social & YouTube Betreuung",
           "text": "Kanal-, Content- und Analyse-Support.",
-          "price": 239,
-          "priceLabel": "239 €/Monat",
+          "price": 179,
+          "priceLabel": "179 €/Monat",
           "image": "assets/img/products/social.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 199,
+          "oldPriceLabel": "199 €/Monat"
         },
         {
           "id": "consulting",
           "type": "Beratung",
           "name": "1 Stunde Beratung",
           "text": "Individuelle Online-Beratung zu deinem digitalen Thema.",
-          "price": 76,
-          "priceLabel": "76 €/Std.",
+          "price": 59,
+          "priceLabel": "59 €/Std.",
           "image": "assets/img/products/consulting.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 69,
+          "oldPriceLabel": "69 €/Std."
         },
         {
           "id": "audit",
           "type": "Check",
           "name": "Website Audit",
           "text": "Check von Struktur, SEO, Speed, Vertrauen und Kontaktwegen.",
-          "price": 119,
-          "priceLabel": "119 €",
+          "price": 79,
+          "priceLabel": "79 €",
           "image": "assets/img/products/audit.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 89,
+          "oldPriceLabel": "89 €"
         },
         {
           "id": "brandkit",
           "type": "Brand",
           "name": "Mini Brand Kit",
           "text": "Farben, Logo-Regeln und einfache Social Assets.",
-          "price": 159,
-          "priceLabel": "159 €",
+          "price": 119,
+          "priceLabel": "119 €",
           "image": "assets/img/products/brand.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 129,
+          "oldPriceLabel": "129 €"
         },
         {
           "id": "emailsetup",
           "type": "Setup",
           "name": "Domain & E-Mail Setup",
           "text": "DNS, SSL und professionelle E-Mail-Grundkonfiguration.",
-          "price": 99,
-          "priceLabel": "99 €",
+          "price": 69,
+          "priceLabel": "69 €",
           "image": "assets/img/products/domain.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 79,
+          "oldPriceLabel": "79 €"
         },
         {
           "id": "content-refresh",
           "type": "SEO",
           "name": "SEO Content Refresh",
           "text": "Bis zu drei bestehende Seiten prüfen, aktualisieren und intern besser verlinken.",
-          "price": 239,
-          "priceLabel": "239 €",
+          "price": 159,
+          "priceLabel": "159 €",
           "image": "assets/img/products/seo-links.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 179,
+          "oldPriceLabel": "179 €"
         },
         {
           "id": "digital-pr",
           "type": "SEO & PR",
           "name": "Digital PR Starter",
           "text": "Themenidee, Fachbeitrags-Entwurf und eine kleine Liste passender Portale. Platzierung und Fremdkosten sind nicht garantiert bzw. separat.",
-          "price": 319,
-          "priceLabel": "ab 319 €",
+          "price": 219,
+          "priceLabel": "ab 219 €",
           "image": "assets/img/products/digital-pr.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "ab 249 €"
+        },
+        {
+          "id": "seo-foundation",
+          "type": "SEO",
+          "name": "SEO Foundation",
+          "text": "Technische Basis, Keywords, Seitentitel, Meta-Texte und klare Prioritäten.",
+          "price": 249,
+          "priceLabel": "249 €",
+          "image": "assets/img/products/seo-links.svg",
+          "billing": "one-time",
+          "oldPrice": 299,
+          "oldPriceLabel": "299 €"
+        },
+        {
+          "id": "local-seo",
+          "type": "SEO",
+          "name": "Local SEO Betreuung",
+          "text": "Monatliche lokale Optimierung, Inhaltsprioritäten und kurzer Fortschrittscheck.",
+          "price": 219,
+          "priceLabel": "219 €/Monat",
+          "image": "assets/img/products/local-seo-guide.svg",
+          "billing": "monthly",
+          "oldPrice": 249,
+          "oldPriceLabel": "249 €/Monat"
+        },
+        {
+          "id": "google-ads",
+          "type": "Ads",
+          "name": "Google Ads Setup",
+          "text": "Kampagnenstruktur, Zielgruppen, Anzeigenentwürfe und Tracking-Grundlage. Werbebudget separat.",
+          "price": 219,
+          "priceLabel": "219 €",
+          "image": "assets/img/products/local.svg",
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "249 €"
+        },
+        {
+          "id": "social-ads",
+          "type": "Ads",
+          "name": "Social Ads Setup",
+          "text": "Kampagnenstruktur, Zielgruppen und Anzeigenvarianten für Meta-Plattformen. Werbebudget separat.",
+          "price": 219,
+          "priceLabel": "219 €",
+          "image": "assets/img/products/social.svg",
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "249 €"
         }
       ],
       "oneTimeLabel": "Einmalig",
       "monthlyLabel": "Pro Monat",
-      "allLabel": "Alle"
+      "allLabel": "Alle",
+      "promoLabel": "Aktionscode",
+      "promoPlaceholder": "Code eingeben",
+      "promoApply": "Anwenden",
+      "promoRemove": "Entfernen",
+      "promoApplied": "Code {code} ist aktiv: {discount} Vorteil auf einmalige Leistungen.",
+      "promoInvalid": "Dieser Code ist ungültig oder derzeit nicht aktiv.",
+      "promoMinimum": "Dieser Code gilt ab {minimum} einmaligem Warenwert.",
+      "promoExpired": "Dieser Code ist nicht mehr aktiv.",
+      "promoSavings": "Aktionsvorteil",
+      "promoLine": "Aktionscode {code}: −{discount}",
+      "promoHint": "Aktionscodes gelten nur für einmalige Leistungen und werden im finalen Angebot geprüft."
     },
     "integrations": {
       "eyebrow": "Tools",
@@ -877,7 +985,7 @@ const WEBURIX_CONTENT = {
       "items": [
         {
           "kicker": "Forms",
-          "title": "Netlify / Formspree / Web3Forms",
+          "title": "FormSubmit – aktiver Formular-Dienst",
           "text": "Kontaktformulare können später mit einem echten Formular-Service oder Backend laufen."
         },
         {
@@ -923,7 +1031,7 @@ const WEBURIX_CONTENT = {
     "portal": {
       "eyebrow": "Client Portal",
       "title": "Kundenbereich vorbereitet — ohne unsichere Passwörter im Frontend.",
-      "text": "Für GitHub Pages bleibt das ein sauberer Zugangswunsch. Später kann ein echter Login über Supabase oder Firebase verbunden werden.",
+      "text": "Der Bereich bleibt zunächst ein sicherer Zugangswunsch ohne Frontend-Passwörter. Später kann ein echter Login über einen geprüften Authentifizierungsdienst verbunden werden.",
       "email": "E-Mail",
       "project": "Projekt / Firma",
       "button": "Zugang anfragen"
@@ -932,7 +1040,8 @@ const WEBURIX_CONTENT = {
       "eyebrow": "Newsletter-Vormerkung",
       "title": "Updates erst nach deiner Bestätigung.",
       "text": "Trag dich unverbindlich vor. Ein echter Newsletter startet erst mit einem separaten Double-Opt-in und einer klaren Abmeldemöglichkeit.",
-      "button": "Vormerken"
+      "button": "Vormerken",
+      "consent": "Ich möchte unverbindlich über den Start des Weburix-Newsletters informiert werden und kann diese Vormerkung jederzeit widerrufen."
     },
     "launchlab": {
       "eyebrow": "Launch Check",
@@ -1047,7 +1156,7 @@ const WEBURIX_CONTENT = {
     "priceList": {
       "eyebrow": "Preisübersicht",
       "title": "Alle wichtigen Leistungen auf einen Blick.",
-      "text": "Transparent kalkulierte Startpreise ohne versteckte Agenturaufschläge. Der genaue Leistungsumfang und der verbindliche Endpreis werden vor Projektbeginn schriftlich bestätigt.",
+      "text": "Bewusst günstige Einstiegspreise mit klar definiertem Umfang. Im Vergleich zu vielen klassischen Agenturangeboten bleiben die Einstiegshürden niedrig, während Qualität, Erreichbarkeit und ein schriftliches Angebot erhalten bleiben.",
       "from": "ab",
       "monthly": "monatlich",
       "hour": "pro Stunde",
@@ -1058,33 +1167,39 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Starter Site (1–3 Seiten)",
-              "price": "790 €",
-              "oldPrice": "990 €"
+              "price": "599 €",
+              "id": "starter",
+              "oldPrice": "690 €"
             },
             {
               "name": "Business Website (bis 6 Seiten)",
-              "price": "1.590 €",
-              "oldPrice": "1.990 €"
+              "price": "1.099 €",
+              "id": "business",
+              "oldPrice": "1.290 €"
             },
             {
               "name": "Growth Setup",
-              "price": "2.390 €",
-              "oldPrice": "2.990 €"
+              "price": "1.699 €",
+              "id": "growth",
+              "oldPrice": "1.990 €"
             },
             {
               "name": "Website Audit",
-              "price": "119 €",
-              "oldPrice": "149 €"
+              "price": "79 €",
+              "id": "audit",
+              "oldPrice": "89 €"
             },
             {
               "name": "Mini Brand Kit",
-              "price": "159 €",
-              "oldPrice": "199 €"
+              "price": "119 €",
+              "id": "brandkit",
+              "oldPrice": "129 €"
             },
             {
               "name": "Domain & E-Mail Setup",
-              "price": "99 €",
-              "oldPrice": "129 €"
+              "price": "69 €",
+              "id": "emailsetup",
+              "oldPrice": "79 €"
             }
           ]
         },
@@ -1093,43 +1208,51 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Google Business Setup",
-              "price": "199 €",
-              "oldPrice": "249 €"
+              "price": "129 €",
+              "id": "google",
+              "oldPrice": "149 €"
             },
             {
               "name": "SEO Foundation",
-              "price": "399 €",
-              "oldPrice": "499 €"
-            },
-            {
-              "name": "SEO Content Refresh",
-              "price": "239 €",
+              "price": "249 €",
+              "id": "seo-foundation",
               "oldPrice": "299 €"
             },
             {
+              "name": "SEO Content Refresh",
+              "price": "159 €",
+              "id": "content-refresh",
+              "oldPrice": "179 €"
+            },
+            {
               "name": "Digital PR & Fachbeitrag",
-              "price": "319 €",
-              "oldPrice": "399 €"
+              "price": "219 €",
+              "id": "digital-pr",
+              "oldPrice": "249 €"
             },
             {
               "name": "Local SEO Betreuung",
-              "price": "319 €/Monat",
-              "oldPrice": "399 €/Monat"
+              "price": "219 €/Monat",
+              "id": "local-seo",
+              "oldPrice": "249 €/Monat"
             },
             {
               "name": "Social & YouTube Betreuung",
-              "price": "239 €/Monat",
-              "oldPrice": "299 €/Monat"
+              "price": "179 €/Monat",
+              "id": "social-youtube",
+              "oldPrice": "199 €/Monat"
             },
             {
               "name": "Google Ads Setup",
-              "price": "319 €",
-              "oldPrice": "399 €"
+              "price": "219 €",
+              "id": "google-ads",
+              "oldPrice": "249 €"
             },
             {
               "name": "Social Ads Setup",
-              "price": "319 €",
-              "oldPrice": "399 €"
+              "price": "219 €",
+              "id": "social-ads",
+              "oldPrice": "249 €"
             }
           ]
         },
@@ -1138,28 +1261,33 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Care Essential",
-              "price": "63 €/Monat",
-              "oldPrice": "79 €/Monat"
+              "price": "39 €/Monat",
+              "id": "care-essential",
+              "oldPrice": "49 €/Monat"
             },
             {
               "name": "Care Business",
-              "price": "119 €/Monat",
-              "oldPrice": "149 €/Monat"
+              "price": "79 €/Monat",
+              "id": "care-business",
+              "oldPrice": "89 €/Monat"
             },
             {
               "name": "Care Priority",
-              "price": "199 €/Monat",
-              "oldPrice": "249 €/Monat"
+              "price": "129 €/Monat",
+              "id": "care-priority",
+              "oldPrice": "149 €/Monat"
             },
             {
               "name": "Individuelle Beratung",
-              "price": "76 €/Std.",
-              "oldPrice": "95 €/Std."
+              "price": "59 €/Std.",
+              "id": "consulting",
+              "oldPrice": "69 €/Std."
             },
             {
               "name": "5-Stunden-Beratungsblock",
-              "price": "349 €",
-              "oldPrice": "475 €"
+              "price": "259 €",
+              "id": "consulting-block",
+              "oldPrice": "299 €"
             }
           ]
         },
@@ -1168,23 +1296,27 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Website-Start Livekurs",
-              "price": "79 €",
-              "oldPrice": "99 €"
+              "price": "49 €",
+              "id": "course-web",
+              "oldPrice": "59 €"
             },
             {
               "name": "SEO & Google Business Livekurs",
-              "price": "119 €",
-              "oldPrice": "149 €"
+              "price": "79 €",
+              "id": "course-seo",
+              "oldPrice": "89 €"
             },
             {
               "name": "YouTube & Social Workflow Livekurs",
-              "price": "95 €",
-              "oldPrice": "119 €"
+              "price": "69 €",
+              "id": "course-social",
+              "oldPrice": "79 €"
             },
             {
               "name": "1:1 Praxis-Workshop",
-              "price": "159 €",
-              "oldPrice": "199 €"
+              "price": "119 €",
+              "id": "workshop",
+              "oldPrice": "129 €"
             }
           ]
         }
@@ -1199,46 +1331,49 @@ const WEBURIX_CONTENT = {
       "items": [
         {
           "name": "Care Essential",
-          "price": "63 €",
+          "price": "39 €",
           "period": "/Monat",
-          "oldPrice": "79 €",
           "image": "assets/img/products/support-essential.svg",
           "features": [
-            "Bis 30 Min. kleine Änderungen",
+            "Bis 20 Min. kleine Änderungen",
             "Technischer Monatscheck",
             "E-Mail-Support",
             "Antwort in der Regel innerhalb von 2 Werktagen"
           ],
-          "featured": false
+          "featured": false,
+          "id": "care-essential",
+          "oldPrice": "49 €"
         },
         {
           "name": "Care Business",
-          "price": "119 €",
+          "price": "79 €",
           "period": "/Monat",
-          "oldPrice": "149 €",
           "image": "assets/img/products/support-business.svg",
           "features": [
-            "Bis 90 Min. Änderungen",
+            "Bis 60 Min. Änderungen",
             "Backup- und Security-Check",
             "SEO-/Performance-Kurzcheck",
             "Priorisierte Antwort in der Regel am nächsten Werktag"
           ],
-          "featured": true
+          "featured": true,
+          "id": "care-business",
+          "oldPrice": "89 €"
         },
         {
           "name": "Care Priority",
-          "price": "199 €",
+          "price": "129 €",
           "period": "/Monat",
-          "oldPrice": "249 €",
           "image": "assets/img/products/support-priority.svg",
           "features": [
-            "Bis 3 Std. Änderungen",
+            "Bis 2 Std. Änderungen",
             "Monatliches SEO-/Analytics-Review",
             "Quartalsweiser Content-Refresh- und Internal-Link-Check",
             "Priority Support",
             "Fester Monats-Call auf Wunsch"
           ],
-          "featured": false
+          "featured": false,
+          "id": "care-priority",
+          "oldPrice": "149 €"
         }
       ]
     },
@@ -1254,8 +1389,7 @@ const WEBURIX_CONTENT = {
         {
           "name": "Website-Start",
           "subtitle": "Von der Idee zur klaren Website",
-          "price": "79 €",
-          "oldPrice": "99 €",
+          "price": "49 €",
           "duration": "ca. 2 Std.",
           "image": "assets/img/products/course-web.svg",
           "points": [
@@ -1263,13 +1397,14 @@ const WEBURIX_CONTENT = {
             "Domain, Hosting und Formulare verstehen",
             "SEO-Basics für den Start",
             "Launch-Checkliste mitnehmen"
-          ]
+          ],
+          "id": "course-web",
+          "oldPrice": "59 €"
         },
         {
           "name": "SEO & Google Business",
           "subtitle": "Lokal besser gefunden werden",
-          "price": "119 €",
-          "oldPrice": "149 €",
+          "price": "79 €",
           "duration": "ca. 2,5 Std.",
           "image": "assets/img/products/course-seo.svg",
           "points": [
@@ -1277,13 +1412,14 @@ const WEBURIX_CONTENT = {
             "Google Business sauber einrichten",
             "Meta-Texte und lokale Seiten",
             "Messbare nächste Schritte"
-          ]
+          ],
+          "id": "course-seo",
+          "oldPrice": "89 €"
         },
         {
           "name": "YouTube & Social Workflow",
           "subtitle": "Content planbar statt zufällig",
-          "price": "95 €",
-          "oldPrice": "119 €",
+          "price": "69 €",
           "duration": "ca. 2 Std.",
           "image": "assets/img/products/course-social.svg",
           "points": [
@@ -1291,13 +1427,14 @@ const WEBURIX_CONTENT = {
             "Titel, Hooks und Thumbnails",
             "Shorts/Reels effizient planen",
             "Analytics richtig lesen"
-          ]
+          ],
+          "id": "course-social",
+          "oldPrice": "79 €"
         },
         {
           "name": "1:1 Praxis-Workshop",
           "subtitle": "Individuell an deinem Projekt",
-          "price": "159 €",
-          "oldPrice": "199 €",
+          "price": "119 €",
           "duration": "ca. 2 Std.",
           "image": "assets/img/products/course-one.svg",
           "points": [
@@ -1305,24 +1442,27 @@ const WEBURIX_CONTENT = {
             "Live-Arbeit am Projekt",
             "Konkreter Maßnahmenplan",
             "Kurze Nachbereitung per E-Mail"
-          ]
+          ],
+          "id": "workshop",
+          "oldPrice": "129 €"
         }
       ]
     },
     "consulting": {
       "eyebrow": "Individuelle Beratung",
       "title": "Konkrete Hilfe statt allgemeiner Präsentationen.",
-      "text": "Für Website, SEO, Google Business, YouTube, Social Media, Domains oder digitale Abläufe. Die Stunde kostet 76 €; ein 5-Stunden-Block kostet 349 €.",
-      "price": "76 € / Std.",
-      "oldPrice": "95 € / Std.",
-      "block": "5 Stunden: 349 €",
+      "text": "Für Website, SEO, Google Business, YouTube, Social Media, Domains oder digitale Abläufe. Eine Stunde kostet 59 €; der 5-Stunden-Block 259 €.",
+      "price": "59 € / Std.",
+      "block": "5 Stunden: 259 €",
       "cta": "Termin anfragen",
       "points": [
         "Online oder nach Absprache in München",
         "Vorab klare Fragestellung",
         "Nach dem Gespräch kurze Zusammenfassung",
         "Keine langfristige Bindung"
-      ]
+      ],
+      "oldPrice": "69 € / Std.",
+      "oldBlock": "5 Stunden: 299 €"
     },
     "knowledge": {
       "eyebrow": "Wissenshub",
@@ -1391,7 +1531,7 @@ const WEBURIX_CONTENT = {
       "primary": "Start a project",
       "secondary": "View packages",
       "trust1": "Fast response",
-      "trust2": "Fair launch pricing",
+      "trust2": "Fair entry pricing",
       "trust3": "Direct contact",
       "cardTitle": "Build. Launch. Improve.",
       "cardText": "Websites, visibility, courses and support in one place."
@@ -1511,7 +1651,7 @@ const WEBURIX_CONTENT = {
         "text": "Live courses and individual consulting help you make decisions, avoid common mistakes and implement things properly yourself.",
         "points": [
           "Small-group live courses",
-          "1:1 consulting from €76 per hour",
+          "1:1 consulting from €59 per hour",
           "Practical examples instead of theory blocks",
           "No unnecessary long-term commitment"
         ]
@@ -1557,22 +1697,21 @@ const WEBURIX_CONTENT = {
     },
     "packages": {
       "eyebrow": "Packages",
-      "title": "Fair launch pricing instead of unclear agency quotes.",
-      "text": "Our launch pricing is deliberately lean. You still receive a clearly defined scope, direct contact and a written, binding quote before work begins.",
+      "title": "Clear entry pricing for small businesses.",
+      "text": "Weburix is deliberately priced below many traditional agency entry points. Lean processes, clearly scoped packages and direct contact make that possible — not hidden cutbacks.",
       "popular": "Popular",
       "cta": "Request",
       "details": "Open details",
       "close": "Close",
-      "note": "All prices are starting prices and estimates. Domain, hosting, ad spend, licences and third-party costs are excluded unless stated.",
-      "saving": "Launch price",
+      "note": "All amounts are non-binding starting prices. Scope, VAT wording and the final price are confirmed in writing before work begins. Domains, hosting, ad spend, licences and third-party fees are included only when explicitly stated in the quote.",
+      "saving": "Entry price",
       "reference": "Guide"
     },
     "packageCards": [
       {
         "name": "Starter Site",
         "label": "For a professional first online presence",
-        "price": "from €790",
-        "oldPrice": "€990",
+        "price": "from €599",
         "features": [
           "1–3 pages",
           "Contact form",
@@ -1584,13 +1723,14 @@ const WEBURIX_CONTENT = {
           "Optional multilingual setup, Google Business and support."
         ],
         "featured": false,
-        "image": "assets/img/products/starter.svg"
+        "image": "assets/img/products/starter.svg",
+        "id": "starter",
+        "oldPrice": "from €690"
       },
       {
         "name": "Business Web",
         "label": "For businesses that need a clear, credible website",
-        "price": "from €1,590",
-        "oldPrice": "€1,990",
+        "price": "from €1,099",
         "features": [
           "Up to 6 pages",
           "Project request form",
@@ -1602,13 +1742,14 @@ const WEBURIX_CONTENT = {
           "Suitable for small companies, practices, trades and B2B services."
         ],
         "featured": true,
-        "image": "assets/img/products/business.svg"
+        "image": "assets/img/products/business.svg",
+        "id": "business",
+        "oldPrice": "from €1,290"
       },
       {
         "name": "Growth Setup",
         "label": "Website plus visibility and content system",
-        "price": "from €2,390",
-        "oldPrice": "€2,990",
+        "price": "from €1,699",
         "features": [
           "Website + SEO plan",
           "Google Business setup",
@@ -1620,13 +1761,14 @@ const WEBURIX_CONTENT = {
           "Includes a practical first 90-day action plan."
         ],
         "featured": false,
-        "image": "assets/img/products/growth.svg"
+        "image": "assets/img/products/growth.svg",
+        "id": "growth",
+        "oldPrice": "from €1,990"
       },
       {
         "name": "Google Local",
         "label": "For local visibility in Search and Maps",
-        "price": "from €199",
-        "oldPrice": "€249",
+        "price": "from €129",
         "features": [
           "Google Business Profile",
           "Services & categories",
@@ -1638,13 +1780,14 @@ const WEBURIX_CONTENT = {
           "Ad spend and ongoing content support are optional."
         ],
         "featured": false,
-        "image": "assets/img/products/local.svg"
+        "image": "assets/img/products/local.svg",
+        "id": "google",
+        "oldPrice": "from €149"
       },
       {
         "name": "Social & YouTube",
         "label": "For creators, brands and channels",
-        "price": "from €239/month",
-        "oldPrice": "€299/month",
+        "price": "from €179/month",
         "features": [
           "Channel and profile check",
           "Content and upload plan",
@@ -1656,13 +1799,14 @@ const WEBURIX_CONTENT = {
           "Platforms, volume and deliverables are agreed in writing."
         ],
         "featured": false,
-        "image": "assets/img/products/social.svg"
+        "image": "assets/img/products/social.svg",
+        "id": "social-youtube",
+        "oldPrice": "from €199/month"
       },
       {
         "name": "Care Plan",
         "label": "Ongoing help after launch",
-        "price": "from €63/month",
-        "oldPrice": "€79/month",
+        "price": "from €39/month",
         "features": [
           "Small changes",
           "Monthly technical check",
@@ -1674,7 +1818,9 @@ const WEBURIX_CONTENT = {
           "Also available as Business and Priority plans."
         ],
         "featured": false,
-        "image": "assets/img/products/support.svg"
+        "image": "assets/img/products/support.svg",
+        "id": "care-essential",
+        "oldPrice": "from €49/month"
       }
     ],
     "addons": {
@@ -1706,7 +1852,7 @@ const WEBURIX_CONTENT = {
     "forms": {
       "eyebrow": "Request",
       "title": "Send a quick message or a proper project request.",
-      "text": "The forms are prepared for direct delivery. On GitHub Pages, only a Web3Forms key needs to be added in site-config.js.",
+      "text": "Forms submit through FormSubmit directly to Weburix. After a one-time recipient confirmation, delivery stays active; if AJAX is blocked, the site automatically uses a normal secure HTTPS form submission.",
       "quickTitle": "Quick contact",
       "quickText": "For a short question or first idea.",
       "projectTitle": "Project request",
@@ -1743,10 +1889,9 @@ const WEBURIX_CONTENT = {
         "Under €500",
         "€500–1,000",
         "€1,000–2,000",
-        "€2,000–4,000",
-        "€4,000+",
-        "Monthly budget",
-        "Still open"
+        "€2,000–3,500",
+        "€3,500+",
+        "Monthly budget"
       ],
       "timelineOptions": [
         "As soon as possible",
@@ -1783,10 +1928,14 @@ const WEBURIX_CONTENT = {
       "privacy": "I have read the privacy notice.",
       "sending": "Sending request...",
       "apiSuccess": "Thank you! The request has been sent.",
-      "error": "Sending failed. Please check the Web3Forms key or email info@weburix.com directly.",
+      "activationNeeded": "Almost ready: a one-time activation email was sent to info@weburix.com. After confirmation, direct delivery will work permanently. Please submit again afterwards or use the email button now.",
+      "error": "Submission failed. Please try again or email info@weburix.com directly.",
       "required": "Please fill in the required fields and confirm the privacy notice.",
       "botBlocked": "Spam protection stopped this request.",
-      "configMissing": "Almost ready: add your Web3Forms key in assets/js/site-config.js. After that, requests arrive directly by email."
+      "configMissing": "Direct form delivery is not active yet. The request will be prepared in your email app instead.",
+      "mailFallback": "Your email app is opening with the prepared request. Please press “Send” there to complete it.",
+      "nativeFallback": "Direct delivery is continuing through the secure standard form route …",
+      "deliveryNote": "Secure HTTPS transmission; after one-time recipient activation, enquiries are delivered directly."
     },
     "process": {
       "eyebrow": "Process",
@@ -1828,15 +1977,15 @@ const WEBURIX_CONTENT = {
       },
       {
         "q": "How does Weburix keep pricing fair?",
-        "a": "We keep the process lean, use clearly scoped packages and avoid unnecessary agency overhead. The written scope and final price in the individual quote are always binding."
+        "a": "We use clearly defined scopes, reusable quality components and direct communication. This removes much of the overhead found in traditional agencies. The written scope and final quote are always binding."
       },
       {
         "q": "Which monthly support plans are available?",
-        "a": "Care Essential starts at €63, Care Business at €119 and Care Priority at €199 per month. Included time, response targets and services are listed in each plan."
+        "a": "Care Essential starts at €39, Care Business at €79 and Care Priority at €129 per month. Included time, response targets and services are listed in each plan."
       },
       {
         "q": "Do you offer courses and individual consulting?",
-        "a": "Yes. Planned live courses cover websites, SEO/Google Business and YouTube/social media. Individual consulting is €76 per hour or €349 for a five-hour block."
+        "a": "Yes. Planned live courses cover websites, SEO/Google Business and YouTube/social media. Individual consulting is €59 per hour or €259 for a five-hour block."
       },
       {
         "q": "Which services can I combine?",
@@ -1924,7 +2073,11 @@ const WEBURIX_CONTENT = {
       "facebookText": "Updates, references and direct messages.",
       "instagramText": "Insights, tips, examples and short updates.",
       "whatsappText": "Fast business contact once the number is active.",
-      "openChannel": "Open"
+      "openChannel": "Open",
+      "quickAction": "Open quick contact",
+      "projectAction": "Open project form",
+      "consultingAction": "Request consulting",
+      "supportAction": "Request support"
     },
     "chat": {
       "title": "Weburix Assistant",
@@ -1935,6 +2088,7 @@ const WEBURIX_CONTENT = {
         "How does content refresh work?",
         "Which package fits?",
         "Show all prices",
+        "EUR or RSD?",
         "Monthly support?",
         "Courses & workshops?",
         "Hourly consulting?",
@@ -1943,7 +2097,8 @@ const WEBURIX_CONTENT = {
         "Checkout & payment?"
       ],
       "answers": {
-        "price": "Launch pricing starts at €790 for a small site, €1,590 for Business Web and €2,390 for Growth Setup. Support starts at €63/month and consulting is €76/hour. External costs are listed separately.",
+        "price": "Entry pricing: Starter Site from €599, Business Web from €1,099 and Growth Setup from €1,699. Support starts at €39/month and consulting at €59/hour. Third-party and ad costs are listed separately.",
+        "currency": "The Serbian version offers EUR, RSD or a combined display. RSD amounts are an indicative conversion; quotes and billing remain in EUR.",
         "packages": "Choose from Starter Site, Business Web, Growth Setup, Google Local, Social & YouTube and three Care support plans. Courses and individual consulting can be added.",
         "website": "Weburix builds websites, landing pages and relaunches with clear structure, modern look, contact paths, forms and clean technical basics.",
         "seo": "SEO includes site structure, technical basics, metadata, copy, local SEO and Google Business. The goal is better visibility without empty promises.",
@@ -1953,25 +2108,25 @@ const WEBURIX_CONTENT = {
         "ads": "Google Ads or social ads are possible. Offer, landing page, tracking and budget must be clear so advertising does not burn money.",
         "domain": "We help with domain, DNS, email connection, SSL and clean handover. Hosting is selected according to the project.",
         "security": "Security can include SSL, updates, backups, strong passwords, roles, account structure and basic checks.",
-        "support": "Care Essential is €63, Care Business €119 and Care Priority €199 per month. Depending on the plan, support includes small edits, technical checks, SEO/performance review and prioritised replies.",
+        "support": "Care Essential is €39, Care Business €79 and Care Priority €129 per month. Plans differ by included editing time, checks and response priority.",
         "multilingual": "Multilingual pages are possible. This website is prepared for German, English and Serbian Latin.",
         "timeline": "Small websites can start faster. Larger multilingual projects or marketing systems need more planning.",
         "legal": "We do not offer fake followers, fake likes, fake comments or bot views. It may look bigger for a moment, but it damages brand trust, platform trust and legal safety.",
         "audit": "A start check is possible: review a website, Google profile or social channel and give concrete next steps.",
         "contact": "The best route is a project request or an email to info@weburix.com. Weburix is also available on Instagram and Facebook; WhatsApp will be enabled when the business number is ready.",
         "fallback": "I can help with websites, packages, prices, forms, checkout, GitHub Pages, SEO, Google Business, YouTube, social media, ads, domains, security and support.",
-        "forms": "You can send a request directly through the form. For GitHub Pages, add a Web3Forms access key in assets/js/site-config.js and submissions arrive by email.",
-        "hosting": "The homepage now sits directly on the domain: weburix.com/. No /home needed. GitHub Pages can serve the root index.html directly; subpages such as /impressum/ and /datenschutz/ stay clean.",
+        "forms": "You can send a request directly through the form. Delivery uses FormSubmit; after the one-time confirmation of info@weburix.com, requests arrive by email. If AJAX is blocked, the same secure HTTPS POST is used.",
+        "hosting": "The homepage is stored in the root index.html file. Once the custom domain is connected, it will be available directly at weburix.com, while subpages keep clear relative paths.",
         "privacy": "By default, this site uses no analytics, no external fonts and no ad trackers. The privacy policy must be finalized when external tools or form providers are added.",
         "process": "Simple flow: request, goal check, structure, build, test, launch and optional support. No endless meetings, but clean communication.",
         "checkout": "The configurator is a request cart, not a fake shop. Visitors choose services, move them into the form and receive a real quote afterwards. Stripe/PayPal links can be added later.",
-        "integrations": "Netlify Forms, Formspree, Web3Forms, Stripe/PayPal payment links and later a custom backend are prepared. By default, the site stays fast and avoids unnecessary external scripts.",
+        "integrations": "FormSubmit is the only active form service. Stripe/PayPal payment links and a custom backend remain disabled future options; by default, the site avoids unnecessary external scripts.",
         "packageRecommend": "For a focused start: Starter Site. For a credible company website: Business Web. For website plus visibility: Growth Setup. For ongoing help: Care Business. For a decision or skill gap: a course or 1:1 consulting.",
         "legalBusiness": "For real sales you need proper legal notice, privacy policy, withdrawal/terms depending on the offer, clear prices and for consumers an unambiguous paid-order button. Weburix should start with requests/quotes rather than instant checkout.",
         "portal": "The portal section is prepared as an access request. Real login should later run through Supabase/Firebase, not with passwords in a static frontend.",
         "newsletter": "The form currently records interest only. A real newsletter will be activated only with double opt-in, documented consent and an unsubscribe link.",
-        "courses": "Planned live courses: Website Start €79, SEO & Google Business €119, YouTube & Social Workflow €95 and a 1:1 Practical Workshop €159.",
-        "consulting": "Individual consulting is €76 per hour or €349 for a five-hour block. Topics can include websites, SEO, Google Business, YouTube, social media, domains, security or digital workflows.",
+        "courses": "Planned live courses: Website Start €49, SEO & Google Business €79, YouTube & Social Workflow €69 and a 1:1 Practical Workshop €119.",
+        "consulting": "Individual consulting is €59 per hour or €259 for a five-hour block. Topics can include websites, SEO, Google Business, YouTube, social media, domains, security or digital workflows.",
         "contentStrategy": "We focus on connected topic clusters, descriptive internal links and regular updates to useful pages. This improves navigation and helps search engines understand the site. No bulk link packages or keyword stuffing.",
         "digitalPr": "Weburix Digital PR combines a relevant topic, a well-written expert article and focused outreach to suitable publications. No bulk-link schemes, paid-ranking promises or guaranteed placements. Any third-party fees are shown in advance."
       }
@@ -1999,7 +2154,7 @@ const WEBURIX_CONTENT = {
         },
         {
           "title": "Forms prepared",
-          "text": "Contact, project request, newsletter and portal access are prepared for Web3Forms or similar services."
+          "text": "Contact, project requests, newsletter interest and portal access use the same protected FormSubmit delivery with standard POST as a fallback."
         },
         {
           "title": "Privacy-friendly",
@@ -2020,18 +2175,18 @@ const WEBURIX_CONTENT = {
       ]
     },
     "cookie": {
-      "title": "Privacy, clearly controlled",
-      "text": "German is the default language. You may optionally allow a one-time country lookup for automatic language selection. Analytics and advertising tracking are not active.",
+      "title": "Privacy-friendly settings",
+      "text": "Necessary settings remember language and the request cart. With consent, we request only a country code once to select the starting language. No analytics or advertising tracking.",
       "link": "Read privacy policy",
       "necessary": "Necessary only",
-      "settings": "Settings",
-      "accept": "Allow automatic language",
+      "settings": "Details",
+      "accept": "Allow language check",
       "modalTitle": "Privacy settings",
-      "modalText": "You decide which optional functions may be used. You can change your choice at any time in the footer.",
+      "modalText": "Choose whether the one-time country-code request may be used for the starting language. You can change this in the footer at any time.",
       "necessaryTitle": "Necessary",
-      "necessaryText": "Stores your consent choice, manually selected language and request cart. Always active.",
+      "necessaryText": "Stores your privacy choice, manual language, price display and request cart. Always active.",
       "functionalTitle": "Convenience functions",
-      "functionalText": "Allows a one-time two-letter country lookup: Germany/Austria stay in German, former Yugoslav countries switch to Serbian, and all others to English. No precise location is requested.",
+      "functionalText": "Allows a one-time two-letter country-code request for the starting language. No precise location and no tracking.",
       "analyticsTitle": "Analytics",
       "analyticsText": "Not integrated at present.",
       "marketingTitle": "Marketing",
@@ -2063,175 +2218,268 @@ const WEBURIX_CONTENT = {
           "type": "Website",
           "name": "Starter Site",
           "text": "1–3 pages, form, SEO basics and launch.",
-          "price": 790,
-          "priceLabel": "from €790",
+          "price": 599,
+          "priceLabel": "from €599",
           "image": "assets/img/products/starter.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 690,
+          "oldPriceLabel": "from €690"
         },
         {
           "id": "business",
           "type": "Website",
           "name": "Business Web",
           "text": "Up to 6 pages, project form, local SEO and clear company structure.",
-          "price": 1590,
-          "priceLabel": "from €1,590",
+          "price": 1099,
+          "priceLabel": "from €1,099",
           "image": "assets/img/products/business.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 1290,
+          "oldPriceLabel": "from €1,290"
         },
         {
           "id": "growth",
           "type": "Growth",
           "name": "Growth Setup",
           "text": "Website, SEO plan, Google Business and content system.",
-          "price": 2390,
-          "priceLabel": "from €2,390",
+          "price": 1699,
+          "priceLabel": "from €1,699",
           "image": "assets/img/products/growth.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 1990,
+          "oldPriceLabel": "from €1,990"
         },
         {
           "id": "google",
           "type": "Local",
           "name": "Google Local",
           "text": "Google Business setup and local SEO foundation.",
-          "price": 199,
-          "priceLabel": "from €199",
+          "price": 129,
+          "priceLabel": "from €129",
           "image": "assets/img/products/local.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 149,
+          "oldPriceLabel": "from €149"
         },
         {
           "id": "care-essential",
           "type": "Support",
           "name": "Care Essential",
           "text": "Monthly basic support and small edits.",
-          "price": 63,
-          "priceLabel": "€63/month",
+          "price": 39,
+          "priceLabel": "€39/month",
           "image": "assets/img/products/support-essential.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 49,
+          "oldPriceLabel": "€49/month"
         },
         {
           "id": "care-business",
           "type": "Support",
           "name": "Care Business",
           "text": "More editing time plus security and performance checks.",
-          "price": 119,
-          "priceLabel": "€119/month",
+          "price": 79,
+          "priceLabel": "€79/month",
           "image": "assets/img/products/support-business.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 89,
+          "oldPriceLabel": "€89/month"
         },
         {
           "id": "care-priority",
           "type": "Support",
           "name": "Care Priority",
           "text": "Priority support, more editing time and monthly review.",
-          "price": 199,
-          "priceLabel": "€199/month",
+          "price": 129,
+          "priceLabel": "€129/month",
           "image": "assets/img/products/support-priority.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 149,
+          "oldPriceLabel": "€149/month"
         },
         {
           "id": "course-web",
           "type": "Course",
           "name": "Website Start live course",
           "text": "Live course covering structure, tech, SEO and launch checklist.",
-          "price": 79,
-          "priceLabel": "€79",
+          "price": 49,
+          "priceLabel": "€49",
           "image": "assets/img/products/course-web.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 59,
+          "oldPriceLabel": "€59"
         },
         {
           "id": "course-seo",
           "type": "Course",
           "name": "SEO & Google Business",
           "text": "Live course for local visibility and practical SEO basics.",
-          "price": 119,
-          "priceLabel": "€119",
+          "price": 79,
+          "priceLabel": "€79",
           "image": "assets/img/products/course-seo.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 89,
+          "oldPriceLabel": "€89"
         },
         {
           "id": "course-social",
           "type": "Course",
           "name": "YouTube & Social Workflow",
           "text": "Live course for content planning, uploads and analytics.",
-          "price": 95,
-          "priceLabel": "€95",
+          "price": 69,
+          "priceLabel": "€69",
           "image": "assets/img/products/course-social.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 79,
+          "oldPriceLabel": "€79"
         },
         {
           "id": "social-youtube",
           "type": "Content",
           "name": "Social & YouTube support",
           "text": "Channel, content and analytics support.",
-          "price": 239,
-          "priceLabel": "€239/month",
+          "price": 179,
+          "priceLabel": "€179/month",
           "image": "assets/img/products/social.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 199,
+          "oldPriceLabel": "€199/month"
         },
         {
           "id": "consulting",
           "type": "Consulting",
           "name": "1 hour consulting",
           "text": "Individual online consulting for your digital topic.",
-          "price": 76,
-          "priceLabel": "€76/hour",
+          "price": 59,
+          "priceLabel": "€59/hour",
           "image": "assets/img/products/consulting.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 69,
+          "oldPriceLabel": "€69/hour"
         },
         {
           "id": "audit",
           "type": "Audit",
           "name": "Website audit",
           "text": "Review of structure, SEO, speed, trust and contact paths.",
-          "price": 119,
-          "priceLabel": "€119",
+          "price": 79,
+          "priceLabel": "€79",
           "image": "assets/img/products/audit.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 89,
+          "oldPriceLabel": "€89"
         },
         {
           "id": "brandkit",
           "type": "Brand",
           "name": "Mini brand kit",
           "text": "Colours, logo rules and simple social assets.",
-          "price": 159,
-          "priceLabel": "€159",
+          "price": 119,
+          "priceLabel": "€119",
           "image": "assets/img/products/brand.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 129,
+          "oldPriceLabel": "€129"
         },
         {
           "id": "emailsetup",
           "type": "Setup",
           "name": "Domain & email setup",
           "text": "DNS, SSL and professional email setup.",
-          "price": 99,
-          "priceLabel": "€99",
+          "price": 69,
+          "priceLabel": "€69",
           "image": "assets/img/products/domain.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 79,
+          "oldPriceLabel": "€79"
         },
         {
           "id": "content-refresh",
           "type": "SEO",
           "name": "SEO Content Refresh",
           "text": "Review, update and improve internal linking across up to three existing pages.",
-          "price": 239,
-          "priceLabel": "€239",
+          "price": 159,
+          "priceLabel": "€159",
           "image": "assets/img/products/seo-links.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 179,
+          "oldPriceLabel": "€179"
         },
         {
           "id": "digital-pr",
           "type": "SEO & PR",
           "name": "Digital PR Starter",
           "text": "Topic idea, expert-article draft and a focused list of suitable publications. Placement is not guaranteed and third-party fees are separate.",
-          "price": 319,
-          "priceLabel": "from €319",
+          "price": 219,
+          "priceLabel": "from €219",
           "image": "assets/img/products/digital-pr.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "from €249"
+        },
+        {
+          "id": "seo-foundation",
+          "type": "SEO",
+          "name": "SEO Foundation",
+          "text": "Technical basics, keywords, page titles, meta copy and a clear priority plan.",
+          "price": 249,
+          "priceLabel": "€249",
+          "image": "assets/img/products/seo-links.svg",
+          "billing": "one-time",
+          "oldPrice": 299,
+          "oldPriceLabel": "€299"
+        },
+        {
+          "id": "local-seo",
+          "type": "SEO",
+          "name": "Local SEO Support",
+          "text": "Monthly local optimisation, content priorities and a concise progress review.",
+          "price": 219,
+          "priceLabel": "€219/month",
+          "image": "assets/img/products/local-seo-guide.svg",
+          "billing": "monthly",
+          "oldPrice": 249,
+          "oldPriceLabel": "€249/month"
+        },
+        {
+          "id": "google-ads",
+          "type": "Ads",
+          "name": "Google Ads Setup",
+          "text": "Campaign structure, audiences, ad drafts and tracking basics. Ad spend is separate.",
+          "price": 219,
+          "priceLabel": "€219",
+          "image": "assets/img/products/local.svg",
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "€249"
+        },
+        {
+          "id": "social-ads",
+          "type": "Ads",
+          "name": "Social Ads Setup",
+          "text": "Campaign structure, audiences and ad variants for Meta platforms. Ad spend is separate.",
+          "price": 219,
+          "priceLabel": "€219",
+          "image": "assets/img/products/social.svg",
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "€249"
         }
       ],
       "oneTimeLabel": "One-time",
       "monthlyLabel": "Per month",
-      "allLabel": "All"
+      "allLabel": "All",
+      "promoLabel": "Promo code",
+      "promoPlaceholder": "Enter code",
+      "promoApply": "Apply",
+      "promoRemove": "Remove",
+      "promoApplied": "Code {code} is active: {discount} off one-time services.",
+      "promoInvalid": "This code is invalid or not currently active.",
+      "promoMinimum": "This code applies from a {minimum} one-time subtotal.",
+      "promoExpired": "This code is no longer active.",
+      "promoSavings": "Promo saving",
+      "promoLine": "Promo code {code}: −{discount}",
+      "promoHint": "Promo codes apply only to one-time services and are verified in the final quote."
     },
     "integrations": {
       "eyebrow": "Tools",
@@ -2240,7 +2488,7 @@ const WEBURIX_CONTENT = {
       "items": [
         {
           "kicker": "Forms",
-          "title": "Netlify / Formspree / Web3Forms",
+          "title": "FormSubmit – active form service",
           "text": "Contact forms can later run through a real form service or backend."
         },
         {
@@ -2286,7 +2534,7 @@ const WEBURIX_CONTENT = {
     "portal": {
       "eyebrow": "Client portal",
       "title": "Client access prepared — without unsafe frontend passwords.",
-      "text": "For GitHub Pages this remains a clean access request. Later, real login can be connected through Supabase or Firebase.",
+      "text": "For now, this remains a secure access request without frontend passwords. A real login can later be connected through a reviewed authentication service.",
       "email": "Email",
       "project": "Project / company",
       "button": "Request access"
@@ -2295,7 +2543,8 @@ const WEBURIX_CONTENT = {
       "eyebrow": "Newsletter waitlist",
       "title": "Updates only after you confirm.",
       "text": "Register your interest without obligation. A real newsletter starts only after a separate double opt-in and includes a clear unsubscribe option.",
-      "button": "Join waitlist"
+      "button": "Join waitlist",
+      "consent": "I would like to be informed when the Weburix newsletter launches and can withdraw this waitlist request at any time."
     },
     "launchlab": {
       "eyebrow": "Launch check",
@@ -2410,7 +2659,7 @@ const WEBURIX_CONTENT = {
     "priceList": {
       "eyebrow": "Pricing overview",
       "title": "Every core service in one clear list.",
-      "text": "Transparent starting prices without hidden agency mark-ups. The exact scope and binding final price are confirmed in writing before work begins.",
+      "text": "Deliberately affordable entry pricing with a clearly defined scope. Compared with many traditional agency offers, the entry barrier stays low while quality, accessibility and a written quote remain part of the service.",
       "from": "from",
       "monthly": "monthly",
       "hour": "per hour",
@@ -2421,33 +2670,39 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Starter Site (1–3 pages)",
-              "price": "€790",
-              "oldPrice": "€990"
+              "price": "€599",
+              "id": "starter",
+              "oldPrice": "€690"
             },
             {
               "name": "Business website (up to 6 pages)",
-              "price": "€1,590",
-              "oldPrice": "€1,990"
+              "price": "€1,099",
+              "id": "business",
+              "oldPrice": "€1,290"
             },
             {
               "name": "Growth Setup",
-              "price": "€2,390",
-              "oldPrice": "€2,990"
+              "price": "€1,699",
+              "id": "growth",
+              "oldPrice": "€1,990"
             },
             {
               "name": "Website audit",
-              "price": "€119",
-              "oldPrice": "€149"
+              "price": "€79",
+              "id": "audit",
+              "oldPrice": "€89"
             },
             {
               "name": "Mini brand kit",
-              "price": "€159",
-              "oldPrice": "€199"
+              "price": "€119",
+              "id": "brandkit",
+              "oldPrice": "€129"
             },
             {
               "name": "Domain & email setup",
-              "price": "€99",
-              "oldPrice": "€129"
+              "price": "€69",
+              "id": "emailsetup",
+              "oldPrice": "€79"
             }
           ]
         },
@@ -2456,43 +2711,51 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Google Business setup",
-              "price": "€199",
-              "oldPrice": "€249"
+              "price": "€129",
+              "id": "google",
+              "oldPrice": "€149"
             },
             {
               "name": "SEO foundation",
-              "price": "€399",
-              "oldPrice": "€499"
-            },
-            {
-              "name": "SEO Content Refresh",
-              "price": "€239",
+              "price": "€249",
+              "id": "seo-foundation",
               "oldPrice": "€299"
             },
             {
+              "name": "SEO Content Refresh",
+              "price": "€159",
+              "id": "content-refresh",
+              "oldPrice": "€179"
+            },
+            {
               "name": "Digital PR & expert article",
-              "price": "€319",
-              "oldPrice": "€399"
+              "price": "€219",
+              "id": "digital-pr",
+              "oldPrice": "€249"
             },
             {
               "name": "Local SEO support",
-              "price": "€319/month",
-              "oldPrice": "€399/month"
+              "price": "€219/month",
+              "id": "local-seo",
+              "oldPrice": "€249/month"
             },
             {
               "name": "Social & YouTube support",
-              "price": "€239/month",
-              "oldPrice": "€299/month"
+              "price": "€179/month",
+              "id": "social-youtube",
+              "oldPrice": "€199/month"
             },
             {
               "name": "Google Ads setup",
-              "price": "€319",
-              "oldPrice": "€399"
+              "price": "€219",
+              "id": "google-ads",
+              "oldPrice": "€249"
             },
             {
               "name": "Social Ads setup",
-              "price": "€319",
-              "oldPrice": "€399"
+              "price": "€219",
+              "id": "social-ads",
+              "oldPrice": "€249"
             }
           ]
         },
@@ -2501,28 +2764,33 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Care Essential",
-              "price": "€63/month",
-              "oldPrice": "€79/month"
+              "price": "€39/month",
+              "id": "care-essential",
+              "oldPrice": "€49/month"
             },
             {
               "name": "Care Business",
-              "price": "€119/month",
-              "oldPrice": "€149/month"
+              "price": "€79/month",
+              "id": "care-business",
+              "oldPrice": "€89/month"
             },
             {
               "name": "Care Priority",
-              "price": "€199/month",
-              "oldPrice": "€249/month"
+              "price": "€129/month",
+              "id": "care-priority",
+              "oldPrice": "€149/month"
             },
             {
               "name": "Individual consulting",
-              "price": "€76/hour",
-              "oldPrice": "€95/hour"
+              "price": "€59/hour",
+              "id": "consulting",
+              "oldPrice": "€69/hour"
             },
             {
               "name": "5-hour consulting block",
-              "price": "€349",
-              "oldPrice": "€475"
+              "price": "€259",
+              "id": "consulting-block",
+              "oldPrice": "€299"
             }
           ]
         },
@@ -2531,23 +2799,27 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Website Start live course",
-              "price": "€79",
-              "oldPrice": "€99"
+              "price": "€49",
+              "id": "course-web",
+              "oldPrice": "€59"
             },
             {
               "name": "SEO & Google Business live course",
-              "price": "€119",
-              "oldPrice": "€149"
+              "price": "€79",
+              "id": "course-seo",
+              "oldPrice": "€89"
             },
             {
               "name": "YouTube & Social Workflow live course",
-              "price": "€95",
-              "oldPrice": "€119"
+              "price": "€69",
+              "id": "course-social",
+              "oldPrice": "€79"
             },
             {
               "name": "1:1 practical workshop",
-              "price": "€159",
-              "oldPrice": "€199"
+              "price": "€119",
+              "id": "workshop",
+              "oldPrice": "€129"
             }
           ]
         }
@@ -2562,46 +2834,49 @@ const WEBURIX_CONTENT = {
       "items": [
         {
           "name": "Care Essential",
-          "price": "€63",
+          "price": "€39",
           "period": "/month",
-          "oldPrice": "€79",
           "image": "assets/img/products/support-essential.svg",
           "features": [
-            "Up to 30 min of small edits",
+            "Up to 20 minutes of small edits",
             "Monthly technical check",
             "Email support",
             "Usually reply within 2 business days"
           ],
-          "featured": false
+          "featured": false,
+          "id": "care-essential",
+          "oldPrice": "€49"
         },
         {
           "name": "Care Business",
-          "price": "€119",
+          "price": "€79",
           "period": "/month",
-          "oldPrice": "€149",
           "image": "assets/img/products/support-business.svg",
           "features": [
-            "Up to 90 min of edits",
+            "Up to 60 minutes of edits",
             "Backup and security check",
             "SEO/performance quick review",
             "Prioritised reply, usually next business day"
           ],
-          "featured": true
+          "featured": true,
+          "id": "care-business",
+          "oldPrice": "€89"
         },
         {
           "name": "Care Priority",
-          "price": "€199",
+          "price": "€129",
           "period": "/month",
-          "oldPrice": "€249",
           "image": "assets/img/products/support-priority.svg",
           "features": [
-            "Up to 3 hours of edits",
+            "Up to 2 hours of edits",
             "Monthly SEO/analytics review",
             "Quarterly content refresh and internal-link review",
             "Priority support",
             "Optional fixed monthly call"
           ],
-          "featured": false
+          "featured": false,
+          "id": "care-priority",
+          "oldPrice": "€149"
         }
       ]
     },
@@ -2617,8 +2892,7 @@ const WEBURIX_CONTENT = {
         {
           "name": "Website Start",
           "subtitle": "From idea to a clear website",
-          "price": "€79",
-          "oldPrice": "€99",
+          "price": "€49",
           "duration": "about 2 hours",
           "image": "assets/img/products/course-web.svg",
           "points": [
@@ -2626,13 +2900,14 @@ const WEBURIX_CONTENT = {
             "Understand domains, hosting and forms",
             "Apply launch-ready SEO basics",
             "Take away a launch checklist"
-          ]
+          ],
+          "id": "course-web",
+          "oldPrice": "€59"
         },
         {
           "name": "SEO & Google Business",
           "subtitle": "Improve local visibility",
-          "price": "€119",
-          "oldPrice": "€149",
+          "price": "€79",
           "duration": "about 2.5 hours",
           "image": "assets/img/products/course-seo.svg",
           "points": [
@@ -2640,13 +2915,14 @@ const WEBURIX_CONTENT = {
             "Set up Google Business properly",
             "Write metadata and local pages",
             "Define measurable next steps"
-          ]
+          ],
+          "id": "course-seo",
+          "oldPrice": "€89"
         },
         {
           "name": "YouTube & Social Workflow",
           "subtitle": "Make content repeatable",
-          "price": "€95",
-          "oldPrice": "€119",
+          "price": "€69",
           "duration": "about 2 hours",
           "image": "assets/img/products/course-social.svg",
           "points": [
@@ -2654,13 +2930,14 @@ const WEBURIX_CONTENT = {
             "Improve titles, hooks and thumbnails",
             "Plan Shorts/Reels efficiently",
             "Read analytics with context"
-          ]
+          ],
+          "id": "course-social",
+          "oldPrice": "€79"
         },
         {
           "name": "1:1 Practical Workshop",
           "subtitle": "Work directly on your project",
-          "price": "€159",
-          "oldPrice": "€199",
+          "price": "€119",
           "duration": "about 2 hours",
           "image": "assets/img/products/course-one.svg",
           "points": [
@@ -2668,24 +2945,27 @@ const WEBURIX_CONTENT = {
             "Live work on the project",
             "Practical action plan",
             "Short email follow-up"
-          ]
+          ],
+          "id": "workshop",
+          "oldPrice": "€129"
         }
       ]
     },
     "consulting": {
       "eyebrow": "Individual consulting",
       "title": "Specific help instead of generic presentations.",
-      "text": "For websites, SEO, Google Business, YouTube, social media, domains or digital workflows. One hour is €76; a five-hour block is €349.",
-      "price": "€76 / hour",
-      "oldPrice": "€95 / hour",
-      "block": "5 hours: €349",
+      "text": "For websites, SEO, Google Business, YouTube, social media, domains or digital workflows. One hour is €59; the five-hour block is €259.",
+      "price": "€59 / hour",
+      "block": "5 hours: €259",
       "cta": "Request a session",
       "points": [
         "Online or by arrangement in Munich",
         "Clear topic agreed in advance",
         "Short written summary afterwards",
         "No long-term commitment"
-      ]
+      ],
+      "oldPrice": "€69 / hour",
+      "oldBlock": "5 hours: €299"
     },
     "knowledge": {
       "eyebrow": "Knowledge hub",
@@ -2754,7 +3034,7 @@ const WEBURIX_CONTENT = {
       "primary": "Pošalji upit",
       "secondary": "Pogledaj pakete",
       "trust1": "Brz odgovor",
-      "trust2": "Pošteno formirane početne cene",
+      "trust2": "Pristupačne početne cene",
       "trust3": "Direktan kontakt",
       "cardTitle": "Build. Launch. Improve.",
       "cardText": "Sajt, vidljivost, kursevi i podrška na jednom mestu."
@@ -2874,7 +3154,7 @@ const WEBURIX_CONTENT = {
         "text": "Live kursevi i individualno savetovanje pomažu da doneseš odluku, izbegneš greške i samostalno uradiš stvari kako treba.",
         "points": [
           "Live kursevi u malim grupama",
-          "1:1 savetovanje od 76 € po satu",
+          "1:1 savetovanje od 59 € po satu",
           "Praktični primeri umesto previše teorije",
           "Bez nepotrebne dugoročne obaveze"
         ]
@@ -2920,13 +3200,13 @@ const WEBURIX_CONTENT = {
     },
     "packages": {
       "eyebrow": "Paketi",
-      "title": "Fer početne cene umesto nejasnih agencijskih ponuda.",
-      "text": "Početne cene su namerno jednostavno i pošteno formirane. Dobijaš jasno definisan obim, direktan kontakt i pisanu, obavezujuću ponudu pre početka rada.",
+      "title": "Jasne početne cene za male firme.",
+      "text": "Weburix je namerno cenovno ispod mnogih klasičnih agencijskih početnih ponuda. To postižemo jednostavnim procesom, jasno ograničenim paketima i direktnim kontaktom — bez skrivenog smanjivanja kvaliteta.",
       "popular": "Popularno",
       "cta": "Pošalji upit",
       "details": "Otvori detalje",
       "close": "Zatvori",
-      "note": "Sve cene su početne i okvirne. Domen, hosting, budžet za oglase, licence i troškovi drugih servisa nisu uključeni osim kada je drugačije navedeno.",
+      "note": "Svi iznosi su neobavezujuće početne cene. Obim, poreska napomena i konačna cena potvrđuju se pisano pre početka rada. Domen, hosting, budžet za oglase, licence i troškovi drugih servisa uključeni su samo kada to izričito piše u ponudi.",
       "saving": "Početna cena",
       "reference": "Orijentacija"
     },
@@ -2934,8 +3214,7 @@ const WEBURIX_CONTENT = {
       {
         "name": "Starter Site",
         "label": "Za prvi profesionalan online nastup",
-        "price": "od 790 €",
-        "oldPrice": "990 €",
+        "price": "od 599 €",
         "features": [
           "1–3 stranice",
           "Kontakt formular",
@@ -2947,13 +3226,14 @@ const WEBURIX_CONTENT = {
           "Po želji: više jezika, Google Business i podrška."
         ],
         "featured": false,
-        "image": "assets/img/products/starter.svg"
+        "image": "assets/img/products/starter.svg",
+        "id": "starter",
+        "oldPrice": "od 690 €"
       },
       {
         "name": "Business Web",
         "label": "Za firme kojima je potreban jasan i ozbiljan sajt",
-        "price": "od 1.590 €",
-        "oldPrice": "1.990 €",
+        "price": "od 1.099 €",
         "features": [
           "Do 6 stranica",
           "Projektni formular",
@@ -2965,13 +3245,14 @@ const WEBURIX_CONTENT = {
           "Za male firme, ordinacije, zanatlije i B2B usluge."
         ],
         "featured": true,
-        "image": "assets/img/products/business.svg"
+        "image": "assets/img/products/business.svg",
+        "id": "business",
+        "oldPrice": "od 1.290 €"
       },
       {
         "name": "Growth Setup",
         "label": "Sajt uz vidljivost i sistem sadržaja",
-        "price": "od 2.390 €",
-        "oldPrice": "2.990 €",
+        "price": "od 1.699 €",
         "features": [
           "Sajt + SEO plan",
           "Podešavanje Google Business profila",
@@ -2983,13 +3264,14 @@ const WEBURIX_CONTENT = {
           "Uključuje praktičan plan za prvih 90 dana."
         ],
         "featured": false,
-        "image": "assets/img/products/growth.svg"
+        "image": "assets/img/products/growth.svg",
+        "id": "growth",
+        "oldPrice": "od 1.990 €"
       },
       {
         "name": "Google Local",
         "label": "Za lokalnu vidljivost u pretrazi i na mapama",
-        "price": "od 199 €",
-        "oldPrice": "249 €",
+        "price": "od 129 €",
         "features": [
           "Google Business profil",
           "Usluge i kategorije",
@@ -3001,13 +3283,14 @@ const WEBURIX_CONTENT = {
           "Budžet za oglase i redovno održavanje sadržaja su opcioni."
         ],
         "featured": false,
-        "image": "assets/img/products/local.svg"
+        "image": "assets/img/products/local.svg",
+        "id": "google",
+        "oldPrice": "od 149 €"
       },
       {
         "name": "Social & YouTube",
         "label": "Za kreatore, brendove i kanale",
-        "price": "od 239 €/mesečno",
-        "oldPrice": "299 €/mesečno",
+        "price": "od 179 €/mesečno",
         "features": [
           "Provera kanala i profila",
           "Plan sadržaja i objava",
@@ -3019,13 +3302,14 @@ const WEBURIX_CONTENT = {
           "Platforme, obim i broj sadržaja definišu se u ponudi."
         ],
         "featured": false,
-        "image": "assets/img/products/social.svg"
+        "image": "assets/img/products/social.svg",
+        "id": "social-youtube",
+        "oldPrice": "od 199 €/mesečno"
       },
       {
         "name": "Care Plan",
         "label": "Kontinuirana pomoć posle lansiranja",
-        "price": "od 63 €/mesečno",
-        "oldPrice": "79 €/mesečno",
+        "price": "od 39 €/mesečno",
         "features": [
           "Male izmene",
           "Mesečna tehnička provera",
@@ -3037,7 +3321,9 @@ const WEBURIX_CONTENT = {
           "Dostupni su i Business i Priority paketi."
         ],
         "featured": false,
-        "image": "assets/img/products/support.svg"
+        "image": "assets/img/products/support.svg",
+        "id": "care-essential",
+        "oldPrice": "od 49 €/mesečno"
       }
     ],
     "addons": {
@@ -3069,7 +3355,7 @@ const WEBURIX_CONTENT = {
     "forms": {
       "eyebrow": "Upit",
       "title": "Pošalji kratku poruku ili konkretan projektni upit.",
-      "text": "Formulari su pripremljeni za direktno slanje. Za GitHub Pages treba samo ubaciti Web3Forms ključ u site-config.js.",
+      "text": "Formulari šalju preko FormSubmit direktno Weburixu. Posle jednokratne potvrde adrese primaoca slanje ostaje trajno aktivno; ako je AJAX blokiran, automatski se koristi standardni sigurni HTTPS formular.",
       "quickTitle": "Brzi kontakt",
       "quickText": "Za kratko pitanje ili prvu ideju.",
       "projectTitle": "Projektni upit",
@@ -3106,10 +3392,9 @@ const WEBURIX_CONTENT = {
         "Ispod 500 €",
         "500–1.000 €",
         "1.000–2.000 €",
-        "2.000–4.000 €",
-        "4.000 €+",
-        "Mesečni budžet",
-        "Još otvoreno"
+        "2.000–3.500 €",
+        "3.500 €+",
+        "Mesečni budžet"
       ],
       "timelineOptions": [
         "Što pre",
@@ -3146,10 +3431,14 @@ const WEBURIX_CONTENT = {
       "privacy": "Pročitao/la sam obaveštenje o zaštiti podataka.",
       "sending": "Upit se šalje...",
       "apiSuccess": "Hvala! Upit je poslat.",
-      "error": "Slanje nije uspelo. Proveri Web3Forms key ili piši direktno na info@weburix.com.",
+      "activationNeeded": "Još samo aktivacija: na info@weburix.com je poslata jednokratna poruka za potvrdu. Posle potvrde direktno slanje radi trajno. Nakon toga pošalji upit ponovo ili sada koristi dugme za e-mail.",
+      "error": "Slanje nije uspelo. Pokušaj ponovo ili piši direktno na info@weburix.com.",
       "required": "Popuni obavezna polja i potvrdi zaštitu podataka.",
       "botBlocked": "Spam zaštita je zaustavila upit.",
-      "configMissing": "Skoro gotovo: ubaci Web3Forms key u assets/js/site-config.js. Posle toga upiti stižu direktno na e-mail."
+      "configMissing": "Direktno slanje formulara još nije aktivirano. Upit će se umesto toga pripremiti u tvom e-mail programu.",
+      "mailFallback": "Otvara se tvoj e-mail program sa pripremljenim upitom. Tamo još klikni „Pošalji“.",
+      "nativeFallback": "Direktno slanje se nastavlja sigurnim standardnim putem …",
+      "deliveryNote": "Sigurno HTTPS slanje; nakon jednokratne aktivacije primaoca upiti se dostavljaju direktno."
     },
     "process": {
       "eyebrow": "Proces",
@@ -3191,15 +3480,15 @@ const WEBURIX_CONTENT = {
       },
       {
         "q": "Kako Weburix održava cene pristupačnim?",
-        "a": "Radimo sa jednostavnim procesom, jasno definisanim paketima i bez nepotrebnih agencijskih dodataka. Uvek su obavezujući pisano potvrđen obim i konačna cena u individualnoj ponudi."
+        "a": "Radimo sa jasno definisanim obimom, proverеним kvalitetnim komponentama i direktnom komunikacijom. Tako izbegavamo veliki deo klasičnih agencijskih troškova. Uvek su obavezujući pisano potvrđen obim i konačna ponuda."
       },
       {
         "q": "Koji paketi mesečne podrške postoje?",
-        "a": "Care Essential kreće od 63 €, Care Business od 119 €, a Care Priority od 199 € mesečno. Uključeno vreme, rokovi odgovora i usluge navedeni su u svakom paketu."
+        "a": "Care Essential kreće od 39 €, Care Business od 79 €, a Care Priority od 129 € mesečno. Uključeno vreme, rokovi odgovora i usluge navedeni su u svakom paketu."
       },
       {
         "q": "Da li nudite kurseve i individualno savetovanje?",
-        "a": "Da. Planirani su live kursevi za sajtove, SEO/Google Business i YouTube/društvene mreže. Individualno savetovanje košta 76 € po satu ili 349 € za blok od pet sati."
+        "a": "Da. Planirani su live kursevi za sajtove, SEO/Google Business i YouTube/društvene mreže. Individualno savetovanje košta 59 € po satu ili 259 € za blok od pet sati."
       },
       {
         "q": "Koje usluge mogu da kombinujem?",
@@ -3287,7 +3576,11 @@ const WEBURIX_CONTENT = {
       "facebookText": "Novosti, reference i direktne poruke.",
       "instagramText": "Saveti, primeri, uvidi i kratke objave.",
       "whatsappText": "Brzi poslovni kontakt čim broj bude aktivan.",
-      "openChannel": "Otvori"
+      "openChannel": "Otvori",
+      "quickAction": "Otvori brzi kontakt",
+      "projectAction": "Otvori projektni formular",
+      "consultingAction": "Pošalji upit za savetovanje",
+      "supportAction": "Pošalji support upit"
     },
     "chat": {
       "title": "Weburix Assistant",
@@ -3298,6 +3591,7 @@ const WEBURIX_CONTENT = {
         "Kako radi osvežavanje sadržaja?",
         "Koji paket mi treba?",
         "Prikaži sve cene",
+        "EUR ili RSD?",
         "Mesečna podrška?",
         "Kursevi i radionice?",
         "Savetovanje po satu?",
@@ -3306,7 +3600,8 @@ const WEBURIX_CONTENT = {
         "Checkout i plaćanje?"
       ],
       "answers": {
-        "price": "Početne cene su 790 € za manji sajt, 1.590 € za Business Web i 2.390 € za Growth Setup. Podrška kreće od 63 € mesečno, a savetovanje košta 76 € po satu. Eksterni troškovi se navode posebno.",
+        "price": "Početne cene: Starter Site od 599 €, Business Web od 1.099 € i Growth Setup od 1.699 €. Podrška kreće od 39 € mesečno, a savetovanje od 59 € po satu. Troškovi drugih servisa i oglasa navode se posebno.",
+        "currency": "Na srpskoj verziji možeš da biraš prikaz u EUR, RSD ili obe valute. Dinarski iznosi su informativni preračun; ponuda i naplata potvrđuju se u evrima.",
         "packages": "Dostupni su Starter Site, Business Web, Growth Setup, Google Local, Social & YouTube i tri Care paketa podrške. Kursevi i individualno savetovanje mogu se dodati.",
         "website": "Weburix pravi sajtove, landing stranice i redizajn sa jasnom strukturom, modernim izgledom, kontakt opcijama, formularima i čistom tehničkom osnovom.",
         "seo": "SEO uključuje strukturu stranica, tehničke osnove, meta podatke, tekstove, lokalni SEO i Google Business. Cilj je bolja vidljivost bez praznih obećanja.",
@@ -3316,25 +3611,25 @@ const WEBURIX_CONTENT = {
         "ads": "Google Ads ili Social Ads su mogući. Bitni su ponuda, landing stranica, tracking i budžet, inače se novac lako potroši bez efekta.",
         "domain": "Pomažemo oko domena, DNS-a, povezivanja e-maila, SSL-a i čiste predaje. Hosting se bira prema projektu.",
         "security": "Sigurnost može da uključi SSL, update, backup, jake lozinke, role, strukturu naloga i osnovne provere.",
-        "support": "Care Essential košta 63 €, Care Business 119 €, a Care Priority 199 € mesečno. U zavisnosti od paketa uključene su male izmene, tehničke provere, SEO/performance pregled i prioritetan odgovor.",
+        "support": "Care Essential košta 39 €, Care Business 79 €, a Care Priority 129 € mesečno. Paketi se razlikuju po uključenom vremenu za izmene, proverama i prioritetu odgovora.",
         "multilingual": "Višejezične stranice su moguće. Ovaj sajt je pripremljen za nemački, engleski i srpski latinica.",
         "timeline": "Mali sajtovi mogu brže da krenu. Veći višejezični projekti ili marketing sistemi traže više planiranja.",
         "legal": "Ne nudimo fake followere, fake lajkove, fake komentare ili bot preglede. To kratko izgleda veće, ali šteti brendu, platformama i pravnoj sigurnosti.",
         "audit": "Moguć je start-check: pogledamo sajt, Google profil ili social kanal i damo konkretne sledeće korake.",
         "contact": "Najbolje je poslati projektni upit ili pisati na info@weburix.com. Weburix je dostupan i na Instagramu i Facebooku; WhatsApp se aktivira čim poslovni broj bude spreman.",
         "fallback": "Mogu da pomognem oko sajta, paketa, cena, formulara, checkout-a, GitHub Pages, SEO-a, Google Business-a, YouTube-a, social media, reklama, domena, sigurnosti i podrške.",
-        "forms": "Upit može da se pošalje direktno kroz formular. Za GitHub Pages samo ubaci Web3Forms access key u assets/js/site-config.js i poruke stižu na e-mail.",
-        "hosting": "Početna je sada direktno na domenu: weburix.com/. Ne treba /home. GitHub Pages prikazuje root index.html direktno; podstranice kao /impressum/ i /datenschutz/ ostaju clean.",
+        "forms": "Upit može direktno da se pošalje kroz formular. Slanje ide preko FormSubmit; posle jednokratne potvrde adrese info@weburix.com poruke stižu na e-mail. Ako je AJAX blokiran, koristi se isti sigurni HTTPS POST.",
+        "hosting": "Početna se nalazi u root fajlu index.html. Kada se poveže sopstveni domen, biće direktno dostupna na weburix.com, a podstranice zadržavaju jasne relativne putanje.",
         "privacy": "Sajt u osnovnoj verziji nema analytics, eksterne fontove ni reklamne trackere. Datenschutz mora finalno da se prilagodi ako se dodaju eksterni alati ili form provider.",
         "process": "Jednostavno: upit, cilj, struktura, izrada, test, launch i opcioni support. Bez beskrajnih meeting-a, ali sa jasnom komunikacijom.",
         "checkout": "Konfigurator je korpa za upit, nije lažni shop. Posetilac izabere usluge, prebaci ih u formular i posle dobija pravu ponudu. Stripe/PayPal linkovi mogu kasnije da se dodaju.",
-        "integrations": "Pripremljeni su Netlify Forms, Formspree, Web3Forms, Stripe/PayPal payment linkovi i kasnije sopstveni backend. Po defaultu sajt ostaje brz i bez nepotrebnih eksternih skripti.",
+        "integrations": "FormSubmit je jedini aktivni formular servis. Stripe/PayPal linkovi i sopstveni backend ostaju isključene buduće opcije; sajt po defaultu ne učitava nepotrebne eksterne skripte.",
         "packageRecommend": "Za jednostavan početak: Starter Site. Za ozbiljan sajt firme: Business Web. Za sajt i vidljivost: Growth Setup. Za stalnu pomoć: Care Business. Za konkretnu odluku ili znanje: kurs ili 1:1 savetovanje.",
         "legalBusiness": "Za pravu online prodaju trebaju Impressum, Datenschutz, eventualno Widerruf/AGB, jasne cene i kod potrošača jasno dugme za plaćanje. Weburix bi na početku bolje trebalo da koristi upite/ponude umesto instant checkout-a.",
         "portal": "Portal je pripremljen kao zahtev za pristup. Pravi login kasnije treba preko Supabase/Firebase, ne sa lozinkama u statičkom frontend-u.",
         "newsletter": "Formular trenutno samo beleži interesovanje. Pravi newsletter će se aktivirati tek uz double opt-in, dokumentovanu saglasnost i link za odjavu.",
-        "courses": "Planirani live kursevi: Website Start 79 €, SEO i Google Business 119 €, YouTube i Social Workflow 95 € i 1:1 praktična radionica 159 €.",
-        "consulting": "Individualno savetovanje košta 76 € po satu ili 349 € za blok od pet sati. Tema može biti sajt, SEO, Google Business, YouTube, društvene mreže, domen, sigurnost ili digitalni procesi.",
+        "courses": "Planirani live kursevi: Website Start 49 €, SEO i Google Business 79 €, YouTube i Social Workflow 69 € i 1:1 praktična radionica 119 €.",
+        "consulting": "Individualno savetovanje košta 59 € po satu ili 259 € za blok od pet sati. Tema može biti sajt, SEO, Google Business, YouTube, društvene mreže, domen, sigurnost ili digitalni procesi.",
         "contentStrategy": "Fokus je na povezanim temama, jasnim internim linkovima i redovnom osvežavanju korisnih stranica. To olakšava snalaženje posetiocima i pomaže pretraživačima da razumeju sajt. Bez masovnih link paketa i pretrpavanja ključnim rečima.",
         "digitalPr": "Digitalni PR kod Weburixa znači relevantnu temu, kvalitetan stručni članak i ciljano javljanje odgovarajućim portalima. Bez masovnih linkova, obećanja pozicija ili garantovanog objavljivanja. Eksterni troškovi se unapred navode."
       }
@@ -3362,7 +3657,7 @@ const WEBURIX_CONTENT = {
         },
         {
           "title": "Formulari spremni",
-          "text": "Kontakt, projektni upit, newsletter i portal pristup su pripremljeni za Web3Forms ili sličan servis."
+          "text": "Kontakt, projektni upit, newsletter interesovanje i portal pristup koriste isti zaštićeni FormSubmit tok sa standardnim POST-om kao rezervom."
         },
         {
           "title": "Privacy-friendly",
@@ -3383,18 +3678,18 @@ const WEBURIX_CONTENT = {
       ]
     },
     "cookie": {
-      "title": "Privatnost pod tvojom kontrolom",
-      "text": "Nemački je podrazumevani jezik. Po želji možeš dozvoliti jednokratnu proveru države radi automatskog izbora jezika. Analytics i reklamni tracking nisu aktivni.",
+      "title": "Podešavanja uz zaštitu privatnosti",
+      "text": "Neophodna podešavanja pamte jezik i korpu za upit. Uz saglasnost samo jednom proveravamo kod države radi početnog jezika. Bez analytics i reklamnog praćenja.",
       "link": "Pročitaj zaštitu podataka",
       "necessary": "Samo neophodno",
-      "settings": "Podešavanja",
-      "accept": "Dozvoli automatski jezik",
+      "settings": "Detalji",
+      "accept": "Dozvoli proveru jezika",
       "modalTitle": "Podešavanja privatnosti",
-      "modalText": "Ti biraš koje opcione funkcije smeju da rade. Izbor možeš promeniti bilo kada u footeru.",
+      "modalText": "Izaberi da li je dozvoljena jednokratna provera koda države radi početnog jezika. Izbor možeš promeniti u footeru.",
       "necessaryTitle": "Neophodno",
-      "necessaryText": "Čuva izbor privatnosti, ručno izabran jezik i korpu za upit. Uvek aktivno.",
+      "necessaryText": "Čuva izbor privatnosti, ručno izabran jezik, prikaz cena i korpu za upit. Uvek aktivno.",
       "functionalTitle": "Funkcionalne opcije",
-      "functionalText": "Dozvoljava jednokratnu proveru dvoslovnog koda države: Nemačka/Austrija ostaju na nemačkom, zemlje bivše Jugoslavije prelaze na srpski, a ostale na engleski. Ne traži se precizna lokacija.",
+      "functionalText": "Dozvoljava jednokratnu proveru dvoslovnog koda države radi početnog jezika. Bez precizne lokacije i praćenja.",
       "analyticsTitle": "Analytics",
       "analyticsText": "Trenutno nije ugrađen.",
       "marketingTitle": "Marketing",
@@ -3426,175 +3721,268 @@ const WEBURIX_CONTENT = {
           "type": "Sajt",
           "name": "Starter Site",
           "text": "1–3 stranice, formular, SEO osnova i objava.",
-          "price": 790,
-          "priceLabel": "od 790 €",
+          "price": 599,
+          "priceLabel": "od 599 €",
           "image": "assets/img/products/starter.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 690,
+          "oldPriceLabel": "od 690 €"
         },
         {
           "id": "business",
           "type": "Sajt",
           "name": "Business Web",
           "text": "Do 6 stranica, projektni formular, lokalni SEO i jasna struktura firme.",
-          "price": 1590,
-          "priceLabel": "od 1.590 €",
+          "price": 1099,
+          "priceLabel": "od 1.099 €",
           "image": "assets/img/products/business.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 1290,
+          "oldPriceLabel": "od 1.290 €"
         },
         {
           "id": "growth",
           "type": "Rast",
           "name": "Growth Setup",
           "text": "Sajt, SEO plan, Google Business i sistem sadržaja.",
-          "price": 2390,
-          "priceLabel": "od 2.390 €",
+          "price": 1699,
+          "priceLabel": "od 1.699 €",
           "image": "assets/img/products/growth.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 1990,
+          "oldPriceLabel": "od 1.990 €"
         },
         {
           "id": "google",
           "type": "Lokalno",
           "name": "Google Local",
           "text": "Google Business setup i lokalna SEO osnova.",
-          "price": 199,
-          "priceLabel": "od 199 €",
+          "price": 129,
+          "priceLabel": "od 129 €",
           "image": "assets/img/products/local.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 149,
+          "oldPriceLabel": "od 149 €"
         },
         {
           "id": "care-essential",
           "type": "Podrška",
           "name": "Care Essential",
           "text": "Osnovna mesečna podrška i male izmene.",
-          "price": 63,
-          "priceLabel": "63 €/mesečno",
+          "price": 39,
+          "priceLabel": "39 €/mesečno",
           "image": "assets/img/products/support-essential.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 49,
+          "oldPriceLabel": "49 €/mesečno"
         },
         {
           "id": "care-business",
           "type": "Podrška",
           "name": "Care Business",
           "text": "Više vremena za izmene uz sigurnosne i performance provere.",
-          "price": 119,
-          "priceLabel": "119 €/mesečno",
+          "price": 79,
+          "priceLabel": "79 €/mesečno",
           "image": "assets/img/products/support-business.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 89,
+          "oldPriceLabel": "89 €/mesečno"
         },
         {
           "id": "care-priority",
           "type": "Podrška",
           "name": "Care Priority",
           "text": "Priority podrška, više izmena i mesečni pregled.",
-          "price": 199,
-          "priceLabel": "199 €/mesečno",
+          "price": 129,
+          "priceLabel": "129 €/mesečno",
           "image": "assets/img/products/support-priority.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 149,
+          "oldPriceLabel": "149 €/mesečno"
         },
         {
           "id": "course-web",
           "type": "Kurs",
           "name": "Website Start live kurs",
           "text": "Live kurs o strukturi, tehnici, SEO-u i launch checklisti.",
-          "price": 79,
-          "priceLabel": "79 €",
+          "price": 49,
+          "priceLabel": "49 €",
           "image": "assets/img/products/course-web.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 59,
+          "oldPriceLabel": "59 €"
         },
         {
           "id": "course-seo",
           "type": "Kurs",
           "name": "SEO i Google Business",
           "text": "Live kurs za lokalnu vidljivost i praktične SEO osnove.",
-          "price": 119,
-          "priceLabel": "119 €",
+          "price": 79,
+          "priceLabel": "79 €",
           "image": "assets/img/products/course-seo.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 89,
+          "oldPriceLabel": "89 €"
         },
         {
           "id": "course-social",
           "type": "Kurs",
           "name": "YouTube i sistem za sadržaj",
           "text": "Live kurs za plan sadržaja, objave i analitiku.",
-          "price": 95,
-          "priceLabel": "95 €",
+          "price": 69,
+          "priceLabel": "69 €",
           "image": "assets/img/products/course-social.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 79,
+          "oldPriceLabel": "79 €"
         },
         {
           "id": "social-youtube",
           "type": "Sadržaj",
           "name": "Social i YouTube podrška",
           "text": "Podrška za kanal, sadržaj i analitiku.",
-          "price": 239,
-          "priceLabel": "239 €/mesečno",
+          "price": 179,
+          "priceLabel": "179 €/mesečno",
           "image": "assets/img/products/social.svg",
-          "billing": "monthly"
+          "billing": "monthly",
+          "oldPrice": 199,
+          "oldPriceLabel": "199 €/mesečno"
         },
         {
           "id": "consulting",
           "type": "Savetovanje",
           "name": "1 sat savetovanja",
           "text": "Individualno online savetovanje za tvoju digitalnu temu.",
-          "price": 76,
-          "priceLabel": "76 €/sat",
+          "price": 59,
+          "priceLabel": "59 €/sat",
           "image": "assets/img/products/consulting.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 69,
+          "oldPriceLabel": "69 €/sat"
         },
         {
           "id": "audit",
           "type": "Provera",
           "name": "Analiza sajta",
           "text": "Provera strukture, SEO-a, brzine, poverenja i kontakt puteva.",
-          "price": 119,
-          "priceLabel": "119 €",
+          "price": 79,
+          "priceLabel": "79 €",
           "image": "assets/img/products/audit.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 89,
+          "oldPriceLabel": "89 €"
         },
         {
           "id": "brandkit",
           "type": "Brend",
           "name": "Mini Brand Kit",
           "text": "Boje, pravila za logo i jednostavni social materijali.",
-          "price": 159,
-          "priceLabel": "159 €",
+          "price": 119,
+          "priceLabel": "119 €",
           "image": "assets/img/products/brand.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 129,
+          "oldPriceLabel": "129 €"
         },
         {
           "id": "emailsetup",
           "type": "Setup",
           "name": "Domen i e-mail setup",
           "text": "DNS, SSL i profesionalna e-mail konfiguracija.",
-          "price": 99,
-          "priceLabel": "99 €",
+          "price": 69,
+          "priceLabel": "69 €",
           "image": "assets/img/products/domain.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 79,
+          "oldPriceLabel": "79 €"
         },
         {
           "id": "content-refresh",
           "type": "SEO",
           "name": "SEO osvežavanje sadržaja",
           "text": "Provera, dopuna i bolje interno povezivanje do tri postojeće stranice.",
-          "price": 239,
-          "priceLabel": "239 €",
+          "price": 159,
+          "priceLabel": "159 €",
           "image": "assets/img/products/seo-links.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 179,
+          "oldPriceLabel": "179 €"
         },
         {
           "id": "digital-pr",
           "type": "SEO i PR",
           "name": "Digital PR Starter",
           "text": "Predlog teme, nacrt stručnog članka i manja lista odgovarajućih portala. Objavljivanje nije garantovano, a eksterni troškovi se navode posebno.",
-          "price": 319,
-          "priceLabel": "od 319 €",
+          "price": 219,
+          "priceLabel": "od 219 €",
           "image": "assets/img/products/digital-pr.svg",
-          "billing": "one-time"
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "od 249 €"
+        },
+        {
+          "id": "seo-foundation",
+          "type": "SEO",
+          "name": "SEO osnova",
+          "text": "Tehnička osnova, ključne reči, naslovi stranica, meta tekstovi i jasan plan prioriteta.",
+          "price": 249,
+          "priceLabel": "249 €",
+          "image": "assets/img/products/seo-links.svg",
+          "billing": "one-time",
+          "oldPrice": 299,
+          "oldPriceLabel": "299 €"
+        },
+        {
+          "id": "local-seo",
+          "type": "SEO",
+          "name": "Lokalna SEO podrška",
+          "text": "Mesečna lokalna optimizacija, prioriteti sadržaja i kratak pregled napretka.",
+          "price": 219,
+          "priceLabel": "219 €/mesečno",
+          "image": "assets/img/products/local-seo-guide.svg",
+          "billing": "monthly",
+          "oldPrice": 249,
+          "oldPriceLabel": "249 €/mesečno"
+        },
+        {
+          "id": "google-ads",
+          "type": "Oglasi",
+          "name": "Google Ads podešavanje",
+          "text": "Struktura kampanje, publika, predlozi oglasa i osnova za praćenje. Budžet za oglase je poseban.",
+          "price": 219,
+          "priceLabel": "219 €",
+          "image": "assets/img/products/local.svg",
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "249 €"
+        },
+        {
+          "id": "social-ads",
+          "type": "Oglasi",
+          "name": "Social Ads podešavanje",
+          "text": "Struktura kampanje, publika i varijante oglasa za Meta platforme. Budžet za oglase je poseban.",
+          "price": 219,
+          "priceLabel": "219 €",
+          "image": "assets/img/products/social.svg",
+          "billing": "one-time",
+          "oldPrice": 249,
+          "oldPriceLabel": "249 €"
         }
       ],
       "oneTimeLabel": "Jednokratno",
       "monthlyLabel": "Mesečno",
-      "allLabel": "Sve"
+      "allLabel": "Sve",
+      "promoLabel": "Promo kod",
+      "promoPlaceholder": "Unesi kod",
+      "promoApply": "Primeni",
+      "promoRemove": "Ukloni",
+      "promoApplied": "Kod {code} je aktivan: {discount} popusta na jednokratne usluge.",
+      "promoInvalid": "Kod nije ispravan ili trenutno nije aktivan.",
+      "promoMinimum": "Kod važi od {minimum} jednokratne vrednosti.",
+      "promoExpired": "Kod više nije aktivan.",
+      "promoSavings": "Promo ušteda",
+      "promoLine": "Promo kod {code}: −{discount}",
+      "promoHint": "Promo kodovi važe samo za jednokratne usluge i proveravaju se u konačnoj ponudi."
     },
     "integrations": {
       "eyebrow": "Alati",
@@ -3603,7 +3991,7 @@ const WEBURIX_CONTENT = {
       "items": [
         {
           "kicker": "Forms",
-          "title": "Netlify / Formspree / Web3Forms",
+          "title": "FormSubmit – aktivni formular servis",
           "text": "Kontakt formulari kasnije mogu da rade preko pravog form servisa ili backend-a."
         },
         {
@@ -3649,7 +4037,7 @@ const WEBURIX_CONTENT = {
     "portal": {
       "eyebrow": "Client portal",
       "title": "Korisnički deo je pripremljen — bez nesigurnih lozinki u frontend-u.",
-      "text": "Za GitHub Pages ovo ostaje čist zahtev za pristup. Kasnije može pravi login preko Supabase ili Firebase.",
+      "text": "Za sada ovo ostaje bezbedan zahtev za pristup bez frontend lozinki. Kasnije se može povezati pravi login preko proverenog authentication servisa.",
       "email": "E-mail",
       "project": "Projekat / firma",
       "button": "Zatraži pristup"
@@ -3658,7 +4046,8 @@ const WEBURIX_CONTENT = {
       "eyebrow": "Lista za newsletter",
       "title": "Novosti tek posle tvoje potvrde.",
       "text": "Prijavi interesovanje bez obaveze. Pravi newsletter počinje tek posle posebne double-opt-in potvrde i ima jasnu opciju za odjavu.",
-      "button": "Prijavi interesovanje"
+      "button": "Prijavi interesovanje",
+      "consent": "Želim da budem obavešten/a kada Weburix newsletter počne i ovu prijavu interesovanja mogu da povučem u bilo kom trenutku."
     },
     "launchlab": {
       "eyebrow": "Launch check",
@@ -3773,7 +4162,7 @@ const WEBURIX_CONTENT = {
     "priceList": {
       "eyebrow": "Pregled cena",
       "title": "Sve važne usluge na jednom mestu.",
-      "text": "Transparentne početne cene bez skrivenih agencijskih dodataka. Tačan obim i obavezujuća konačna cena potvrđuju se pisano pre početka rada.",
+      "text": "Namerno pristupačne početne cene uz jasno definisan obim. U poređenju sa mnogim klasičnim agencijskim ponudama, početni trošak ostaje niži, dok kvalitet, dostupnost i pisana ponuda ostaju deo usluge.",
       "from": "od",
       "monthly": "mesečno",
       "hour": "po satu",
@@ -3784,33 +4173,39 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Starter Site (1–3 stranice)",
-              "price": "790 €",
-              "oldPrice": "990 €"
+              "price": "599 €",
+              "id": "starter",
+              "oldPrice": "690 €"
             },
             {
               "name": "Business sajt (do 6 stranica)",
-              "price": "1.590 €",
-              "oldPrice": "1.990 €"
+              "price": "1.099 €",
+              "id": "business",
+              "oldPrice": "1.290 €"
             },
             {
               "name": "Growth Setup",
-              "price": "2.390 €",
-              "oldPrice": "2.990 €"
+              "price": "1.699 €",
+              "id": "growth",
+              "oldPrice": "1.990 €"
             },
             {
               "name": "Analiza sajta",
-              "price": "119 €",
-              "oldPrice": "149 €"
+              "price": "79 €",
+              "id": "audit",
+              "oldPrice": "89 €"
             },
             {
               "name": "Mini Brand Kit",
-              "price": "159 €",
-              "oldPrice": "199 €"
+              "price": "119 €",
+              "id": "brandkit",
+              "oldPrice": "129 €"
             },
             {
               "name": "Domen i e-mail setup",
-              "price": "99 €",
-              "oldPrice": "129 €"
+              "price": "69 €",
+              "id": "emailsetup",
+              "oldPrice": "79 €"
             }
           ]
         },
@@ -3819,43 +4214,51 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Podešavanje Google Business profila",
-              "price": "199 €",
-              "oldPrice": "249 €"
+              "price": "129 €",
+              "id": "google",
+              "oldPrice": "149 €"
             },
             {
               "name": "SEO osnova",
-              "price": "399 €",
-              "oldPrice": "499 €"
-            },
-            {
-              "name": "SEO osvežavanje sadržaja",
-              "price": "239 €",
+              "price": "249 €",
+              "id": "seo-foundation",
               "oldPrice": "299 €"
             },
             {
+              "name": "SEO osvežavanje sadržaja",
+              "price": "159 €",
+              "id": "content-refresh",
+              "oldPrice": "179 €"
+            },
+            {
               "name": "Digitalni PR i stručni članak",
-              "price": "319 €",
-              "oldPrice": "399 €"
+              "price": "219 €",
+              "id": "digital-pr",
+              "oldPrice": "249 €"
             },
             {
               "name": "Lokalni SEO",
-              "price": "319 €/mesečno",
-              "oldPrice": "399 €/mesečno"
+              "price": "219 €/mesečno",
+              "id": "local-seo",
+              "oldPrice": "249 €/mesečno"
             },
             {
               "name": "Social i YouTube podrška",
-              "price": "239 €/mesečno",
-              "oldPrice": "299 €/mesečno"
+              "price": "179 €/mesečno",
+              "id": "social-youtube",
+              "oldPrice": "199 €/mesečno"
             },
             {
               "name": "Google Ads setup",
-              "price": "319 €",
-              "oldPrice": "399 €"
+              "price": "219 €",
+              "id": "google-ads",
+              "oldPrice": "249 €"
             },
             {
               "name": "Social Ads setup",
-              "price": "319 €",
-              "oldPrice": "399 €"
+              "price": "219 €",
+              "id": "social-ads",
+              "oldPrice": "249 €"
             }
           ]
         },
@@ -3864,28 +4267,33 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Care Essential",
-              "price": "63 €/mesečno",
-              "oldPrice": "79 €/mesečno"
+              "price": "39 €/mesečno",
+              "id": "care-essential",
+              "oldPrice": "49 €/mesečno"
             },
             {
               "name": "Care Business",
-              "price": "119 €/mesečno",
-              "oldPrice": "149 €/mesečno"
+              "price": "79 €/mesečno",
+              "id": "care-business",
+              "oldPrice": "89 €/mesečno"
             },
             {
               "name": "Care Priority",
-              "price": "199 €/mesečno",
-              "oldPrice": "249 €/mesečno"
+              "price": "129 €/mesečno",
+              "id": "care-priority",
+              "oldPrice": "149 €/mesečno"
             },
             {
               "name": "Individualno savetovanje",
-              "price": "76 €/sat",
-              "oldPrice": "95 €/sat"
+              "price": "59 €/sat",
+              "id": "consulting",
+              "oldPrice": "69 €/sat"
             },
             {
               "name": "Blok od 5 sati",
-              "price": "349 €",
-              "oldPrice": "475 €"
+              "price": "259 €",
+              "id": "consulting-block",
+              "oldPrice": "299 €"
             }
           ]
         },
@@ -3894,23 +4302,27 @@ const WEBURIX_CONTENT = {
           "items": [
             {
               "name": "Website Start live kurs",
-              "price": "79 €",
-              "oldPrice": "99 €"
+              "price": "49 €",
+              "id": "course-web",
+              "oldPrice": "59 €"
             },
             {
               "name": "SEO i Google Business live kurs",
-              "price": "119 €",
-              "oldPrice": "149 €"
+              "price": "79 €",
+              "id": "course-seo",
+              "oldPrice": "89 €"
             },
             {
               "name": "YouTube i Social Workflow live kurs",
-              "price": "95 €",
-              "oldPrice": "119 €"
+              "price": "69 €",
+              "id": "course-social",
+              "oldPrice": "79 €"
             },
             {
               "name": "1:1 praktična radionica",
-              "price": "159 €",
-              "oldPrice": "199 €"
+              "price": "119 €",
+              "id": "workshop",
+              "oldPrice": "129 €"
             }
           ]
         }
@@ -3925,46 +4337,49 @@ const WEBURIX_CONTENT = {
       "items": [
         {
           "name": "Care Essential",
-          "price": "63 €",
+          "price": "39 €",
           "period": "/mesečno",
-          "oldPrice": "79 €",
           "image": "assets/img/products/support-essential.svg",
           "features": [
-            "Do 30 min. manjih izmena",
+            "Do 20 min. manjih izmena",
             "Mesečna tehnička provera",
             "Podrška e-mailom",
             "Odgovor obično u roku od 2 radna dana"
           ],
-          "featured": false
+          "featured": false,
+          "id": "care-essential",
+          "oldPrice": "49 €"
         },
         {
           "name": "Care Business",
-          "price": "119 €",
+          "price": "79 €",
           "period": "/mesečno",
-          "oldPrice": "149 €",
           "image": "assets/img/products/support-business.svg",
           "features": [
-            "Do 90 min. izmena",
+            "Do 60 min. izmena",
             "Backup i sigurnosna provera",
             "Kratka SEO/performance provera",
             "Prioritetan odgovor, obično sledećeg radnog dana"
           ],
-          "featured": true
+          "featured": true,
+          "id": "care-business",
+          "oldPrice": "89 €"
         },
         {
           "name": "Care Priority",
-          "price": "199 €",
+          "price": "129 €",
           "period": "/mesečno",
-          "oldPrice": "249 €",
           "image": "assets/img/products/support-priority.svg",
           "features": [
-            "Do 3 sata izmena",
+            "Do 2 sata izmena",
             "Mesečni SEO pregled i analiza rezultata",
             "Kvartalna provera osvežavanja sadržaja i internih linkova",
             "Prioritetna podrška",
             "Fiksni mesečni poziv po želji"
           ],
-          "featured": false
+          "featured": false,
+          "id": "care-priority",
+          "oldPrice": "149 €"
         }
       ]
     },
@@ -3980,8 +4395,7 @@ const WEBURIX_CONTENT = {
         {
           "name": "Website Start",
           "subtitle": "Od ideje do jasnog sajta",
-          "price": "79 €",
-          "oldPrice": "99 €",
+          "price": "49 €",
           "duration": "oko 2 sata",
           "image": "assets/img/products/course-web.svg",
           "points": [
@@ -3989,13 +4403,14 @@ const WEBURIX_CONTENT = {
             "Razumi domen, hosting i formulare",
             "Primeni SEO osnove za start",
             "Dobiješ kontrolnu listu za objavu"
-          ]
+          ],
+          "id": "course-web",
+          "oldPrice": "59 €"
         },
         {
           "name": "SEO i Google Business",
           "subtitle": "Bolja lokalna vidljivost",
-          "price": "119 €",
-          "oldPrice": "149 €",
+          "price": "79 €",
           "duration": "oko 2,5 sata",
           "image": "assets/img/products/course-seo.svg",
           "points": [
@@ -4003,13 +4418,14 @@ const WEBURIX_CONTENT = {
             "Pravilno podesi Google Business",
             "Napiši meta podatke i lokalne stranice",
             "Odredi merljive naredne korake"
-          ]
+          ],
+          "id": "course-seo",
+          "oldPrice": "89 €"
         },
         {
           "name": "YouTube i sistem za sadržaj",
           "subtitle": "Sadržaj koji možeš redovno da objavljuješ",
-          "price": "95 €",
-          "oldPrice": "119 €",
+          "price": "69 €",
           "duration": "oko 2 sata",
           "image": "assets/img/products/course-social.svg",
           "points": [
@@ -4017,13 +4433,14 @@ const WEBURIX_CONTENT = {
             "Naslovi, uvodne poruke i thumbnailovi",
             "Efikasno planiranje Shorts/Reels",
             "Čitanje analitike u kontekstu"
-          ]
+          ],
+          "id": "course-social",
+          "oldPrice": "79 €"
         },
         {
           "name": "1:1 praktična radionica",
           "subtitle": "Rad direktno na tvom projektu",
-          "price": "159 €",
-          "oldPrice": "199 €",
+          "price": "119 €",
           "duration": "oko 2 sata",
           "image": "assets/img/products/course-one.svg",
           "points": [
@@ -4031,24 +4448,27 @@ const WEBURIX_CONTENT = {
             "Rad uživo na projektu",
             "Konkretan plan narednih koraka",
             "Kratak rezime i naredni koraci e-mailom"
-          ]
+          ],
+          "id": "workshop",
+          "oldPrice": "129 €"
         }
       ]
     },
     "consulting": {
       "eyebrow": "Individualno savetovanje",
       "title": "Konkretna pomoć umesto opštih prezentacija.",
-      "text": "Za sajt, SEO, Google Business, YouTube, društvene mreže, domen ili digitalne procese. Jedan sat košta 76 €, a blok od pet sati 349 €.",
-      "price": "76 € / sat",
-      "oldPrice": "95 € / sat",
-      "block": "5 sati: 349 €",
+      "text": "Za sajt, SEO, Google Business, YouTube, društvene mreže, domene ili digitalne procese. Jedan sat košta 59 €; blok od pet sati 259 €.",
+      "price": "59 € / sat",
+      "block": "5 sati: 259 €",
       "cta": "Zakaži savetovanje",
       "points": [
         "Online ili po dogovoru u Minhenu",
         "Tema se definiše unapred",
         "Kratak pisani rezime posle razgovora",
         "Bez dugoročne obaveze"
-      ]
+      ],
+      "oldPrice": "69 € / sat",
+      "oldBlock": "5 sati: 299 €"
     },
     "knowledge": {
       "eyebrow": "Centar znanja",

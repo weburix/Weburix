@@ -1,0 +1,7 @@
+Weburix Production Readiness Audit V32
+Errors: 0
+NOTE: HTML pages checked: 17
+NOTE: strict form success, timeout, rejection and duplicate-submit markers checked
+NOTE: no-JavaScript navigation and project-form fallback checked
+NOTE: portable preview CSP and production CSP separation checked
+NOTE: immutable asset cache and revalidated HTML route rules checked

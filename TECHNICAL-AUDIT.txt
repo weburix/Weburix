@@ -1,0 +1,27 @@
+Weburix Technical Audit v32 Production Final
+Errors: 0
+Warnings: 4
+WARNING: LAUNCH: legal field ownerName is empty
+WARNING: LAUNCH: legal field street is empty
+WARNING: LAUNCH: legal field postalCode is empty
+WARNING: LAUNCH: VAT mode is unset
+NOTE: stable fixed chat launcher: passed
+NOTE: cookie/chat collision guard: passed
+NOTE: chat inert state: passed
+NOTE: cookie modal inert state: passed
+NOTE: modal focus cycling: passed
+NOTE: resource error capture: passed
+NOTE: mobile nav inert: passed
+NOTE: nav ARIA relationship: passed
+NOTE: chat ARIA relationship: passed
+NOTE: cache bust v32: passed
+NOTE: production CSP allows FormSubmit connect-src and form-action: passed
+NOTE: CSP-safe 404 recovery links: passed
+NOTE: portable native contact fallback and return confirmation: passed
+NOTE: FormSubmit explicit-success guard: passed
+NOTE: form double-submit guard: passed
+NOTE: top-level form rejection recovery: passed
+NOTE: active-service-only page CSP: passed
+NOTE: Open Graph image dimensions/type: passed
+NOTE: Core first-party payload estimate: 526.9 KiB raw / 124.6 KiB gzip
+NOTE: contact delivery backend: FormSubmit configured; one-time activation required

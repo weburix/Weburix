@@ -1,37 +1,45 @@
-# Weburix deployment checklist
+# Weburix V32 deployment
 
-## GitHub Pages
+## Preporučeni redosled
 
-1. Upload the contents of this folder to the repository root.
-2. In GitHub: **Settings → Pages → Deploy from a branch** and select the main branch/root folder.
-3. The included `CNAME` points to `weburix.com`. Remove or change it if another domain is used.
-4. Configure the custom domain in GitHub Pages, then enable **Enforce HTTPS**.
-5. At the DNS provider, use the records shown by GitHub for the apex domain and `www` redirect.
-
-The public homepage will be `https://weburix.com/`. Visitors do not see `index.html` when they enter through the domain.
-
-## Forms
-
-Create a Web3Forms access key and place it in `assets/js/site-config.js`. Test every form after deployment. The current code uses a timeout, duplicate-submit protection, a honeypot and clear success/error states.
-
-## Payments
-
-Use hosted Stripe or PayPal payment links only. Add public payment URLs to `assets/js/site-config.js`; never add secret keys to this repository. Before activation, finalise company details, tax wording, terms, cancellation/withdrawal information and subscription conditions.
-
-## Final checks
-
-Run:
+1. Popuni stvarne pravne i poslovne podatke u `assets/js/site-config.js`.
+2. Poveži domen i hosting:
 
 ```bash
-python3 scripts/qa.py
+python3 scripts/set-site-url.py https://weburix.com/ --custom-domain --hosting cloudflare-pages
 ```
 
-Then test the deployed site on a real iPhone/Android device plus current Safari, Firefox and Chrome.
+3. Pokreni sve komande iz `START-HERE-FINAL.txt`.
+4. Postavi ceo sadržaj foldera, uključujući `assets`, `_headers`, `netlify.toml`, `vercel.json`, `.htaccess` i `.nojekyll`.
+5. Potvrdi HTTPS, glavni domen i 301 redirect između `www` i non-`www` verzije.
+6. Aktiviraj FormSubmit i proveri stvarnu isporuku.
+7. Testiraj produkciju na pravim browserima i uređajima.
 
-## Language detection
+## Hosting fajlovi
 
-German is the default without any external request. The CSP must allow `https://api.country.is` in `connect-src` only if optional country-based language selection remains enabled. The request runs after functional consent. Disable `WEBURIX_AUTO_LANGUAGE` to remove this feature, then remove the domain from the CSP and update the privacy notice.
+- Cloudflare Pages: `_headers`
+- Netlify: `netlify.toml`
+- Vercel: `vercel.json`
+- Apache: `.htaccess`
+- GitHub Pages: `.nojekyll` i eksplicitne `.html` kontakt putanje
 
-## GitHub Pages security-header note
+## Cache strategija
 
-The included `_headers` file is not applied by GitHub Pages. On GitHub Pages, enforce HTTPS and verify the custom domain; the in-document CSP remains a partial browser-side fallback. If server-controlled CSP, frame protection or other custom response headers become a requirement, use a compatible proxy/CDN or a host such as Cloudflare Pages, Netlify or Vercel and re-test all forms and routes afterward.
+- verzionisani CSS/JS/slike: `public, max-age=31536000, immutable`
+- HTML i directory-index rute: `max-age=0, must-revalidate`
+- manifest: jedan dan
+- robots/sitemap: jedan sat
+
+Ovo sprečava da novi deploy ostane iza stare HTML verzije, dok statički asseti ostaju brzi.
+
+## Kontakt test posle deploya
+
+1. Otvori `kontakt.html` direktno i preko dugmeta sa početne.
+2. Proveri da CSS i JavaScript imaju HTTP 200 i pravilan MIME tip.
+3. Pošalji prvu poruku i potvrdi FormSubmit aktivaciju u mailboxu.
+4. Pošalji drugu poruku i proveri Inbox/Spam i Reply-To.
+5. Testiraj i sa blokiranim JavaScriptom: navigacija i obični HTTPS POST moraju ostati dostupni.
+
+## GitHub Pages podfolder
+
+Relativne putanje podržavaju project-page deploy poput `/weburixsite/`. Pri prelasku na custom domen obavezno pokreni `set-site-url.py`, pa uploaduj rezultat, a ne staru preview kopiju.

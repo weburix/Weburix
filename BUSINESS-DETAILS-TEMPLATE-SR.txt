@@ -1,0 +1,69 @@
+WEBURIX — PODACI KOJI NEDOSTAJU ZA FINALNO POPUNJAVANJE
+
+Pošalji popunjeno bez lozinki, API ključeva, recovery kodova, kartica ili pristupa nalozima.
+
+1. KO JE PRAVNI VLASNIK?
+- Vlasnik je: JA / DRUGA OSOBA
+- Puno ime i prezime:
+- Datum početka delatnosti:
+- Tačan naziv delatnosti iz Gewerbeanmeldung:
+- Pravna forma:
+- Gewerbe već prijavljen: DA/NE
+- Handelsregister: DA/NE
+- Ako DA, Registergericht i broj:
+
+2. ADRESA ZA IMPRESSUM
+- Ulica i broj:
+- Poštanski broj:
+- Grad:
+- Država:
+- Da li se vlasnik na toj adresi stvarno može službeno kontaktirati: DA/NE
+
+3. KONTAKT
+- Poslovni e-mail:
+- Mailbox kreiran i testiran: DA/NE
+- Poslovni telefon:
+- WhatsApp Business broj:
+- Instagram URL:
+- Facebook URL:
+
+4. POREZI I CENE
+- Kleinunternehmer po § 19 UStG: DA/NE/NE ZNAM
+- USt-IdNr. ako postoji (ne Steuernummer):
+- Cene su: BRUTO / B2B NETO / JOŠ NIJE ODLUČENO
+- Klijenti: B2C / B2B / OBA
+
+5. USLUGE I UGOVORI
+- Samo neobavezujući upiti: DA/NE
+- Direktna online naplata sada: DA/NE
+- Mesečne pretplate/support: DA/NE
+- Kursevi: LIVE / SNIMCI / SAMOSTALNO / NEĆE JOŠ
+- AGB i Widerruf potrebni odmah: DA/NE/NE ZNAM
+
+6. DOMEN, HOSTING I E-MAIL
+- Registrar:
+- Hosting:
+- Mailbox provajder:
+- `weburix.com` kupljen: DA/NE
+- DNS i HTTPS rade: DA/NE
+- FormSubmit aktiviran i drugi test primljen: DA/NE
+- Form provider privatnost/DPA provereni: DA/NE
+
+7. JAVNI SADRŽAJ
+- Stvarni rok odgovora:
+- Stvarno radno vreme/dostupnost:
+- Reference koje smeju javno da se navedu:
+- Recenzije za koje imaš dozvolu:
+- Rezultati/brojke koje možeš dokazati:
+
+8. DODATNI ALATI
+Navedi sve što će se koristiti:
+- Analytics:
+- Meta Pixel:
+- Google Maps:
+- YouTube/Vimeo embed:
+- Calendly ili booking:
+- Newsletter servis:
+- Stripe/PayPal:
+- Chat alat:
+- Drugo:

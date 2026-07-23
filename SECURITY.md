@@ -1,7 +1,7 @@
 # Security notes
 
 - Never commit passwords, Stripe/PayPal secret keys, private API tokens or Supabase service-role keys.
-- Web3Forms access keys are intended for client-side forms, but domain restrictions and spam protection should still be enabled in its dashboard.
+- FormSubmit is used without a secret frontend key. Confirm the recipient once, keep honeypot protection enabled, monitor spam, and consider switching to a provider/account with domain restrictions and an available processing agreement before collecting sensitive data.
 - Keep GitHub account 2FA enabled and use protected branches for production.
 - Review third-party integrations before adding scripts; update the Content Security Policy and privacy notice when a new provider is introduced.
 - Use hosted checkout pages for card payments. The Weburix frontend must never collect raw card details.

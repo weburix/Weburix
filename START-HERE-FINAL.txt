@@ -1,0 +1,34 @@
+WEBURIX V32 PRODUCTION FINAL — START HERE
+
+1. Pre javne objave popuni stvarne podatke u assets/js/site-config.js:
+   - ownerName, legalForm, street, postalCode
+   - tačan vatMode
+   - stvarni telefon i WhatsApp samo kada su aktivni
+   - launch-status polja postavi na true tek nakon stvarne potvrde
+
+2. Kada kupiš domen i izabereš hosting, prebaci sve javne URL-ove jednom komandom:
+   python3 scripts/set-site-url.py https://weburix.com/ --custom-domain --hosting cloudflare-pages
+
+3. Pokreni završne provere:
+   python3 scripts/qa.py
+   python3 scripts/technical_audit.py
+   python3 scripts/seo_audit_v32.py
+   python3 scripts/structural_audit_v32.py
+   python3 scripts/accessibility_audit_v32.py
+   python3 scripts/resilience_audit_v32.py
+   python3 scripts/production_readiness_audit_v32.py
+   python3 scripts/http_resource_test_v32.py
+   python3 scripts/browser_group_v32.py primary
+   python3 scripts/browser_group_v32.py secondary-a
+   python3 scripts/browser_group_v32.py secondary-b
+   python3 scripts/browser_group_v32.py ui
+   python3 scripts/browser_group_v32.py ux
+   python3 scripts/browser_group_v32.py forms
+
+4. Uploaduj KOMPLETAN sadržaj paketa. Ne uploaduj samo HTML fajlove. Obavezni su assets/, skripte i hosting konfiguracije.
+
+5. Nakon prvog slanja kontakt forme potvrdi FormSubmit aktivacionu poruku na info@weburix.com. Zatim pošalji drugi test i proveri Inbox i Spam.
+
+6. Na produkciji proveri: HTTPS, www redirect, kontakt, CSS/JS, 404, cookies, jezike, promo-kod, iPhone Safari, Android Chrome, Firefox i Edge.
+
+V32 koristi cache oznaku ?v=32.0. Pri prelasku sa stare verzije potpuno zameni prethodni deploy; nemoj mešati fajlove iz V31 i V32.

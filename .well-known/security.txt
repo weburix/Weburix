@@ -1,4 +1,4 @@
 Contact: mailto:info@weburix.com
 Preferred-Languages: de, en, sr
-Canonical: https://weburix.com/.well-known/security.txt
+Canonical: https://weburix.github.io/weburixsite/.well-known/security.txt
 Expires: 2027-07-02T00:00:00Z

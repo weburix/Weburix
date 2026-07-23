@@ -1,0 +1,4 @@
+Weburix HTTP Resource Audit V32 Launch Final
+Errors: 0
+NOTE: HTTP routes/resources checked: 75
+NOTE: Server: Python ThreadingHTTPServer bound to localhost

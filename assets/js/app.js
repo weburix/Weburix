@@ -5,9 +5,17 @@
   root.classList.add('weburix-js');
   const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || false;
   root.classList.toggle('weburix-motion-on', !reducedMotion);
+  const saveData = Boolean(navigator.connection?.saveData);
+  const lowPowerDevice = Number(navigator.deviceMemory || 8) <= 4 || Number(navigator.hardwareConcurrency || 8) <= 4;
+  const coarsePointer = window.matchMedia?.('(pointer: coarse)').matches || false;
+  root.classList.toggle('save-data', saveData);
+  root.classList.toggle('low-power-device', lowPowerDevice);
+  root.classList.toggle('coarse-pointer', coarsePointer);
+  root.classList.toggle('short-viewport', window.innerHeight < 650);
   const loader = document.getElementById('loader');
   const navToggle = document.querySelector('.nav-toggle');
   const navPanel = document.querySelector('.nav-panel');
+  const mobileNavMedia = window.matchMedia?.('(max-width: 1280px)');
   const languageButtons = document.querySelectorAll('[data-lang]');
   const languageMenu = document.querySelector('.language-menu');
   const languageCurrentFlag = document.querySelector('.language-current-flag');
@@ -32,25 +40,77 @@
   const cartCountEl = document.getElementById('cart-count');
   const cartRequestButton = document.getElementById('cart-request');
   const cartClearButton = document.getElementById('cart-clear');
+  const promoInput = document.getElementById('promo-code');
+  const promoApplyButton = document.getElementById('promo-apply');
+  const promoRemoveButton = document.getElementById('promo-remove');
+  const promoStatusEl = document.getElementById('promo-status');
+  const promoDiscountEl = document.getElementById('cart-discount');
   const FORM_CONFIG = {
-    // For GitHub Pages this must use an external form backend.
-    // Recommended for this template: Web3Forms. Get a free access key and paste it into assets/js/site-config.js.
-    mode: (window.WEBURIX_FORM_MODE || 'web3forms'), // 'web3forms', 'formspree', 'netlify' or 'mailto'
+    // Static hosting uses one explicit backend; no secret keys are stored in frontend code.
     recipient: 'info@weburix.com',
-    formspreeEndpoint: (window.WEBURIX_FORMSPREE_ENDPOINT || ''),
-    web3formsAccessKey: (window.WEBURIX_WEB3FORMS_ACCESS_KEY || 'PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE')
+    formsubmitEndpoint: (window.WEBURIX_FORMSUBMIT_ENDPOINT || 'https://formsubmit.co/ajax/info@weburix.com')
   };
   const PAYMENT_LINKS = window.WEBURIX_PAYMENT_LINKS || {};
+  const PROMOTION = window.WEBURIX_PROMOTION || {};
+  const PROMO_CODES = window.WEBURIX_PROMO_CODES || {};
+  const PROMO_CODE_KEY = 'weburix-promo-code';
   const SOCIALS = window.WEBURIX_SOCIALS || {};
+  const CURRENCY_CONFIG = window.WEBURIX_CURRENCY || {};
+  const CURRENCY_KEY = 'weburix-currency';
   const CONSENT_KEY = 'weburix-consent-v2';
   const CONSENT_VERSION = Number(window.WEBURIX_CONSENT_VERSION || 2);
+  const UI_LABELS = {
+    de: {
+      mainNav: 'Hauptnavigation', pageNav: 'Seitennavigation', home: 'Weburix Startseite',
+      menuOpen: 'Menü öffnen', menuClose: 'Menü schließen', language: 'Sprache auswählen',
+      chatOpen: 'Weburix Support Chat öffnen', chatDialog: 'Weburix Support Chat', chatClose: 'Chat schließen',
+      chatInput: 'Nachricht an den Weburix Assistant', send: 'Senden', backTop: 'Nach oben', loader: 'Weburix lädt'
+    },
+    en: {
+      mainNav: 'Main navigation', pageNav: 'Page navigation', home: 'Weburix home page',
+      menuOpen: 'Open menu', menuClose: 'Close menu', language: 'Choose language',
+      chatOpen: 'Open Weburix support chat', chatDialog: 'Weburix support chat', chatClose: 'Close chat',
+      chatInput: 'Message the Weburix Assistant', send: 'Send', backTop: 'Back to top', loader: 'Weburix is loading'
+    },
+    sr: {
+      mainNav: 'Glavna navigacija', pageNav: 'Navigacija stranice', home: 'Weburix početna stranica',
+      menuOpen: 'Otvori meni', menuClose: 'Zatvori meni', language: 'Izaberi jezik',
+      chatOpen: 'Otvori Weburix chat za podršku', chatDialog: 'Weburix chat za podršku', chatClose: 'Zatvori chat',
+      chatInput: 'Poruka za Weburix asistenta', send: 'Pošalji', backTop: 'Nazad na vrh', loader: 'Weburix se učitava'
+    }
+  };
   let activeLang = DEFAULT_LANG;
   let activeContent = WEBURIX_CONTENT[DEFAULT_LANG];
+  let activeCurrency = (() => {
+    try {
+      const stored = localStorage.getItem(CURRENCY_KEY);
+      if (['both', 'eur', 'rsd'].includes(stored)) return stored;
+    } catch (_) {}
+    return ['both', 'eur', 'rsd'].includes(CURRENCY_CONFIG.defaultSerbianMode) ? CURRENCY_CONFIG.defaultSerbianMode : 'both';
+  })();
+  let chatReturnFocus = null;
+  let cookieReturnFocus = null;
+  let activePromoCode = (() => {
+    try { return String(sessionStorage.getItem(PROMO_CODE_KEY) || '').trim().toUpperCase(); } catch (_) { return ''; }
+  })();
+
+  function normalizeCartEntries(entries) {
+    if (!Array.isArray(entries)) return [];
+    const consolidated = new Map();
+    entries.forEach((entry) => {
+      if (!entry || typeof entry.id !== 'string') return;
+      const id = entry.id.trim();
+      const quantity = Math.floor(Number(entry.qty));
+      if (!id || !Number.isFinite(quantity) || quantity <= 0) return;
+      consolidated.set(id, Math.min(9, (consolidated.get(id) || 0) + quantity));
+    });
+    return [...consolidated].map(([id, qty]) => ({ id, qty }));
+  }
+
   let cartItems = (() => {
     try {
-      const saved = JSON.parse(localStorage.getItem('weburix-cart') || '[]');
-      return Array.isArray(saved) ? saved.filter((item) => item && typeof item.id === 'string' && Number(item.qty) > 0) : [];
-    } catch (error) { return []; }
+      return normalizeCartEntries(JSON.parse(localStorage.getItem('weburix-cart') || '[]'));
+    } catch (_) { return []; }
   })();
 
   let bootFinished = false;
@@ -75,10 +135,227 @@
     return path.split('.').reduce((acc, key) => (acc ? acc[key] : undefined), source);
   }
 
+  function updateInteractiveLabels() {
+    const labels = UI_LABELS[activeLang] || UI_LABELS.de;
+    document.querySelector('.site-header nav')?.setAttribute('aria-label', labels.mainNav);
+    navPanel?.setAttribute('aria-label', labels.pageNav);
+    document.querySelectorAll('a.brand, .footer-brand > a').forEach((link) => link.setAttribute('aria-label', labels.home));
+    if (navToggle) navToggle.setAttribute('aria-label', navToggle.getAttribute('aria-expanded') === 'true' ? labels.menuClose : labels.menuOpen);
+    languageMenu?.querySelector(':scope > summary')?.setAttribute('aria-label', labels.language);
+    languageMenu?.querySelector('.language-menu-list')?.setAttribute('aria-label', labels.language);
+    loader?.setAttribute('aria-label', labels.loader);
+    chatLauncher?.setAttribute('aria-label', labels.chatOpen);
+    chatWidget?.setAttribute('aria-label', labels.chatDialog);
+    chatClose?.setAttribute('aria-label', labels.chatClose);
+    chatInput?.setAttribute('aria-label', labels.chatInput);
+    chatForm?.querySelector('button[type="submit"]')?.setAttribute('aria-label', labels.send);
+    backToTop?.setAttribute('aria-label', labels.backTop);
+  }
+
+
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (character) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
     })[character]);
+  }
+
+
+  function rsdRate() {
+    const rate = Number(CURRENCY_CONFIG.rsdRate);
+    return Number.isFinite(rate) && rate > 0 ? rate : 117.3829;
+  }
+
+  function parseEuroNumber(value) {
+    const normalized = String(value || '').replace(/[.\s]/g, '').replace(',', '.');
+    const number = Number(normalized);
+    return Number.isFinite(number) ? number : 0;
+  }
+
+  function formatRsdNumber(euroAmount) {
+    const step = Math.max(1, Number(CURRENCY_CONFIG.roundRsdTo) || 1);
+    const value = Math.round((Number(euroAmount) * rsdRate()) / step) * step;
+    try {
+      return new Intl.NumberFormat('sr-Latn-RS', { maximumFractionDigits: 0 }).format(value);
+    } catch (_) {
+      return Math.round(value).toLocaleString('sr-RS');
+    }
+  }
+
+  function currencyMode() {
+    return activeLang === 'sr' ? activeCurrency : 'eur';
+  }
+
+  function formatPricePair(euroText, amount, suffix = '') {
+    const mode = currencyMode();
+    if (mode === 'eur') return euroText;
+    const rsd = `≈ ${formatRsdNumber(amount)} RSD${suffix || ''}`;
+    if (mode === 'rsd') return rsd;
+    return `${euroText} · ${rsd}`;
+  }
+
+  function localizePriceText(value) {
+    const text = String(value ?? '');
+    if (activeLang !== 'sr' || !text.includes('€')) return text;
+
+    // Match either a range such as 500–1.000 € or a single amount such as 44 €/mesečno.
+    const pricePattern = /(\d[\d.\s]*)(?:\s*[–-]\s*(\d[\d.\s]*))?\s*€(\s*\/\s*(?:mesečno|mesec|sat|h|Std\.?|Monat|month|hour))?/gi;
+    return text.replace(pricePattern, (full, first, second, suffix = '') => {
+      if (second) {
+        const firstAmount = parseEuroNumber(first);
+        const secondAmount = parseEuroNumber(second);
+        const euroRange = `${first.trim()}–${second.trim()} €${suffix}`;
+        if (currencyMode() === 'eur') return euroRange;
+        const rsdRange = `≈ ${formatRsdNumber(firstAmount)}–${formatRsdNumber(secondAmount)} RSD${suffix}`;
+        return currencyMode() === 'rsd' ? rsdRange : `${euroRange} · ${rsdRange}`;
+      }
+      const amount = parseEuroNumber(first);
+      const euro = `${first.trim()} €${suffix}`;
+      return formatPricePair(euro, amount, suffix);
+    });
+  }
+
+  function localized(value) {
+    return localizePriceText(value);
+  }
+
+  function escapedLocalized(value) {
+    return escapeHtml(localized(value));
+  }
+
+  function formatCartTotal(value, { markup = false } = {}) {
+    const amount = Number(value) || 0;
+    let euro;
+    try {
+      euro = new Intl.NumberFormat(activeLang === 'de' ? 'de-DE' : activeLang === 'sr' ? 'sr-Latn-RS' : 'en-US', {
+        style: 'currency', currency: 'EUR', maximumFractionDigits: 0
+      }).format(amount);
+    } catch (_) {
+      euro = `${Math.round(amount).toLocaleString()} €`;
+    }
+    if (activeLang !== 'sr' || currencyMode() === 'eur') return euro;
+    const rsd = `≈ ${formatRsdNumber(amount)} RSD`;
+    if (currencyMode() === 'rsd') return rsd;
+    return markup ? `${euro}<small class="currency-secondary">${rsd}</small>` : `${euro} · ${rsd}`;
+  }
+
+  function currencyUiLabels() {
+    const rawDate = String(CURRENCY_CONFIG.rateDate || '');
+    const dateParts = rawDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    const displayDate = dateParts ? `${dateParts[3]}.${dateParts[2]}.${dateParts[1]}.` : (rawDate || 'kurs ažuriran');
+    return {
+      title: 'Valuta',
+      both: 'EUR + RSD',
+      eur: 'Samo EUR',
+      rsd: 'Samo RSD',
+      note: `RSD iznosi su informativni, preračunati po kursu 1 EUR = ${String(rsdRate()).replace('.', ',')} RSD (${displayDate}). Ponuda i naplata se potvrđuju u EUR.`
+    };
+  }
+
+  function ensureCurrencyMenu() {
+    const language = document.querySelector('.language-menu');
+    if (!language || document.querySelector('.currency-menu')) return;
+    const labels = currencyUiLabels();
+    const menu = document.createElement('details');
+    menu.className = 'currency-menu';
+    menu.hidden = true;
+    menu.innerHTML = `
+      <summary aria-label="${escapeHtml(labels.title)}">
+        <span class="currency-current-symbol" aria-hidden="true">€+дин.</span>
+        <span class="currency-current-code">EUR/RSD</span>
+        <span class="currency-menu-arrow" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="currency-menu-list" role="group" aria-label="${escapeHtml(labels.title)}">
+        <button type="button" data-currency="both"><span aria-hidden="true">€ + дин.</span><strong>${escapeHtml(labels.both)}</strong></button>
+        <button type="button" data-currency="eur"><span aria-hidden="true">€</span><strong>${escapeHtml(labels.eur)}</strong></button>
+        <button type="button" data-currency="rsd"><span aria-hidden="true">дин.</span><strong>${escapeHtml(labels.rsd)}</strong></button>
+      </div>`;
+    language.insertAdjacentElement('afterend', menu);
+    menu.addEventListener('toggle', () => {
+      if (menu.open) {
+        language.removeAttribute('open');
+        closeMobileNav();
+      }
+    });
+    menu.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-currency]');
+      if (!button) return;
+      const mode = button.dataset.currency;
+      if (!['both', 'eur', 'rsd'].includes(mode)) return;
+      activeCurrency = mode;
+      try { localStorage.setItem(CURRENCY_KEY, mode); } catch (_) {}
+      menu.removeAttribute('open');
+      setLanguage(activeLang, { currencyRefresh: true });
+    });
+  }
+
+  function updateCurrencyUI() {
+    ensureCurrencyMenu();
+    const menu = document.querySelector('.currency-menu');
+    if (!menu) return;
+    const visible = activeLang === 'sr';
+    menu.hidden = !visible;
+    menu.toggleAttribute('inert', !visible);
+    if (!visible) menu.removeAttribute('open');
+    const codes = { both: 'EUR/RSD', eur: 'EUR', rsd: 'RSD' };
+    const symbols = { both: '€+дин.', eur: '€', rsd: 'дин.' };
+    const code = menu.querySelector('.currency-current-code');
+    const symbol = menu.querySelector('.currency-current-symbol');
+    if (code) code.textContent = codes[activeCurrency] || codes.both;
+    if (symbol) symbol.textContent = symbols[activeCurrency] || symbols.both;
+    menu.querySelectorAll('[data-currency]').forEach((button) => {
+      const active = button.dataset.currency === activeCurrency;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    document.querySelectorAll('[data-currency-note]').forEach((node) => node.remove());
+    if (!visible) return;
+    const labels = currencyUiLabels();
+    const anchors = [document.querySelector('[data-vat-notice]'), document.getElementById('checkout-options')].filter(Boolean);
+    [...new Set(anchors)].forEach((anchor) => {
+      const note = document.createElement('p');
+      note.className = 'currency-rate-note reveal visible';
+      note.dataset.currencyNote = '';
+      note.textContent = labels.note;
+      anchor.insertAdjacentElement('beforebegin', note);
+    });
+  }
+
+  function isPromotionActive() {
+    if (PROMOTION.enabled !== true) return false;
+    const now = Date.now();
+    const starts = PROMOTION.startsAt ? Date.parse(PROMOTION.startsAt) : NaN;
+    const ends = PROMOTION.endsAt ? Date.parse(PROMOTION.endsAt) : NaN;
+    // Safety rule: a promotion without a valid end date is never displayed.
+    if (!Number.isFinite(ends)) return false;
+    if (Number.isFinite(starts) && now < starts) return false;
+    if (now > ends) return false;
+    return true;
+  }
+
+  function promotionLabel() {
+    const labels = PROMOTION.label || {};
+    return String(labels[activeLang] || labels.de || `${Number(PROMOTION.percent || 10)}%`);
+  }
+
+  function promotionPriceMarkup(oldPrice) {
+    if (!isPromotionActive() || !oldPrice) return '';
+    return `<span class="promo-comparison"><del>${escapeHtml(oldPrice)}</del><small>${escapeHtml(promotionLabel())}</small></span>`;
+  }
+
+  function updatePromotionStatic() {
+    const active = isPromotionActive();
+    root.classList.toggle('promotion-active', active);
+    const consultingOld = document.querySelector('[data-promo-consulting-old]');
+    const consultingBlockOld = document.querySelector('[data-promo-consulting-block-old]');
+    if (consultingOld) {
+      consultingOld.hidden = !active;
+      consultingOld.textContent = localized(activeContent.consulting?.oldPrice || '');
+    }
+    if (consultingBlockOld) {
+      consultingBlockOld.hidden = !active;
+      consultingBlockOld.textContent = localized(activeContent.consulting?.oldBlock || '');
+    }
   }
 
   function readStoredLanguage() {
@@ -141,15 +418,21 @@
     activeLang = nextLang;
     activeContent = WEBURIX_CONTENT[nextLang];
     root.lang = nextLang === 'sr' ? 'sr-Latn' : nextLang;
+    updateInteractiveLabels();
 
     document.querySelectorAll('[data-i18n]').forEach((node) => {
       const value = getValue(node.dataset.i18n, activeContent);
-      if (typeof value === 'string') node.textContent = value;
+      if (typeof value === 'string') node.textContent = localized(value);
     });
 
     document.querySelectorAll('[data-i18n-placeholder]').forEach((node) => {
       const value = getValue(node.dataset.i18nPlaceholder, activeContent);
-      if (typeof value === 'string') node.setAttribute('placeholder', value);
+      if (typeof value === 'string') node.setAttribute('placeholder', localized(value));
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach((node) => {
+      const value = getValue(node.dataset.i18nAriaLabel, activeContent);
+      if (typeof value === 'string') node.setAttribute('aria-label', localized(value));
     });
 
     languageButtons.forEach((button) => {
@@ -162,6 +445,8 @@
         if (languageCurrentCode) languageCurrentCode.textContent = nextLang.toUpperCase();
       }
     });
+
+    updateCurrencyUI();
 
     if (options.persist) {
       try { localStorage.setItem('weburix-language', nextLang); } catch (_) {}
@@ -179,6 +464,7 @@
     renderSupportPlans(activeContent.supportPlans);
     renderCourses(activeContent.courses);
     renderPriceList(activeContent.priceList);
+    updatePromotionStatic();
     renderList('consulting-points', activeContent.consulting?.points || []);
     renderCards('package-example-grid', activeContent.packageExamples?.items || [], packageExampleTemplate);
     renderCheckout(activeContent.checkout);
@@ -196,6 +482,7 @@
     updateCookieUI();
     updateSocialPlaceholders();
     updateVatNotice();
+    updateCurrencyUI();
   }
 
   function renderCards(containerId, items, template) {
@@ -221,7 +508,7 @@
     const container = document.getElementById('integration-grid');
     if (!container) return;
     container.innerHTML = items.map((item) => `
-      <article class="integration-card tilt-card" tabindex="0">
+      <article class="integration-card tilt-card">
         <span>${escapeHtml(item.kicker)}</span>
         <h3>${escapeHtml(item.title)}</h3>
         <p>${escapeHtml(item.text)}</p>
@@ -235,7 +522,7 @@
   }
 
   function resultCardTemplate(item) {
-    return `<article class="result-card reveal tilt-card" tabindex="0">
+    return `<article class="result-card reveal tilt-card">
       <strong>${escapeHtml(item.value)}</strong>
       <span>${escapeHtml(item.label)}</span>
       <p>${escapeHtml(item.text)}</p>
@@ -243,7 +530,7 @@
   }
 
   function testimonialTemplate(item) {
-    return `<article class="testimonial-card reveal tilt-card" tabindex="0">
+    return `<article class="testimonial-card reveal tilt-card">
       <p>${escapeHtml(item.quote)}</p>
       <div><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.role)}</span></div>
     </article>`;
@@ -251,7 +538,7 @@
 
   function packageExampleTemplate(item) {
     const points = (item.includes || []).map((point) => `<li>${escapeHtml(point)}</li>`).join('');
-    return `<article class="example-card reveal tilt-card" tabindex="0">
+    return `<article class="example-card reveal tilt-card">
       <span>${escapeHtml(item.for)}</span>
       <h3>${escapeHtml(item.name)}</h3>
       <ul>${points}</ul>
@@ -271,7 +558,7 @@
         ${item.image ? `<img class="product-art checkout-art" src="${escapeHtml(item.image)}" alt="" width="320" height="200" loading="lazy" decoding="async">` : ''}
         <div class="checkout-option-top">
           <span>${escapeHtml(item.type)}</span>
-          <strong>${escapeHtml(item.priceLabel)}</strong>
+          <div class="checkout-prices">${promotionPriceMarkup(localized(item.oldPriceLabel))}<strong>${escapedLocalized(item.priceLabel)}</strong></div>
         </div>
         <h3>${escapeHtml(item.name)}</h3>
         <p>${escapeHtml(item.text)}</p>
@@ -285,21 +572,111 @@
   }
 
   function formatEuro(value) {
-    const amount = Number(value) || 0;
-    try {
-      return new Intl.NumberFormat(activeLang === 'de' ? 'de-DE' : activeLang === 'sr' ? 'sr-Latn-RS' : 'en-US', {
-        style: 'currency', currency: 'EUR', maximumFractionDigits: 0
-      }).format(amount);
-    } catch (_) {
-      return `${Math.round(amount).toLocaleString()} €`;
+    return formatCartTotal(value);
+  }
+
+  function formatEuroMarkup(value) {
+    return formatCartTotal(value, { markup: true });
+  }
+
+  function interpolateText(template, values = {}) {
+    return String(template || '').replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
+  }
+
+  function normalizePromoCode(value) {
+    return String(value || '').trim().toUpperCase().replace(/\s+/g, '');
+  }
+
+  function getCartTotals() {
+    return cartItems.reduce((sum, entry) => {
+      const source = getCheckoutItemById(entry.id);
+      const value = (Number(source?.price) || 0) * Number(entry.qty || 0);
+      if (source?.billing === 'monthly') sum.monthly += value;
+      else sum.oneTime += value;
+      return sum;
+    }, { oneTime: 0, monthly: 0 });
+  }
+
+  function findPromoDefinition(code) {
+    if (PROMO_CODES.enabled !== true) return null;
+    const normalized = normalizePromoCode(code);
+    return (Array.isArray(PROMO_CODES.codes) ? PROMO_CODES.codes : []).find((item) => normalizePromoCode(item?.code) === normalized) || null;
+  }
+
+  function validatePromoCode(code, oneTimeSubtotal) {
+    const normalized = normalizePromoCode(code);
+    const definition = findPromoDefinition(normalized);
+    if (!normalized || !definition) return { valid: false, code: normalized, reason: 'invalid' };
+    const now = Date.now();
+    const starts = definition.startsAt ? Date.parse(definition.startsAt) : NaN;
+    const ends = definition.endsAt ? Date.parse(definition.endsAt) : NaN;
+    if ((Number.isFinite(starts) && now < starts) || (Number.isFinite(ends) && now > ends)) {
+      return { valid: false, code: normalized, definition, reason: 'expired' };
     }
+    const minimum = Math.max(0, Number(definition.minOneTime) || 0);
+    if (Number(oneTimeSubtotal) < minimum) {
+      return { valid: false, code: normalized, definition, reason: 'minimum', minimum };
+    }
+    const percent = Math.min(100, Math.max(0, Number(definition.percent) || 0));
+    const rawMaximum = Number(definition.maxDiscount);
+    const maxDiscount = Number.isFinite(rawMaximum) && rawMaximum > 0 ? rawMaximum : Infinity;
+    const discount = Math.min(maxDiscount, Math.round((Number(oneTimeSubtotal) * percent / 100) * 100) / 100);
+    if (!discount) return { valid: false, code: normalized, definition, reason: 'invalid' };
+    return { valid: true, code: normalized, definition, percent, discount };
+  }
+
+  function promoLabel(definition) {
+    const labels = definition?.label || {};
+    return String(labels[activeLang] || labels.de || definition?.code || '');
+  }
+
+  function setPromoStatus(message, type = '') {
+    if (!promoStatusEl) return;
+    promoStatusEl.textContent = localized(message || '');
+    promoStatusEl.dataset.status = type;
+  }
+
+  function currentPromo(totals = getCartTotals()) {
+    return activePromoCode ? validatePromoCode(activePromoCode, totals.oneTime) : null;
+  }
+
+  function applyPromoCode() {
+    const totals = getCartTotals();
+    const attempted = normalizePromoCode(promoInput?.value || '');
+    const result = validatePromoCode(attempted, totals.oneTime);
+    if (!result.valid) {
+      const copy = activeContent.checkout || {};
+      const message = result.reason === 'minimum'
+        ? interpolateText(copy.promoMinimum, { minimum: formatEuro(result.minimum || 0) })
+        : result.reason === 'expired' ? copy.promoExpired : copy.promoInvalid;
+      if (result.reason === 'invalid') {
+        activePromoCode = '';
+        try { sessionStorage.removeItem(PROMO_CODE_KEY); } catch (_) {}
+        renderCart();
+      }
+      setPromoStatus(message, 'error');
+      return;
+    }
+    activePromoCode = result.code;
+    try { sessionStorage.setItem(PROMO_CODE_KEY, activePromoCode); } catch (_) {}
+    if (promoInput) promoInput.value = activePromoCode;
+    renderCart(true);
+  }
+
+  function removePromoCode() {
+    activePromoCode = '';
+    try { sessionStorage.removeItem(PROMO_CODE_KEY); } catch (_) {}
+    if (promoInput) promoInput.value = '';
+    setPromoStatus('', '');
+    renderCart(true);
+    promoInput?.focus({ preventScroll: true });
   }
 
   function addToCart(id) {
     const source = getCheckoutItemById(id);
     if (!source) return;
     const existing = cartItems.find((item) => item.id === id);
-    if (existing) existing.qty = Math.min(9, existing.qty + 1);
+    if (existing) existing.qty = Math.min(9, Math.max(1, Math.floor(Number(existing.qty) || 0) + 1));
     else cartItems.push({ id, qty: 1 });
     renderCart(true);
   }
@@ -307,7 +684,8 @@
   function changeCartQty(id, delta) {
     const item = cartItems.find((entry) => entry.id === id);
     if (!item) return;
-    item.qty = Math.min(9, item.qty + delta);
+    const nextQuantity = Math.floor(Number(item.qty) || 0) + Math.trunc(Number(delta) || 0);
+    item.qty = Math.min(9, nextQuantity);
     if (item.qty <= 0) cartItems = cartItems.filter((entry) => entry.id !== id);
     renderCart(true);
   }
@@ -316,30 +694,55 @@
     if (!cartItemsEl || !cartTotalEl || !cartCountEl || !cartEmptyEl) return;
     // Remove stale cart entries left behind after package/price changes.
     cartItems = cartItems.filter((entry) => getCheckoutItemById(entry.id));
-    const totals = cartItems.reduce((sum, entry) => {
-      const source = getCheckoutItemById(entry.id);
-      const value = (source?.price || 0) * entry.qty;
-      if (source?.billing === 'monthly') sum.monthly += value;
-      else sum.oneTime += value;
-      return sum;
-    }, { oneTime: 0, monthly: 0 });
+    const totals = getCartTotals();
+    let promo = currentPromo(totals);
+    if (activePromoCode && promo?.reason === 'invalid') {
+      activePromoCode = '';
+      promo = null;
+      try { sessionStorage.removeItem(PROMO_CODE_KEY); } catch (_) {}
+      if (promoInput) promoInput.value = '';
+      setPromoStatus('', '');
+    }
+    const oneTimeAfterDiscount = promo?.valid ? Math.max(0, totals.oneTime - promo.discount) : totals.oneTime;
     const count = cartItems.reduce((sum, entry) => sum + entry.qty, 0);
     cartCountEl.textContent = String(count);
     try { localStorage.setItem('weburix-cart', JSON.stringify(cartItems)); } catch (error) {}
     const parts = [];
-    if (totals.oneTime) parts.push(`<span><small>${escapeHtml(activeContent.checkout.oneTimeLabel || '')}</small>${formatEuro(totals.oneTime)}</span>`);
-    if (totals.monthly) parts.push(`<span><small>${escapeHtml(activeContent.checkout.monthlyLabel || '')}</small>${formatEuro(totals.monthly)}</span>`);
-    cartTotalEl.innerHTML = parts.length ? parts.join('') : `<span>${formatEuro(0)}</span>`;
+    if (totals.oneTime) parts.push(`<span><small>${escapeHtml(activeContent.checkout.oneTimeLabel || '')}</small>${promo?.valid ? `<del>${formatEuroMarkup(totals.oneTime)}</del><b>${formatEuroMarkup(oneTimeAfterDiscount)}</b>` : formatEuroMarkup(totals.oneTime)}</span>`);
+    if (totals.monthly) parts.push(`<span><small>${escapeHtml(activeContent.checkout.monthlyLabel || '')}</small>${formatEuroMarkup(totals.monthly)}</span>`);
+    cartTotalEl.innerHTML = parts.length ? parts.join('') : `<span>${formatEuroMarkup(0)}</span>`;
+    if (promoDiscountEl) {
+      promoDiscountEl.hidden = !promo?.valid;
+      promoDiscountEl.innerHTML = promo?.valid
+        ? `<span>${escapeHtml(activeContent.checkout.promoSavings || '')}</span><strong>−${formatEuroMarkup(promo.discount)}</strong>`
+        : '';
+    }
+    if (promoInput && activePromoCode && document.activeElement !== promoInput) promoInput.value = activePromoCode;
+    if (promoRemoveButton) promoRemoveButton.hidden = !activePromoCode;
+    if (promo?.valid) {
+      const applied = interpolateText(activeContent.checkout.promoApplied, { code: promo.code, discount: formatEuro(promo.discount) });
+      setPromoStatus(`${applied} ${promoLabel(promo.definition)}`.trim(), 'success');
+    } else if (activePromoCode && promo?.reason === 'minimum') {
+      setPromoStatus(interpolateText(activeContent.checkout.promoMinimum, { minimum: formatEuro(promo.minimum || 0) }), 'warning');
+    } else if (activePromoCode && promo?.reason === 'expired') {
+      setPromoStatus(activeContent.checkout.promoExpired, 'error');
+    }
     cartEmptyEl.hidden = count > 0;
     cartItemsEl.innerHTML = cartItems.map((entry) => {
       const source = getCheckoutItemById(entry.id);
       if (!source) return '';
+      const quantityLabels = activeLang === 'de'
+        ? { decrease: 'Menge verringern', increase: 'Menge erhöhen' }
+        : activeLang === 'sr'
+          ? { decrease: 'Smanji količinu', increase: 'Povećaj količinu' }
+          : { decrease: 'Decrease quantity', increase: 'Increase quantity' };
+      const itemName = escapeHtml(source.name);
       return `<div class="cart-line">
-        <div><strong>${escapeHtml(source.name)}</strong><span>${escapeHtml(source.priceLabel)}</span></div>
+        <div><strong>${itemName}</strong><span>${escapedLocalized(source.priceLabel)}</span></div>
         <div class="cart-qty">
-          <button type="button" data-cart-qty="${escapeHtml(entry.id)}" data-delta="-1" aria-label="Minus">−</button>
-          <span>${entry.qty}</span>
-          <button type="button" data-cart-qty="${escapeHtml(entry.id)}" data-delta="1" aria-label="Plus">+</button>
+          <button type="button" data-cart-qty="${escapeHtml(entry.id)}" data-delta="-1" aria-label="${quantityLabels.decrease}: ${itemName}">−</button>
+          <span aria-live="polite">${entry.qty}</span>
+          <button type="button" data-cart-qty="${escapeHtml(entry.id)}" data-delta="1" aria-label="${quantityLabels.increase}: ${itemName}">+</button>
         </div>
       </div>`;
     }).join('');
@@ -359,10 +762,14 @@
     if (!form || !message) return;
     const lines = cartItems.map((entry) => {
       const source = getCheckoutItemById(entry.id);
-      return source ? `- ${source.name} (${source.priceLabel}) x ${entry.qty}` : '';
+      return source ? `- ${source.name} (${localized(source.priceLabel)}) x ${entry.qty}` : '';
     }).filter(Boolean);
     const intro = activeContent.checkout.requestIntro || 'Selected services:';
-    message.value = `${intro}\n${lines.join('\n')}`;
+    const promo = currentPromo();
+    const promoLine = promo?.valid
+      ? interpolateText(activeContent.checkout.promoLine, { code: promo.code, discount: formatEuro(promo.discount) })
+      : '';
+    message.value = `${intro}\n${lines.join('\n')}${promoLine ? `\n${promoLine}` : ''}`;
     message.classList.add('is-filled');
     if (serviceSelect) {
       const option = [...serviceSelect.options].find((opt) => /komplett|complete|gesamt|paket/i.test(opt.textContent));
@@ -381,33 +788,40 @@
     };
     document.querySelectorAll('[data-select]').forEach((select) => {
       const key = select.dataset.select;
-      const previous = select.value;
-      select.innerHTML = (map[key] || []).map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`).join('');
-      if ([...select.options].some((option) => option.value === previous)) select.value = previous;
+      const previousValue = select.value;
+      const previousIndex = select.selectedIndex;
+      select.innerHTML = (map[key] || []).map((item) => `<option value="${escapedLocalized(item)}">${escapedLocalized(item)}</option>`).join('');
+      if ([...select.options].some((option) => option.value === previousValue)) select.value = previousValue;
+      else if (previousIndex >= 0 && previousIndex < select.options.length) select.selectedIndex = previousIndex;
     });
   }
 
   function renderServiceChecks(items) {
     const container = document.getElementById('service-checks');
     if (!container) return;
+    const checkedIndexes = [...container.querySelectorAll('input[name="interests"]')]
+      .map((input, index) => input.checked ? index : -1)
+      .filter((index) => index >= 0);
     container.innerHTML = items.map((item, index) => {
       const id = `service-check-${activeLang}-${index}`;
-      return `<label class="check-pill" for="${id}"><input id="${id}" name="interests" type="checkbox" value="${escapeHtml(item)}"><span>${escapeHtml(item)}</span></label>`;
+      return `<label class="check-pill" for="${id}"><input id="${id}" name="interests" type="checkbox" value="${escapeHtml(item)}" ${checkedIndexes.includes(index) ? 'checked' : ''}><span>${escapeHtml(item)}</span></label>`;
     }).join('');
   }
 
   function renderSeoFocus(items) {
     const select = document.querySelector('[data-seo-focus]');
     if (!select) return;
-    const previous = select.value;
+    const previousValue = select.value;
+    const previousIndex = select.selectedIndex;
     select.innerHTML = items.map((item, index) => `<option value="${index === 0 ? '' : escapeHtml(item)}" ${index === 0 ? 'disabled' : ''}>${escapeHtml(item)}</option>`).join('');
-    if ([...select.options].some((option) => option.value === previous)) select.value = previous;
+    if ([...select.options].some((option) => option.value === previousValue)) select.value = previousValue;
+    else if (previousIndex >= 0 && previousIndex < select.options.length) select.selectedIndex = previousIndex;
     else select.value = '';
   }
 
   function serviceCardTemplate(item) {
     return `
-      <article class="service-card reveal tilt-card" tabindex="0">
+      <article class="service-card reveal tilt-card">
         <span>${escapeHtml(item.icon)}</span>
         <h3>${escapeHtml(item.title)}</h3>
         <p>${escapeHtml(item.text)}</p>
@@ -416,7 +830,7 @@
 
   function ideaCardTemplate(item, index) {
     return `
-      <article class="idea-card reveal tilt-card" tabindex="0">
+      <article class="idea-card reveal tilt-card">
         <span>${String(index + 1).padStart(2, '0')}</span>
         <h3>${escapeHtml(item.title)}</h3>
         <p>${escapeHtml(item.text)}</p>
@@ -425,7 +839,7 @@
 
   function qualityCardTemplate(item, index) {
     return `
-      <article class="quality-card reveal tilt-card" tabindex="0">
+      <article class="quality-card reveal tilt-card">
         <span aria-hidden="true">→</span>
         <small>${String(index + 1).padStart(2, '0')}</small>
         <h3>${escapeHtml(item.title)}</h3>
@@ -436,10 +850,12 @@
   function renderServiceTabs(items) {
     const container = document.getElementById('service-tabs');
     if (!container) return;
-    const buttons = items.map((item, index) => `<button class="tab-button ${index === 0 ? 'active' : ''}" id="service-tab-${index}" type="button" role="tab" data-tab-index="${index}" aria-selected="${index === 0}" aria-controls="service-panel-${index}" tabindex="${index === 0 ? '0' : '-1'}">${escapeHtml(item.title)}</button>`).join('');
+    const previousIndex = Number(container.querySelector('.tab-button.active')?.dataset.tabIndex);
+    const activeIndex = Number.isInteger(previousIndex) && previousIndex >= 0 && previousIndex < items.length ? previousIndex : 0;
+    const buttons = items.map((item, index) => `<button class="tab-button ${index === activeIndex ? 'active' : ''}" id="service-tab-${index}" type="button" role="tab" data-tab-index="${index}" aria-selected="${index === activeIndex}" aria-controls="service-panel-${index}" tabindex="${index === activeIndex ? '0' : '-1'}">${escapeHtml(item.title)}</button>`).join('');
     const panels = items.map((item, index) => {
       const points = item.points.map((point) => `<li>${escapeHtml(point)}</li>`).join('');
-      return `<article class="tab-panel ${index === 0 ? 'active' : ''}" id="service-panel-${index}" role="tabpanel" aria-labelledby="service-tab-${index}" aria-hidden="${index !== 0}" data-tab-panel="${index}">
+      return `<article class="tab-panel ${index === activeIndex ? 'active' : ''}" id="service-panel-${index}" role="tabpanel" aria-labelledby="service-tab-${index}" aria-hidden="${index !== activeIndex}" data-tab-panel="${index}">
         <h3>${escapeHtml(item.heading)}</h3>
         <p>${escapeHtml(item.text)}</p>
         <ul>${points}</ul>
@@ -456,10 +872,10 @@
       <article class="price-card reveal tilt-card ${item.featured ? 'featured' : ''}" data-price-card>
         ${item.featured ? `<div class="badge">${escapeHtml(activeContent.packages.popular)}</div>` : ''}
         ${item.image ? `<img class="product-art package-art" src="${escapeHtml(item.image)}" alt="" width="320" height="200" loading="lazy" decoding="async">` : ''}
-        <div class="launch-price-tag">${escapeHtml(activeContent.packages.saving || '')}</div>
+        <div class="launch-price-tag">${escapeHtml(isPromotionActive() ? promotionLabel() : (activeContent.packages.saving || ''))}</div>
         <h3>${escapeHtml(item.name)}</h3>
         <p class="package-label">${escapeHtml(item.label)}</p>
-        <div class="package-price"><strong>${escapeHtml(item.price)}</strong></div>
+        <div class="package-price">${promotionPriceMarkup(localized(item.oldPrice))}<strong>${escapedLocalized(item.price)}</strong></div>
         <ul>${features}</ul>
         <div class="price-extra" id="package-extra-${index}" aria-hidden="true">${extra}</div>
         <button class="button button-soft package-toggle" type="button" data-package-toggle aria-expanded="false" aria-controls="package-extra-${index}">${escapeHtml(activeContent.packages.details)}</button>
@@ -476,7 +892,7 @@
         ${item.featured ? `<div class="badge">${escapeHtml(section.popular)}</div>` : ''}
         <img class="product-art support-art" src="${escapeHtml(item.image)}" alt="" width="320" height="200" loading="lazy" decoding="async">
         <h3>${escapeHtml(item.name)}</h3>
-        <div class="support-price"><strong>${escapeHtml(item.price)}</strong><span>${escapeHtml(item.period)}</span></div>
+        <div class="support-price">${promotionPriceMarkup(localized(item.oldPrice))}<strong>${escapedLocalized(item.price)}</strong><span>${escapeHtml(item.period)}</span></div>
         <ul>${features}</ul>
         <a class="button button-primary" href="#request">${escapeHtml(section.cta)}</a>
       </article>`;
@@ -493,7 +909,7 @@
         <div class="course-meta"><span>${escapeHtml(section.live)}</span><small>${escapeHtml(section.duration)}: ${escapeHtml(item.duration)}</small></div>
         <h3>${escapeHtml(item.name)}</h3>
         <p>${escapeHtml(item.subtitle)}</p>
-        <div class="course-price"><strong>${escapeHtml(item.price)}</strong></div>
+        <div class="course-price">${promotionPriceMarkup(localized(item.oldPrice))}<strong>${escapedLocalized(item.price)}</strong></div>
         <ul>${points}</ul>
         <a class="button button-soft" href="#request">${escapeHtml(section.cta)}</a>
       </article>`;
@@ -504,7 +920,7 @@
     const container = document.getElementById('price-list-grid');
     if (!container || !section) return;
     container.innerHTML = (section.groups || []).map((group) => {
-      const rows = (group.items || []).map((item) => `<div class="price-row"><span>${escapeHtml(item.name)}</span><div><strong>${escapeHtml(item.price)}</strong></div></div>`).join('');
+      const rows = (group.items || []).map((item) => `<div class="price-row"><span>${escapeHtml(item.name)}</span><div class="price-row-values">${promotionPriceMarkup(localized(item.oldPrice))}<strong>${escapedLocalized(item.price)}</strong></div></div>`).join('');
       return `<article class="price-list-card reveal"><h3>${escapeHtml(group.title)}</h3>${rows}</article>`;
     }).join('');
   }
@@ -521,12 +937,14 @@
   function renderFAQ(items) {
     const container = document.getElementById('faq-list');
     if (!container) return;
+    const previousOpen = [...container.querySelectorAll('.faq-item')].findIndex((item) => item.classList.contains('open'));
+    const openIndex = previousOpen >= 0 && previousOpen < items.length ? previousOpen : 0;
     container.innerHTML = items.map((item, index) => `
-      <article class="faq-item reveal ${index === 0 ? 'open' : ''}">
-        <button class="faq-question" id="faq-button-${index}" type="button" aria-expanded="${index === 0}" aria-controls="faq-answer-${index}">
+      <article class="faq-item reveal ${index === openIndex ? 'open' : ''}">
+        <button class="faq-question" id="faq-button-${index}" type="button" aria-expanded="${index === openIndex}" aria-controls="faq-answer-${index}">
           <span>${escapeHtml(item.q)}</span><i aria-hidden="true">+</i>
         </button>
-        <div class="faq-answer" id="faq-answer-${index}" role="region" aria-labelledby="faq-button-${index}" aria-hidden="${index !== 0}"><p>${escapeHtml(item.a)}</p></div>
+        <div class="faq-answer" id="faq-answer-${index}" role="region" aria-labelledby="faq-button-${index}" aria-hidden="${index !== openIndex}"><p>${escapedLocalized(item.a)}</p></div>
       </article>`).join('');
     updateAccordionHeights(container);
   }
@@ -547,7 +965,7 @@
   function setFormStatus(form, message, type = '') {
     const status = form.querySelector('[data-form-status]');
     if (!status) return;
-    status.textContent = message || '';
+    status.textContent = localized(message || '');
     status.dataset.status = type;
     status.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
   }
@@ -555,7 +973,10 @@
   function collectFormPayload(form) {
     const data = new FormData(form);
     data.set('form_type', form.dataset.formType || 'contact');
-    const honeypot = String(data.get('website_url') || '').trim();
+    data.set('display_currency', activeLang === 'sr' ? activeCurrency.toUpperCase() : 'EUR');
+    data.set('billing_currency', String(CURRENCY_CONFIG.billingCurrency || 'EUR'));
+    if (activeLang === 'sr') data.set('eur_rsd_rate', String(rsdRate()));
+    const honeypot = `${data.get('website_url') || ''}${data.get('_honey') || ''}`.trim();
     if (honeypot) return { blocked: true };
 
     if (!form.checkValidity()) {
@@ -577,6 +998,7 @@
       interests: activeContent.forms.servicesNeeded,
       message: activeContent.forms.message,
       privacy: 'Datenschutz',
+      newsletter_consent: activeContent.newsletter?.consent || 'Newsletter-Vormerkung',
       form_type: 'Typ'
     };
 
@@ -589,6 +1011,11 @@
         return item ? `${item.name} x ${entry.qty} (${item.priceLabel})` : '';
       }).filter(Boolean).join(' | ');
       if (summary) data.set('selected_services', summary);
+      const promo = currentPromo();
+      if (promo?.valid) {
+        data.set('promo_code', promo.code);
+        data.set('promo_discount', formatEuro(promo.discount));
+      }
     }
 
     const grouped = {};
@@ -601,72 +1028,99 @@
     return { data, labels, grouped };
   }
 
-  function formToMail(form, payload) {
-    const type = form.dataset.formType;
-    const subjects = { project: 'Projektanfrage Weburix', quick: 'Kontakt Weburix', newsletter: 'Newsletter Weburix', portal: 'Portal Zugang Weburix', 'seo-check': 'Kostenloser SEO-Kurzcheck Weburix' };
-    const subject = subjects[type] || 'Weburix Anfrage';
-    const lines = Object.entries(payload.grouped).map(([key, value]) => `${payload.labels[key] || key}: ${value}`);
-    const body = lines.join('\n');
-    window.location.href = `mailto:${FORM_CONFIG.recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setFormStatus(form, activeContent.forms.success, 'success');
+  function prepareNativeFormSubmit(form, payload) {
+    form.querySelectorAll('[data-native-submit-meta]').forEach((node) => node.remove());
+    const excluded = new Set(['privacy', 'website_url']);
+    for (const [key, value] of payload.data.entries()) {
+      if (excluded.has(key) || form.elements.namedItem(key)) continue;
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = String(value);
+      input.dataset.nativeSubmitMeta = '';
+      form.appendChild(input);
+    }
+  }
+
+  function submitNativeForm(form, payload) {
+    const endpoint = form.getAttribute('action') || '';
+    if (!/^https:\/\/formsubmit\.co\//i.test(endpoint)) throw new Error('Invalid native form endpoint');
+    prepareNativeFormSubmit(form, payload);
+    const isWebPage = /^https?:$/i.test(window.location.protocol);
+    const currentPage = isWebPage
+      ? `${window.location.origin}${window.location.pathname}`
+      : '';
+    const sourceField = form.elements.namedItem('_url');
+    const nextField = form.elements.namedItem('_next');
+    // Keep the preconfigured public fallback URLs during file:// previews.
+    if (isWebPage && sourceField) sourceField.value = currentPage;
+    if (isWebPage && nextField) nextField.value = `${currentPage}?sent=1`;
+    setFormStatus(form, activeContent.forms.nativeFallback || activeContent.forms.sending, 'loading');
+    return new Promise((resolve, reject) => {
+      window.setTimeout(() => {
+        try {
+          HTMLFormElement.prototype.submit.call(form);
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      }, 80);
+    });
   }
 
   async function fetchWithTimeout(url, options, timeoutMs = 12000) {
     const controller = 'AbortController' in window ? new AbortController() : null;
-    const timer = window.setTimeout(() => controller?.abort(), timeoutMs);
+    let timer = 0;
+    const timeout = new Promise((_, reject) => {
+      timer = window.setTimeout(() => {
+        controller?.abort();
+        const error = new Error('Request timed out');
+        error.name = 'AbortError';
+        reject(error);
+      }, timeoutMs);
+    });
     try {
-      return await fetch(url, { ...options, ...(controller ? { signal: controller.signal } : {}) });
+      return await Promise.race([
+        fetch(url, { ...options, ...(controller ? { signal: controller.signal } : {}) }),
+        timeout
+      ]);
     } finally {
       window.clearTimeout(timer);
     }
   }
 
-  async function submitToNetlify(form, payload) {
-    const body = new URLSearchParams(payload.data).toString();
-    const response = await fetchWithTimeout('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body
-    });
-    if (!response.ok) throw new Error('Netlify form error');
-  }
-
-  async function submitToFormspree(form, payload) {
-    if (!FORM_CONFIG.formspreeEndpoint) throw new Error('Missing Formspree endpoint');
-    const response = await fetchWithTimeout(FORM_CONFIG.formspreeEndpoint, {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: payload.data
-    });
-    if (!response.ok) throw new Error('Formspree error');
-  }
-
-  function hasRealWeb3FormsKey() {
-    return FORM_CONFIG.web3formsAccessKey && !/PASTE_|YOUR_|XXXX|REPLACE/i.test(FORM_CONFIG.web3formsAccessKey);
-  }
-
-  async function submitToWeb3Forms(form, payload) {
-    if (!hasRealWeb3FormsKey()) {
-      const error = new Error('Missing Web3Forms access key');
-      error.code = 'MISSING_WEB3FORMS_KEY';
-      throw error;
+  async function submitToFormSubmit(form, payload) {
+    if (!/^https:\/\/formsubmit\.co\/ajax\//i.test(FORM_CONFIG.formsubmitEndpoint)) {
+      throw new Error('Invalid FormSubmit endpoint');
     }
-    payload.data.set('access_key', FORM_CONFIG.web3formsAccessKey);
-    payload.data.set('from_name', 'Weburix Website');
-    payload.data.set('botcheck', '');
-    const subjects = { project: 'Projektanfrage Weburix', quick: 'Kontakt Weburix', newsletter: 'Newsletter Weburix', portal: 'Portal Zugang Weburix', 'seo-check': 'Kostenloser SEO-Kurzcheck Weburix' };
-    payload.data.set('subject', subjects[form.dataset.formType] || 'Weburix Anfrage');
-    const response = await fetchWithTimeout('https://api.web3forms.com/submit', {
+    const type = form.dataset.formType;
+    const subjects = { project: 'Neue Weburix Projektanfrage', quick: 'Neue Weburix Kontaktanfrage', newsletter: 'Weburix Newsletter-Vormerkung', portal: 'Weburix Portal-Anfrage', 'seo-check': 'Weburix SEO-Kurzcheck' };
+    payload.data.delete('website_url');
+    payload.data.set('_subject', subjects[type] || 'Neue Weburix Anfrage');
+    payload.data.set('_template', 'table');
+    payload.data.set('_captcha', 'false');
+    payload.data.set('_url', window.location.href.split('#')[0]);
+    payload.data.delete('privacy');
+    const response = await fetchWithTimeout(FORM_CONFIG.formsubmitEndpoint, {
       method: 'POST',
       headers: { Accept: 'application/json' },
       body: payload.data
-    });
+    }, 15000);
     let result = null;
     try { result = await response.json(); } catch (_) {}
-    if (!response.ok || (result && result.success === false)) throw new Error(result?.message || 'Web3Forms error');
+    const successValue = result?.success;
+    const explicitSuccess = successValue === true || String(successValue).toLowerCase() === 'true';
+    if (!response.ok || !explicitSuccess) {
+      const error = new Error(result?.message || 'FormSubmit did not confirm delivery');
+      if (/activate|activation|confirm|verify|verification/i.test(error.message)) error.code = 'FORMSUBMIT_ACTIVATION';
+      throw error;
+    }
+    return result;
   }
 
+
   async function submitForm(form) {
+    if (form.classList.contains('is-submitting')) return;
     const payload = collectFormPayload(form);
     if (payload.blocked) {
       setFormStatus(form, activeContent.forms.botBlocked, 'error');
@@ -684,21 +1138,24 @@
     form.classList.add('is-submitting');
 
     try {
-      if (FORM_CONFIG.mode === 'netlify') await submitToNetlify(form, payload);
-      else if (FORM_CONFIG.mode === 'formspree') await submitToFormspree(form, payload);
-      else if (FORM_CONFIG.mode === 'web3forms') await submitToWeb3Forms(form, payload);
-      else {
-        formToMail(form, payload);
-        return;
-      }
+      await submitToFormSubmit(form, payload);
       setFormStatus(form, activeContent.forms.apiSuccess, 'success');
       form.reset();
       form.querySelectorAll('.is-filled').forEach((field) => field.classList.remove('is-filled'));
       if (form.dataset.formType === 'project') { cartItems = []; renderCart(); }
     } catch (error) {
       console.warn(error);
-      const missingKey = error && error.code === 'MISSING_WEB3FORMS_KEY';
-      setFormStatus(form, missingKey ? activeContent.forms.configMissing : activeContent.forms.error, 'error');
+      const activationNeeded = error && error.code === 'FORMSUBMIT_ACTIVATION';
+      if (activationNeeded) {
+        setFormStatus(form, activeContent.forms.activationNeeded || activeContent.forms.error, 'warning');
+      } else {
+        try {
+          await submitNativeForm(form, payload);
+        } catch (nativeError) {
+          console.warn(nativeError);
+          setFormStatus(form, activeContent.forms.error, 'error');
+        }
+      }
     } finally {
       submitButton?.removeAttribute('disabled');
       submitButton?.removeAttribute('aria-busy');
@@ -711,7 +1168,14 @@
     const form = event.target.closest('form[data-form-type]');
     if (!form) return;
     event.preventDefault();
-    submitForm(form);
+    void submitForm(form).catch((error) => {
+      console.warn(error);
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton?.removeAttribute('disabled');
+      submitButton?.removeAttribute('aria-busy');
+      form.classList.remove('is-submitting');
+      setFormStatus(form, activeContent.forms.error, 'error');
+    });
   });
 
   document.addEventListener('click', (event) => {
@@ -742,6 +1206,25 @@
         if (form) setFormStatus(form, activeContent.checkout.paymentDemo, 'loading');
         document.getElementById('request')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    }
+
+    const contactRoute = event.target.closest('[data-contact-route]');
+    if (contactRoute) {
+      const targetId = contactRoute.dataset.contactRoute === 'quick' ? 'quick-form' : 'project-form';
+      const targetForm = document.getElementById(targetId);
+      const serviceSelect = targetForm?.querySelector('select[name="service"]');
+      const intent = contactRoute.dataset.contactIntent || '';
+      if (serviceSelect && intent) {
+        const intentTokens = {
+          consulting: ['beratung', 'consult', 'savet'],
+          support: ['support', 'betreuung', 'podrsk']
+        };
+        const tokens = intentTokens[intent] || [normalize(intent)];
+        const option = [...serviceSelect.options].find((entry) => tokens.some((token) => normalize(entry.textContent).includes(token)));
+        if (option) serviceSelect.value = option.value;
+      }
+      targetForm?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      window.setTimeout(() => targetForm?.querySelector('input:not([type="hidden"]), select, textarea')?.focus({ preventScroll: true }), reducedMotion ? 0 : 450);
     }
 
     const tabButton = event.target.closest('[data-tab-index]');
@@ -812,15 +1295,29 @@
     tabs[next]?.click();
   });
 
+  function syncMobileNavAccessibility() {
+    if (!navPanel) return;
+    const compact = mobileNavMedia?.matches ?? window.innerWidth <= 1280;
+    const open = navToggle?.getAttribute('aria-expanded') === 'true';
+    const hidden = compact && !open;
+    navPanel.toggleAttribute('inert', hidden);
+    navPanel.setAttribute('aria-hidden', String(hidden));
+  }
+
   navToggle?.addEventListener('click', () => {
     const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
     if (!isOpen) languageMenu?.removeAttribute('open');
     navToggle.setAttribute('aria-expanded', String(!isOpen));
     navPanel?.classList.toggle('open', !isOpen);
     document.body.classList.toggle('nav-open', !isOpen);
+    syncMobileNavAccessibility();
+    updateInteractiveLabels();
   });
   languageMenu?.addEventListener('toggle', () => {
-    if (languageMenu.open) closeMobileNav();
+    if (languageMenu.open) {
+      closeMobileNav();
+      document.querySelector('.currency-menu')?.removeAttribute('open');
+    }
   });
 
   navPanel?.addEventListener('click', (event) => {
@@ -830,7 +1327,7 @@
     closeMobileNav();
   });
   document.addEventListener('pointerdown', (event) => {
-    document.querySelectorAll('.nav-more[open], .language-menu[open]').forEach((menu) => {
+    document.querySelectorAll('.nav-more[open], .language-menu[open], .currency-menu[open]').forEach((menu) => {
       if (!menu.contains(event.target)) menu.removeAttribute('open');
     });
     if (!document.body.classList.contains('nav-open')) return;
@@ -842,6 +1339,8 @@
     navToggle?.setAttribute('aria-expanded', 'false');
     navPanel?.classList.remove('open');
     document.body.classList.remove('nav-open');
+    syncMobileNavAccessibility();
+    updateInteractiveLabels();
   }
 
   languageButtons.forEach((button) => button.addEventListener('click', () => {
@@ -868,7 +1367,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' })
+      }, { threshold: 0.01, rootMargin: '120px 0px 80px 0px' })
     : null;
 
   function observeRevealElements() {
@@ -888,14 +1387,25 @@
   }
 
   function openChat() {
-    chatWidget?.classList.add('open');
-    chatWidget?.setAttribute('aria-hidden', 'false');
-    setTimeout(() => chatInput?.focus(), 80);
+    if (!chatWidget || document.body.classList.contains('consent-pending')) return;
+    chatReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : chatLauncher;
+    chatWidget.classList.add('open');
+    chatWidget.removeAttribute('inert');
+    chatWidget.setAttribute('aria-hidden', 'false');
+    chatLauncher?.setAttribute('aria-expanded', 'true');
+    window.setTimeout(() => chatInput?.focus({ preventScroll: true }), 80);
   }
 
-  function closeChat() {
-    chatWidget?.classList.remove('open');
-    chatWidget?.setAttribute('aria-hidden', 'true');
+  function closeChat(options = {}) {
+    if (!chatWidget) return;
+    const wasOpen = chatWidget.classList.contains('open');
+    chatWidget.classList.remove('open');
+    chatWidget.setAttribute('aria-hidden', 'true');
+    chatWidget.setAttribute('inert', '');
+    chatLauncher?.setAttribute('aria-expanded', 'false');
+    if (wasOpen && options.restoreFocus !== false) {
+      window.setTimeout(() => chatReturnFocus?.focus?.({ preventScroll: true }), 0);
+    }
   }
 
   function renderChat(resetMessages) {
@@ -913,7 +1423,7 @@
     if (!chatMessages) return;
     const message = document.createElement('div');
     message.className = `chat-bubble ${type}`;
-    message.textContent = text;
+    message.textContent = localized(text);
     chatMessages.appendChild(message);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
@@ -934,9 +1444,10 @@
     if (/kurs|course|workshop|radionic|schulung|training/.test(input)) return answers.courses || answers.consulting || answers.fallback;
     if (/consult|beratung|savet|sat|hour|stundensatz|1:1/.test(input)) return answers.consulting || answers.contact;
     if (/checkout|warenkorb|cart|korpa|plać|plac|payment|stripe|paypal|paywall|zahlung|zahlen|kaufen|buy/.test(input)) return answers.checkout || answers.price;
-    if (/integration|integrationen|api|netlify|formspree|web3forms|tool|tools/.test(input)) return answers.integrations || answers.forms || answers.contact;
+    if (/integration|integrationen|api|formsubmit|tool|tools/.test(input)) return answers.integrations || answers.forms || answers.contact;
     if (/paket|package|plan|starter|business|growth|care|social.+youtube|ponud|angebot/.test(input)) return answers.packages;
-    if (/preis|price|cost|kosten|cena|cijena|kosta|kost|budget|budzet|budzet|€|euro/.test(input)) return answers.price;
+    if (/währung|waehrung|currency|valuta|eur.+rsd|rsd.+eur|dinar|dinara/.test(input)) return answers.currency || answers.price;
+    if (/preis|price|cost|kosten|cena|cijena|kosta|kost|budget|budzet|budzet|€|euro|rsd/.test(input)) return answers.price;
     if (/web|website|seite|stran|sajt|landing|relaunch|redizajn|redesign|formular|form/.test(input)) return answers.website;
     if (/internal link|interne verlink|interni link|content refresh|update old|alte inhalte|stari sadržaj|stari sadrzaj|topical|themencluster|tematski klaster|wissenshub|blog/.test(input)) return answers.contentStrategy || answers.seo;
     if (/digital pr|guest post|gastbeitrag|fachbeitrag|editorial|medienarbeit|stručni članak|strucni clanak|portal/.test(input)) return answers.digitalPr || answers.contentStrategy || answers.seo;
@@ -951,8 +1462,8 @@
     if (/mehrsprach|multilingual|language|sprache|jezik|jezic|prevod|translation|deutsch|english|serbian|srpski/.test(input)) return answers.multilingual;
     if (/timeline|zeit|dauer|rok|koliko dugo|how long|start|begin|launch|pocet|počet/.test(input)) return answers.timeline;
     if (/fake|follower|like|lajk|bot|view|pregled|komentar|comment/.test(input)) return answers.legal;
-    if (/formular|formulare|forms|contact form|kontaktformular|web3forms|formspree|netlify/.test(input)) return answers.forms || answers.contact;
-    if (/hosting|host|github pages|server|deploy|deployment|netlify/.test(input)) return answers.hosting || answers.domain;
+    if (/formular|formulare|forms|contact form|kontaktformular|formsubmit/.test(input)) return answers.forms || answers.contact;
+    if (/hosting|host|github pages|cloudflare pages|server|deploy|deployment/.test(input)) return answers.hosting || answers.domain;
     if (/privacy|datenschutz|cookie|cookies|gdpr|dsgvo|privatnost|podaci|tracking|analytics/.test(input)) return answers.privacy || answers.legal;
     if (/ablauf|process|prozess|kako ide|projekat|project flow|meeting/.test(input)) return answers.process || answers.contact;
     if (/kontakt|contact|email|mail|anfrage|request|upit|projekt|project|start/.test(input)) return answers.contact;
@@ -988,14 +1499,16 @@
     if (promptButton) handleChatSubmit(promptButton.dataset.chatPrompt);
   });
 
-  document.addEventListener('click', (event) => {
-    const clickable = event.target.closest('a, button, .check-pill, .service-card, .idea-card, .timeline-item, .stats-grid div, .addon-grid span, .result-card, .testimonial-card, .example-card, .support-plan, .course-card, .price-list-card, .slogan-grid span, .knowledge-card');
-    if (!clickable) return;
-    clickable.classList.remove('click-pop');
-    void clickable.offsetWidth;
-    clickable.classList.add('click-pop');
-    setTimeout(() => clickable.classList.remove('click-pop'), 360);
-  });
+  if (!coarsePointer && !reducedMotion && !saveData && !lowPowerDevice) {
+    document.addEventListener('click', (event) => {
+      const clickable = event.target.closest('a, button, .check-pill, .service-card, .idea-card, .timeline-item, .stats-grid div, .addon-grid span, .result-card, .testimonial-card, .example-card, .support-plan, .course-card, .price-list-card, .slogan-grid span, .knowledge-card');
+      if (!clickable) return;
+      clickable.classList.remove('click-pop');
+      void clickable.offsetWidth;
+      clickable.classList.add('click-pop');
+      window.setTimeout(() => clickable.classList.remove('click-pop'), 360);
+    });
+  }
 
 
   function getStoredConsent() {
@@ -1043,6 +1556,7 @@
     } catch (_) {}
     cookieBanner?.classList.remove('visible');
     cookieBanner?.classList.add('hidden');
+    document.body.classList.remove('consent-pending');
     closeCookieSettings();
     updateCookieUI();
 
@@ -1060,6 +1574,7 @@
     modal.id = 'cookie-settings-modal';
     modal.className = 'cookie-settings-modal';
     modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('inert', '');
     modal.innerHTML = `
       <div class="cookie-settings-backdrop" data-cookie-close></div>
       <section class="cookie-settings-panel" role="dialog" aria-modal="true" aria-labelledby="cookie-settings-title">
@@ -1136,24 +1651,31 @@
     const consent = getStoredConsent();
     const functional = modal.querySelector('#cookie-functional');
     if (functional) functional.checked = Boolean(consent?.functional);
+    cookieReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     modal.classList.add('visible');
+    modal.removeAttribute('inert');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('cookie-modal-open');
-    window.setTimeout(() => modal.querySelector('.cookie-close')?.focus(), 60);
+    window.setTimeout(() => modal.querySelector('.cookie-close')?.focus({ preventScroll: true }), 60);
   }
 
-  function closeCookieSettings() {
+  function closeCookieSettings(options = {}) {
     const modal = document.getElementById('cookie-settings-modal');
     if (!modal) return;
+    const wasOpen = modal.classList.contains('visible');
     modal.classList.remove('visible');
     modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('inert', '');
     document.body.classList.remove('cookie-modal-open');
+    if (wasOpen && options.restoreFocus !== false) {
+      window.setTimeout(() => cookieReturnFocus?.focus?.({ preventScroll: true }), 0);
+    }
   }
 
   function initCookieBanner() {
     if (cookieBanner && !cookieBanner.querySelector('[data-cookie-settings]')) {
       const button = document.createElement('button');
-      button.className = 'button button-ghost';
+      button.className = 'button button-ghost cookie-settings-trigger';
       button.type = 'button';
       button.dataset.cookieSettings = '';
       cookieBanner.querySelector('.cookie-actions')?.insertBefore(button, cookieBanner.querySelector('[data-cookie-choice="accept"]'));
@@ -1176,7 +1698,9 @@
       footerLinks.appendChild(button);
     }
     const consent = getStoredConsent();
+    document.body.classList.toggle('consent-pending', !consent);
     if (!consent) {
+      closeChat({ restoreFocus: false });
       cookieBanner?.classList.remove('hidden');
       cookieBanner?.classList.add('visible');
     } else {
@@ -1341,6 +1865,11 @@
 
   cartRequestButton?.addEventListener('click', transferCartToRequest);
   cartClearButton?.addEventListener('click', () => { cartItems = []; renderCart(true); });
+  promoApplyButton?.addEventListener('click', applyPromoCode);
+  promoRemoveButton?.addEventListener('click', removePromoCode);
+  promoInput?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') { event.preventDefault(); applyPromoCode(); }
+  });
 
   backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }));
   let scrollTicking = false;
@@ -1358,24 +1887,38 @@
     window.requestAnimationFrame(() => {
       updateAccordionHeights();
       const nextWidth = window.innerWidth;
+      root.classList.toggle('short-viewport', window.innerHeight < 650);
       // Mobile browsers resize the viewport when their address bar moves.
       // Do not close an open menu for those small height-only changes.
       if ((lastViewportWidth <= 1280 && nextWidth > 1280) || Math.abs(nextWidth - lastViewportWidth) > 160) {
         closeMobileNav();
         languageMenu?.removeAttribute('open');
+        document.querySelector('.currency-menu')?.removeAttribute('open');
       }
       lastViewportWidth = nextWidth;
       resizeTicking = false;
     });
   }, { passive: true });
   window.addEventListener('orientationchange', () => {
-    window.setTimeout(() => { closeMobileNav(); languageMenu?.removeAttribute('open'); updateAccordionHeights(); }, 120);
+    window.setTimeout(() => { closeMobileNav(); languageMenu?.removeAttribute('open'); document.querySelector('.currency-menu')?.removeAttribute('open'); updateAccordionHeights(); }, 120);
   }, { passive: true });
   document.addEventListener('keydown', (event) => {
+    const cookieModal = document.getElementById('cookie-settings-modal');
+    if (event.key === 'Tab' && cookieModal?.classList.contains('visible')) {
+      const focusable = [...cookieModal.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])')]
+        .filter((element) => !element.hasAttribute('disabled') && !element.hasAttribute('inert') && element.getClientRects().length);
+      if (focusable.length) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    }
     if (event.key === 'Escape') {
       closeMobileNav();
       closeChat();
       languageMenu?.removeAttribute('open');
+      document.querySelector('.currency-menu')?.removeAttribute('open');
       closeCookieSettings();
     }
   });
@@ -1388,11 +1931,17 @@
 
 
   // Weburix V5: real smooth scroll + refresh animation system
-  function smoothScrollToTarget(targetId) {
-    const target = document.querySelector(targetId);
+  function smoothScrollToTarget(targetId, { focus = false } = {}) {
+    let target = null;
+    try { target = document.querySelector(targetId); } catch (_) { return false; }
     if (!target) return false;
-    const top = target.getBoundingClientRect().top + window.scrollY - 82;
+    const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height || 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - Math.max(12, headerHeight + 10);
     window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' });
+    if (focus) {
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    }
     return true;
   }
 
@@ -1401,12 +1950,38 @@
     if (!link) return;
     const href = link.getAttribute('href');
     if (!href || href === '#') return;
-    if (smoothScrollToTarget(href)) {
+    if (smoothScrollToTarget(href, { focus: link.classList.contains('skip-link') })) {
       event.preventDefault();
       closeMobileNav();
-      history.replaceState(null, '', href);
+      try { history.replaceState(null, '', href); } catch (_) {}
     }
   });
+
+  function showSubmissionReturnNotice() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') !== '1') return;
+    const notice = document.createElement('div');
+    notice.className = 'submission-return-notice';
+    notice.setAttribute('role', 'status');
+    notice.setAttribute('aria-live', 'polite');
+    const icon = document.createElement('span');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = '✓';
+    const message = document.createElement('span');
+    message.dataset.i18n = 'forms.apiSuccess';
+    message.textContent = activeContent.forms.apiSuccess;
+    notice.append(icon, message);
+    document.body.appendChild(notice);
+    window.requestAnimationFrame(() => notice.classList.add('visible'));
+    window.setTimeout(() => {
+      notice.classList.remove('visible');
+      window.setTimeout(() => notice.remove(), reducedMotion ? 0 : 220);
+    }, 8000);
+    params.delete('sent');
+    const query = params.toString();
+    const cleanUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+    window.history.replaceState(null, '', cleanUrl);
+  }
 
   function refreshMotion() {
     document.querySelectorAll('.service-card, .idea-card, .quality-card, .price-card, .checkout-option, .integration-card, .form-card, .contact-card, .timeline-item, .work-card, .proof-pill, .portal-card, .launch-checklist label, .result-card, .testimonial-card, .example-card, .support-plan, .course-card, .price-list-card, .slogan-grid span, .knowledge-card').forEach((el, index) => {
@@ -1417,17 +1992,19 @@
 
   // Weburix V7: extra motion layer for cards/buttons without external libraries
   const finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
-  if (finePointer && !reducedMotion) {
+  if (finePointer && !reducedMotion && !saveData && !lowPowerDevice && window.innerWidth >= 1100) {
     let tiltFrame = 0;
     let tiltEvent = null;
     document.addEventListener('pointermove', (event) => {
-      tiltEvent = event;
+      const candidate = event.target?.closest?.('.tilt-card');
+      if (!candidate) return;
+      tiltEvent = { event, card: candidate };
       if (tiltFrame) return;
       tiltFrame = requestAnimationFrame(() => {
-        const current = tiltEvent;
+        const current = tiltEvent?.event;
+        const card = tiltEvent?.card;
         tiltFrame = 0;
-        const card = current?.target?.closest?.('.tilt-card');
-        if (!card) return;
+        if (!current || !card) return;
         const rect = card.getBoundingClientRect();
         if (!rect.width || !rect.height) return;
         const x = (current.clientX - rect.left) / rect.width - 0.5;
@@ -1447,7 +2024,7 @@
   }
 
   document.addEventListener('pointerdown', (event) => {
-    if (reducedMotion) return;
+    if (reducedMotion || saveData || lowPowerDevice || event.pointerType === 'touch') return;
     const target = event.target.closest('button, .button, a, .check-pill span, .payment-chip, .cart-qty button');
     if (!target) return;
     const ripple = document.createElement('span');
@@ -1460,9 +2037,20 @@
   });
 
 
+  document.addEventListener('visibilitychange', () => {
+    root.classList.toggle('page-hidden', document.hidden);
+  }, { passive: true });
+  if (mobileNavMedia) {
+    const syncNav = () => syncMobileNavAccessibility();
+    if (typeof mobileNavMedia.addEventListener === 'function') mobileNavMedia.addEventListener('change', syncNav);
+    else if (typeof mobileNavMedia.addListener === 'function') mobileNavMedia.addListener(syncNav);
+  }
+
   document.querySelectorAll('[data-form-status]').forEach((status) => status.setAttribute('role', 'status'));
+  syncMobileNavAccessibility();
   const storedLanguage = readStoredLanguage();
   setLanguage(storedLanguage || DEFAULT_LANG);
+  showSubmissionReturnNotice();
   initCookieBanner();
   initSocialLinks();
   initLegalFields();
@@ -1474,4 +2062,5 @@
   refreshMotion();
   updateScrollUI();
   observeRevealElements();
+  window.__WEBURIX_APP_READY__ = true;
 })();

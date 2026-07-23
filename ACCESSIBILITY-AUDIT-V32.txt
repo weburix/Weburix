@@ -1,0 +1,4 @@
+Weburix Accessibility Audit V32
+Errors: 0
+Warnings: 0
+NOTE: HTML pages checked: 17

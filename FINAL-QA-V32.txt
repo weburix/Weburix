@@ -1,0 +1,77 @@
+WEBURIX V32 PRODUCTION FINAL — QA SUMMARY
+Date: 2026-07-23
+
+AUTOMATED RESULT
+- General QA: 0 program errors; 12 intentional launch warnings
+- Technical audit: 0 errors; 4 legal-data launch warnings
+- SEO/link audit: 0 errors, 0 warnings
+- Structural audit: 0 errors, 0 warnings
+- Accessibility audit: 0 errors, 0 warnings
+- Resilience audit: 0 errors
+- Production-readiness audit: 0 errors
+- Pricing audit: 0 errors
+- Currency audit: 0 errors
+- HTTP resource audit: 75 routes/resources, 0 errors
+- JavaScript syntax: passed
+- Python syntax/compile: passed
+- JSON/TOML/XML/CSS/HTML structural parsing: passed through included audits
+
+BROWSER REGRESSION
+- HTML pages covered: 17/17
+- Primary responsive renders: 20 (index + kontakt across 10 viewports)
+- Secondary responsive renders: 60 (15 pages across 4 viewports)
+- Total responsive renders: 80
+- Viewport range: 240x600 through 1600x900
+- Root and /weburixsite/ subfolder contact paths: passed
+- CSS loading and first-party resources: passed
+- Mobile navigation and translated ARIA labels: passed
+- Cookie banner/settings: passed
+- DE/EN/SR switching: passed
+- EUR/RSD state preservation: passed
+- Promo invalid/valid/remove/stale state: passed
+- Cart normalization and quantity controls: passed
+- Chat and Reduced Motion: passed
+- Skip-link focus and keyboard tab-order: passed
+- No-JavaScript navigation, quick form and project fallback: passed
+
+FORM SCENARIOS
+- Explicit success: passed
+- One-time activation warning: passed
+- Ambiguous HTTP 200 response: rejected correctly
+- Explicit failure: handled correctly
+- Native fallback rejection: recovered and button re-enabled
+- Rapid double submit: one request only
+- Project request: passed
+- Newsletter waitlist consent: passed
+
+PERFORMANCE / DELIVERY
+- Core first-party payload estimate: 526.9 KiB raw / 124.6 KiB gzip
+- No external fonts
+- Versioned assets: v32.0
+- Immutable asset cache: configured
+- Root/directory HTML revalidation: configured
+- Preview CSP / production CSP separation: passed
+- Repeated preview-to-weburix.com conversion: passed
+
+INTENTIONAL LAUNCH WARNINGS — NOT CODE BUGS
+1. Owner/legal representative missing
+2. Street missing
+3. Postal code missing
+4. VAT/tax mode unset
+5. Gewerbe registration not confirmed
+6. Final domain ownership not confirmed
+7. DNS, HTTPS and www redirect not confirmed
+8. info@weburix.com mailbox not confirmed
+9. FormSubmit recipient activation not confirmed
+10. Form provider privacy/DPA review not confirmed
+11. Final hosting privacy wording not confirmed
+12. Real-device production test not confirmed
+
+NOT AUTOMATICALLY VERIFIABLE BEFORE LAUNCH
+- Actual delivery into info@weburix.com and Spam folder
+- Clicking the FormSubmit activation email
+- Public DNS/HTTPS/redirect behavior on the final domain
+- Physical iPhone Safari, Android Chrome, Firefox and Edge behavior
+- Final German legal/tax correctness of real business data
+
+Use only the complete V32 ZIP. Replace the old deploy instead of mixing versions.

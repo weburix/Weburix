@@ -8,8 +8,12 @@
       if (window.__WEBURIX_ERRORS__.length > 20) window.__WEBURIX_ERRORS__.shift();
     } catch (_) {}
   };
-  window.addEventListener('error', (event) => record('error', event.message));
-  window.addEventListener('unhandledrejection', (event) => record('promise', event.reason));
+  window.addEventListener('error', (event) => {
+    const target = event.target;
+    const resource = target && target !== window ? (target.currentSrc || target.src || target.href || target.tagName) : '';
+    record(resource ? 'resource' : 'error', resource || event.message || 'Unknown runtime error');
+  }, true);
+  window.addEventListener('unhandledrejection', (event) => record('promise', event.reason || 'Unhandled promise rejection'));
   window.setTimeout(() => {
     const loader = document.getElementById('loader');
     if (loader && !loader.classList.contains('hidden')) {
@@ -17,5 +21,10 @@
       document.body?.classList.add('loaded');
       record('boot-timeout', 'Loader fallback used');
     }
-  }, 2600);
+    if (!window.__WEBURIX_APP_READY__) {
+      document.querySelectorAll('.reveal:not(.visible)').forEach((element) => element.classList.add('visible'));
+      document.documentElement.classList.add('weburix-app-fallback');
+      record('app-fallback', 'Main application did not signal ready; content was revealed safely');
+    }
+  }, 3200);
 })();

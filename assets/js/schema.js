@@ -4,16 +4,26 @@
     "@graph": [
       {
         "@type": ["Organization", "ProfessionalService"],
-        "@id": "https://weburix.com/#organization",
+        "@id": "https://weburix.github.io/weburixsite/#organization",
         "name": "Weburix",
-        "url": "https://weburix.com/",
-        "logo": "https://weburix.com/assets/img/weburix-logo.png",
-        "image": "https://weburix.com/assets/img/weburix-banner.png",
+        "url": "https://weburix.github.io/weburixsite/",
+        "logo": "https://weburix.github.io/weburixsite/assets/img/weburix-logo.png",
+        "image": "https://weburix.github.io/weburixsite/assets/img/weburix-banner.png",
         "email": "info@weburix.com",
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61591837417338",
+          "https://www.instagram.com/weburix/"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "info@weburix.com",
+          "availableLanguage": ["German", "English", "Serbian"]
+        },
         "areaServed": [{"@type":"City","name":"München"},{"@type":"Country","name":"Deutschland"}],
         "knowsLanguage": ["de", "en", "sr-Latn"],
         "description": "Webentwicklung, SEO, Google Business, Social Media, YouTube, Digital PR, Kurse, Beratung und Support aus München.",
-        "priceRange": "€€",
+        "priceRange": "€",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Weburix Leistungen",
@@ -28,19 +38,19 @@
       },
       {
         "@type": "WebSite",
-        "@id": "https://weburix.com/#website",
-        "url": "https://weburix.com/",
+        "@id": "https://weburix.github.io/weburixsite/#website",
+        "url": "https://weburix.github.io/weburixsite/",
         "name": "Weburix",
-        "publisher": {"@id":"https://weburix.com/#organization"},
+        "publisher": {"@id":"https://weburix.github.io/weburixsite/#organization"},
         "inLanguage": ["de", "en", "sr-Latn"]
       },
       {
         "@type": "ItemList",
         "name": "Weburix Livekurse",
         "itemListElement": [
-          {"@type":"ListItem","position":1,"item":{"@type":"Course","name":"Website-Start","description":"Livekurs zur Planung, technischen Grundlage, SEO-Basis und Veröffentlichung einer Website.","provider":{"@id":"https://weburix.com/#organization"}}},
-          {"@type":"ListItem","position":2,"item":{"@type":"Course","name":"SEO & Google Business","description":"Livekurs zu Keywords, lokalem SEO, Google Business und messbaren nächsten Schritten.","provider":{"@id":"https://weburix.com/#organization"}}},
-          {"@type":"ListItem","position":3,"item":{"@type":"Course","name":"YouTube & Social Workflow","description":"Livekurs für Themenplanung, Uploadsysteme, Titel, Thumbnails und Analytics.","provider":{"@id":"https://weburix.com/#organization"}}}
+          {"@type":"ListItem","position":1,"item":{"@type":"Course","name":"Website-Start","description":"Livekurs zur Planung, technischen Grundlage, SEO-Basis und Veröffentlichung einer Website.","provider":{"@id":"https://weburix.github.io/weburixsite/#organization"}}},
+          {"@type":"ListItem","position":2,"item":{"@type":"Course","name":"SEO & Google Business","description":"Livekurs zu Keywords, lokalem SEO, Google Business und messbaren nächsten Schritten.","provider":{"@id":"https://weburix.github.io/weburixsite/#organization"}}},
+          {"@type":"ListItem","position":3,"item":{"@type":"Course","name":"YouTube & Social Workflow","description":"Livekurs für Themenplanung, Uploadsysteme, Titel, Thumbnails und Analytics.","provider":{"@id":"https://weburix.github.io/weburixsite/#organization"}}}
         ]
       }
     ]

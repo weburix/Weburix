@@ -1,0 +1,5 @@
+PREPORUKA U JEDNOJ REČENICI
+
+Ako želiš domen + pravi poslovni mailbox uz minimalan ukupni trošak, prvo proveri IONOS Mail Basic (1,50 EUR mesečno, domen uključen) i hostuj sajt besplatno na Cloudflare Pages. Ako želiš samo najjeftiniji domen i već imaš rešenu poštu, proveri Cloudflare Registrar; ako domen tamo nije dostupan, Porkbun trenutno prikazuje .com za 11,08 USD godišnje.
+
+Dostupnost weburix.com mora se proveriti uživo u korpi registrara. Neaktivna DNS adresa ne znači da je domen slobodan.

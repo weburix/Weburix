@@ -1,0 +1,7 @@
+Weburix Pricing Audit V32 Production Final
+Errors: 0
+NOTE: Locales checked: 3
+NOTE: Checkout prices checked per locale: 21
+NOTE: V32 Production Final prices: coherent entry prices below the stored historical reference values
+NOTE: Comparison-price display: prepared but disabled by default
+NOTE: Campaign display requires a valid end date

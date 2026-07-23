@@ -1,12 +1,27 @@
 Weburix QA
 Errors: 0
-Warnings: 0
+Warnings: 12
+WARNING: LAUNCH: legal field ownerName is empty in site-config.js
+WARNING: LAUNCH: legal field street is empty in site-config.js
+WARNING: LAUNCH: legal field postalCode is empty in site-config.js
+WARNING: LAUNCH: VAT mode is unset; confirm the correct tax wording before publishing prices
+WARNING: LAUNCH: Gewerbe/business registration has not been confirmed
+WARNING: LAUNCH: ownership of the final domain has not been confirmed
+WARNING: LAUNCH: final DNS, www redirect and HTTPS have not been confirmed
+WARNING: LAUNCH: business mailbox info@weburix.com has not been confirmed
+WARNING: LAUNCH: FormSubmit recipient activation has not been confirmed
+WARNING: LAUNCH: final privacy/DPA review for the form provider has not been confirmed
+WARNING: LAUNCH: privacy wording for the final hosting provider has not been confirmed
+WARNING: LAUNCH: real-device production test has not been confirmed
+NOTE: Serbian EUR/RSD selector and dual-price conversion: checked
+NOTE: Contact delivery: FormSubmit configured; one-time inbox activation required
+NOTE: Interaction stability and modal focus guards: checked
 NOTE: German-first language source checks: passed
 NOTE: Consent-gated country lookup source check: passed
 NOTE: Responsive/browser compatibility markers: checked
 NOTE: Legal/VAT/checkout launch guards: checked
-NOTE: HTML files checked: 15
-NOTE: i18n keys checked per language: 215
+NOTE: HTML files checked: 17
+NOTE: i18n keys checked per language: 221
 NOTE: Knowledge guides: 4
 NOTE: Service cards per language: 9
-NOTE: Checkout items per language: 17
+NOTE: Checkout items per language: 21

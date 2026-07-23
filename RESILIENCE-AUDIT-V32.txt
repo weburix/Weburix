@@ -1,0 +1,6 @@
+Weburix Resilience Audit V32
+Errors: 0
+NOTE: main-script failure safely reveals static content and hides loader
+NOTE: 44px narrow touch controls and translated promo label passed
+NOTE: contact aliases share consistent chat ARIA/inert state
+NOTE: repeated preview-to-final domain conversion passed
